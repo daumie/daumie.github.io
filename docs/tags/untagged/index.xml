@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>untagged on Dominic Motuka</title>
-    <link>http://localhost/tags/untagged/</link>
+    <link>https://daumie.github.io/hugo_blog/tags/untagged/</link>
     <description>Recent content in untagged on Dominic Motuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 06 Jul 2019 02:46:39 +0300</lastBuildDate>
     
-	<atom:link href="http://localhost/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://daumie.github.io/hugo_blog/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My Third Post</title>
-      <link>http://localhost/posts/my-third-post/</link>
+      <link>https://daumie.github.io/hugo_blog/posts/my-third-post/</link>
       <pubDate>Sat, 06 Jul 2019 02:46:39 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-third-post/</guid>
+      <guid>https://daumie.github.io/hugo_blog/posts/my-third-post/</guid>
       <description></description>
     </item>
     
     <item>
       <title>My Second Post</title>
-      <link>http://localhost/posts/my-second-post/</link>
+      <link>https://daumie.github.io/hugo_blog/posts/my-second-post/</link>
       <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-second-post/</guid>
+      <guid>https://daumie.github.io/hugo_blog/posts/my-second-post/</guid>
       <description></description>
     </item>
     
     <item>
       <title>My First Post</title>
-      <link>http://localhost/posts/my-first-post/</link>
+      <link>https://daumie.github.io/hugo_blog/posts/my-first-post/</link>
       <pubDate>Sat, 06 Jul 2019 02:46:26 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-first-post/</guid>
+      <guid>https://daumie.github.io/hugo_blog/posts/my-first-post/</guid>
       <description></description>
     </item>
     
