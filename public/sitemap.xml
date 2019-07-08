@@ -3,47 +3,59 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://daumie.github.io/hugo_blog/</loc>
+    <loc>http://localhost/</loc>
     <lastmod>2019-07-06T02:46:39+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://daumie.github.io/hugo_blog/posts/my-third-post/</loc>
+    <loc>http://localhost/posts/my-third-post/</loc>
     <lastmod>2019-07-06T02:46:39+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://daumie.github.io/hugo_blog/posts/</loc>
-    <lastmod>2019-07-06T02:46:39+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://daumie.github.io/hugo_blog/tags/</loc>
+    <loc>http://localhost/posts/</loc>
     <lastmod>2019-07-06T02:46:39+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://daumie.github.io/hugo_blog/tags/untagged/</loc>
+    <loc>http://localhost/tags/</loc>
     <lastmod>2019-07-06T02:46:39+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://daumie.github.io/hugo_blog/posts/my-second-post/</loc>
+    <loc>http://localhost/tags/untagged/</loc>
+    <lastmod>2019-07-06T02:46:39+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost/posts/my-second-post/</loc>
     <lastmod>2019-07-06T02:46:32+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://daumie.github.io/hugo_blog/posts/my-first-post/</loc>
+    <loc>http://localhost/posts/my-first-post/</loc>
     <lastmod>2019-07-06T02:46:26+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://daumie.github.io/hugo_blog/about-hugo/</loc>
+    <loc>http://localhost/about-hugo/</loc>
     <lastmod>2019-07-06T02:45:07+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost/tags/aboutme/</loc>
+    <lastmod>2019-07-06T02:45:07+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost/tags/resume/</loc>
+    <lastmod>2019-07-06T02:45:07+03:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
