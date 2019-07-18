@@ -30,13 +30,17 @@
 		</item>
 		
 		<item>
-			<title>My First Post</title>
-			<link>https://dominicmotuka.com/posts/my-first-post/</link>
+			<title>Samurai Jack Introduction</title>
+			<link>https://dominicmotuka.com/posts/samurai-jack-introduction/</link>
 			<pubDate>Sat, 06 Jul 2019 02:46:26 +0300</pubDate>
 			
-			<guid>https://dominicmotuka.com/posts/my-first-post/</guid>
-			<description></description>
-			<content type="html"><![CDATA[]]></content>
+			<guid>https://dominicmotuka.com/posts/samurai-jack-introduction/</guid>
+			<description>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.
+Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</description>
+			<content type="html"><![CDATA[<p>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.</p>
+
+<p>Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</p>
+]]></content>
 		</item>
 		
 	</channel>
