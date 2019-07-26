@@ -74,5 +74,5 @@ disqusShortname = "dominicmotuka"
 
   [[menu.main]]
     name = "About"
-    url = "about-hugo/"
+    url = "about-dominic/"
     weight = 20

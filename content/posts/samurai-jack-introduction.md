@@ -5,7 +5,8 @@ draft: false
 toc: false
 images:
 tags: 
-  - untagged
+  - introduction
+  - samurai
 ---
 
 Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.
