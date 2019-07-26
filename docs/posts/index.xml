@@ -20,13 +20,18 @@
 		</item>
 		
 		<item>
-			<title>My Second Post</title>
-			<link>https://dominicmotuka.com/posts/my-second-post/</link>
+			<title>Setting Up MacOS for Software Development</title>
+			<link>https://dominicmotuka.com/posts/development-setup/</link>
 			<pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
 			
-			<guid>https://dominicmotuka.com/posts/my-second-post/</guid>
-			<description></description>
-			<content type="html"><![CDATA[]]></content>
+			<guid>https://dominicmotuka.com/posts/development-setup/</guid>
+			<description>First Things First After frist login, run Software Update and ensure that the operating system is at the latest point of release</description>
+			<content type="html"><![CDATA[
+
+<h2 id="first-things-first">First Things First</h2>
+
+<p>After frist login, run Software Update and ensure that the operating system is at the latest point of release</p>
+]]></content>
 		</item>
 		
 		<item>

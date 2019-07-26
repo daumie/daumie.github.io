@@ -22,12 +22,12 @@
     </item>
     
     <item>
-      <title>My Second Post</title>
-      <link>https://dominicmotuka.com/posts/my-second-post/</link>
+      <title>Setting Up MacOS for Software Development</title>
+      <link>https://dominicmotuka.com/posts/development-setup/</link>
       <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/posts/my-second-post/</guid>
-      <description></description>
+      <guid>https://dominicmotuka.com/posts/development-setup/</guid>
+      <description>First Things First After frist login, run Software Update and ensure that the operating system is at the latest point of release</description>
     </item>
     
     <item>
@@ -42,10 +42,10 @@ Before the final blow was struck, I tore open a portal in time and flung him int
     
     <item>
       <title>About Dominic Motuka</title>
-      <link>https://dominicmotuka.com/about-hugo/</link>
+      <link>https://dominicmotuka.com/about-dominic/</link>
       <pubDate>Sat, 06 Jul 2019 02:45:07 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/about-hugo/</guid>
+      <guid>https://dominicmotuka.com/about-dominic/</guid>
       <description>Hello! I am a passionate software developer driven by the motivation to help teams achieve a common goal by leveraging technology.
 Currently, I&amp;rsquo;m a DevOps engineer overseeing in-house Andela software. I work in teams to establish automation pipelines, develop scripts to automate development operations, configuration management and provide actionable feedback.
 I am a lifelong learner and I continuously seek avenues to improve my knowledge, skills, and capabilities to both strengthen familiar skills and learn new technologies.</description>
