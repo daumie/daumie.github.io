@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>development on Dominic Motuka</title>
-    <link>https://dominicmotuka.com/tags/development/</link>
-    <description>Recent content in development on Dominic Motuka</description>
+    <title>git on Dominic Motuka</title>
+    <link>https://dominicmotuka.com/tags/git/</link>
+    <description>Recent content in git on Dominic Motuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 06 Jul 2019 02:46:32 +0300</lastBuildDate>
     
-	<atom:link href="https://dominicmotuka.com/tags/development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dominicmotuka.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

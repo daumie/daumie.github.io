@@ -8,26 +8,32 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 
-<meta itemprop="name" content="Setting Up MacOS for Software Development">
-<meta itemprop="description" content="First Things First After frist login, run Software Update and ensure that the operating system is at the latest point of release">
+<meta itemprop="name" content="MacOS Setup for Software Development">
+<meta itemprop="description" content="First Things First After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.
+ To do that go: Apple menu () &gt; About This Mac &gt; Software Update.
+ Restart the computer when prompted to.">
 
 
 <meta itemprop="datePublished" content="2019-07-06T02:46:32&#43;03:00" />
 <meta itemprop="dateModified" content="2019-07-06T02:46:32&#43;03:00" />
-<meta itemprop="wordCount" content="22">
+<meta itemprop="wordCount" content="962">
 
 
 
-<meta itemprop="keywords" content="unix,macos,development," />
-<meta property="og:title" content="Setting Up MacOS for Software Development" />
-<meta property="og:description" content="First Things First After frist login, run Software Update and ensure that the operating system is at the latest point of release" />
+<meta itemprop="keywords" content="unix,macos,development,git,gpg,encryption," />
+<meta property="og:title" content="MacOS Setup for Software Development" />
+<meta property="og:description" content="First Things First After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.
+ To do that go: Apple menu () &gt; About This Mac &gt; Software Update.
+ Restart the computer when prompted to." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dominicmotuka.com/posts/development-setup/" />
 <meta property="article:published_time" content="2019-07-06T02:46:32&#43;03:00"/>
 <meta property="article:modified_time" content="2019-07-06T02:46:32&#43;03:00"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Setting Up MacOS for Software Development"/>
-<meta name="twitter:description" content="First Things First After frist login, run Software Update and ensure that the operating system is at the latest point of release"/>
+<meta name="twitter:title" content="MacOS Setup for Software Development"/>
+<meta name="twitter:description" content="First Things First After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.
+ To do that go: Apple menu () &gt; About This Mac &gt; Software Update.
+ Restart the computer when prompted to."/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -36,7 +42,7 @@
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
 	<link rel="shortcut icon" href="/favicon.ico">
 
-	<title>Setting Up MacOS for Software Development</title>
+	<title>MacOS Setup for Software Development</title>
 	<link rel="stylesheet" href="https://dominicmotuka.com/css/style.min.568c54a56780af2a70c45272522247710b69dbfc080b315211fb98381e3796f8.css" integrity="sha256-VoxUpWeArypwxFJyUiJHcQtp2/wICzFSEfuYOB43lvg=">
 	
 </head>
@@ -73,22 +79,129 @@
 		<article class="thin">
 			<header class="post-header">
 				<div class="post-meta"><span>Jul 6, 2019</span></div>
-				<h1>Setting Up MacOS for Software Development</h1>
+				<h1>MacOS Setup for Software Development</h1>
 			</header>
 			<div class="content">
 				
 
 <h2 id="first-things-first">First Things First<a href="#first-things-first" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
-<p>After frist login, run Software Update and ensure that the operating system is at the latest point of release</p>
+<p>After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.</p>
+
+<blockquote>
+<p>To do that go: Apple menu () &gt; About This Mac &gt; Software Update.</p>
+</blockquote>
+
+<p>Restart the computer when prompted to.</p>
+
+<p>The default account created is the admin account. If other people will be using the machine, create Standard accounts as necessary.</p>
+
+<blockquote>
+<p>Admin accounts have sudo privileges: All Admin accounts on a Mac may use sudo to run command-line utilities with administrative (root) privileges.</p>
+</blockquote>
+
+<h3 id="enable-file-vault">Enable File Vault<a href="#enable-file-vault" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>FileVault is a disk encryption program in Mac OS X 10.3 and later. It performs on-the-fly encryption with volumes on Mac computers.</p>
+
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Disk_encryption_software">disk encryption program</a> - Disk encryption is a technology which protects information by converting it into unreadable code that cannot be deciphered easily by unauthorized people. Disk encryption uses disk encryption software like Apple&rsquo;s File Vault 2.</p></li>
+
+<li><p><a href="https://en.wikipedia.org/wiki/Volume_(computing)">volumes</a> - a volume or logical drive is a single accessible storage area with a single file system, typically (though not necessarily) resident on a single partition of a hard disk. Although a volume might be different from a physical disk drive, it can still be accessed with an operating system&rsquo;s logical interface. However, a volume differs from a partition.</p></li>
+</ul>
+
+<h3 id="set-a-firmware-password">Set a Firmware Password<a href="#set-a-firmware-password" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>A firmware password prevents starting up from any internal or external storage device other than the startup disk you&rsquo;ve selected.
+<a href="https://support.apple.com/en-gb/HT204455">Apple Knowledge Base article HT204455</a> has full details on how to go around this</p>
+
+<p>If you did not enable File Vault, then the attacker will have complete access to all of the files on the system.</p>
+
+<h2 id="setting-up-for-development">Setting Up for Development<a href="#setting-up-for-development" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>The first step is to install a compiler. The easiest way to install one is with the Xcode Command Line Tools package.
+Xcode is an integrated development environment for macOS containing a suite of software development tools developed by Apple for developing software for macOS, iOS, watchOS and tvOS.
+Once you have the compiler that is provided by Xcode, you can use Homebrew to install everything else that you need.</p>
+
+<p>From the Terminal App run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ xcode-select --install
+.......</code></pre></div>
+<p>It&rsquo;ll prompt you to install the command line tools. Follow the instructions and you&rsquo;ll have Xcode and Xcode command line tools both installed.</p>
+
+<h2 id="setting-up-homebrew">Setting up Homebrew<a href="#setting-up-homebrew" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p><a href="http://brew.sh/">Homebrew</a> is a free and open-source software package management system that simplifies the installation of software on Apple&rsquo;s macOS operating system and Linux. The name is intended to suggest the idea of building software on the Mac depending on the user&rsquo;s taste.
+Follow the instructions on the site.</p>
+
+<p>You should also amend your PATH, so that the versions of tools that are installed with Homebrew take precedence over others. To do this, edit the file .bashrc in your home directory to include this line:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/usr/local/bin:/usr/local/sbin:~/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span></code></pre></div>
+<p>To check that Homebrew is installed correctly, run this command in a terminal window:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew doctor
+Your system is ready to brew.</code></pre></div>
+<p>To update the index of available packages, run this command in a terminal window:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew update</code></pre></div>
+<p>You can now use the brew install command to add command-line software to your Mac, and brew cask install to add graphical software. For example, this command installs the Slack app:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew cask install slack</code></pre></div>
+<h2 id="installing-and-configuring-git">Installing and Configuring Git<a href="#installing-and-configuring-git" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>Git is a software that is used for Version Control. It is free and open source. Version Control is the management of changes to documents, computer programs, large websites and other collection of information.</p>
+
+<p>Xcode Command Line Tools include a copy of Git but it&rsquo;s mostly an outdated version. To install a newer version. Run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew install git</code></pre></div>
+<p>Set your details before creating or cloning repositories.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global user.name <span class="s2">&#34;Your Name&#34;</span>
+git config --global user.email <span class="s2">&#34;you@your-domain.com&#34;</span></code></pre></div>
+<p>The <em>global</em> option means that the setting will apply to every repository that you work with in the current user account.</p>
+
+<p>You can create a global gitignore in your home directory <code>~/.gitignore</code>  and use it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.excludesfile <span class="s1">&#39;~/.gitignore&#39;</span></code></pre></div>
+<p>The editor used to edit the commit log message will be chosen from the <code>GIT_EDITOR</code> environment variable, the <code>core.editor</code> configuration variable, the <code>VISUAL</code> environment variable, or the <code>EDITOR environment</code> variable <em>(in that order)</em>.</p>
+
+<p>To use <code>vim</code> as your editor, run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.editor <span class="s2">&#34;vim&#34;</span></code></pre></div>
+<p>There&rsquo;s a way to skip typing  username and/password everytime when using HTTPS on Git. To have this configuration, run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config — global credential.helper osxkeychain</code></pre></div>
+<h3 id="signing-commits">Signing Commits<a href="#signing-commits" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>When you sign a Git commit, you can prove that the code you submitted came from you and wasn&rsquo;t altered while you were transferring it. You also can prove that you submitted the code and not someone else.</p>
+
+<p>You can protect your code commits from malicious changes by GPG-signing them. GPG stand for <em>GNU Privacy Guard</em></p>
+
+<p>The simplest way of getting GPG is by downloading and installing the <a href="https://gpgtools.org/">GPG suite for Macos</a></p>
+
+<p>Confirm that you have GPG installed by running this on your terminal:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ which gpg
+usr/local/bin/gpg</code></pre></div>
+<p>Use the following <a href="https://help.github.com/en/articles/generating-a-new-gpg-key">steps to sign every commit with GPG</a>.</p>
+
+<p><a href="https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account">Add the GPG key to your GitHub account.</a></p>
+
+<h2 id="text-editors">Text Editors<a href="#text-editors" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>If you do not have a preferred editor, consider using a version of <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+To work with a modern Vim editor, install <a href="https://neovim.io/">Neovim</a></p>
+
+<p>Remember to setup the <code>EDITOR</code>  environment variable in your ~/.bashrc file, so that this editor is automatically invoked by command-line tools like your version control system like git as discussed before.</p>
+
+<h3 id="todo">TODO<a href="#todo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> ssh setup instructions</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>python</code> development setup ( Hello World using Docker too)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>go</code> development setup</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>node</code> development setup</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>kubernetes</code> setup ( includes <code>helm</code>, <code>minikube</code> and <code>docker</code>)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>VS Code</code> configuration ( custom themes, fonts and plugins)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>neovim</code> setup ( fonts, plugins e.t.c)</label></li>
+</ul>
 
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://dominicmotuka.com/tags/unix">unix</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/macos">macos</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/development">development</a></span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://dominicmotuka.com/tags/unix">unix</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/macos">macos</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/development">development</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/git">git</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/gpg">gpg</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/encryption">encryption</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>22 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>962 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-07-06 02:46 &#43;0300</p>
 			</footer>
 		</article>

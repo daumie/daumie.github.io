@@ -13,12 +13,14 @@
     
     
     <item>
-      <title>Setting Up MacOS for Software Development</title>
+      <title>MacOS Setup for Software Development</title>
       <link>https://dominicmotuka.com/posts/development-setup/</link>
       <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
       
       <guid>https://dominicmotuka.com/posts/development-setup/</guid>
-      <description>First Things First After frist login, run Software Update and ensure that the operating system is at the latest point of release</description>
+      <description>First Things First After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.
+ To do that go: Apple menu () &amp;gt; About This Mac &amp;gt; Software Update.
+ Restart the computer when prompted to.</description>
     </item>
     
   </channel>
