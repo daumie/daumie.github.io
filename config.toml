@@ -65,6 +65,10 @@ disqusShortname = "dominicmotuka"
     name = "github"
     url = "https://github.com/daumie"
 
+  [[params.social]]
+    name = "email"
+    url = "dominic.motuka@gmail.com"
+
 [menu]
 
   [[menu.main]]
