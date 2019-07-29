@@ -6,18 +6,8 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Sat, 06 Jul 2019 02:46:39 +0300</lastBuildDate>
+		<lastBuildDate>Sat, 06 Jul 2019 02:46:32 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
-		
-		<item>
-			<title>My Third Post</title>
-			<link>https://dominicmotuka.com/posts/my-third-post/</link>
-			<pubDate>Sat, 06 Jul 2019 02:46:39 +0300</pubDate>
-			
-			<guid>https://dominicmotuka.com/posts/my-third-post/</guid>
-			<description></description>
-			<content type="html"><![CDATA[]]></content>
-		</item>
 		
 		<item>
 			<title>MacOS Setup for Software Development</title>
