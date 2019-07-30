@@ -13,7 +13,7 @@ I am a lifelong learner and I continuously seek avenues to improve my knowledge,
 - Linux System Administration
 - Cloud Operations ( AWS, and GCP )
 - Application Containerization and Deployment
-- Web API's Development
+- Web API's Development ( Python, GO )
 - Site Reliability
 - Agile Project Management to name a few.
 
