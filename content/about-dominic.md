@@ -17,4 +17,4 @@ I am a lifelong learner and I continuously seek avenues to improve my knowledge,
 - Site Reliability
 - Agile Project Management to name a few.
 
-In my spare time, I love watching documentaries, spending time online on Twitter to keep up-to-date with the latest news and technology trends.
+In my spare time, I love watching documentaries, spending time online on Twitter to keep up-to-date with the latest news and technology trends. I love Reddit too.
