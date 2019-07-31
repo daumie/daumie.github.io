@@ -143,6 +143,30 @@ Use the following [steps to sign every commit with GPG](https://help.github.com/
 
 [Add the GPG key to your GitHub account.](https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account)
 
+#### What is the Sign Off feature in Git for?
+
+Sign-off is a requirement for getting patches into the Linux kernel and a few other projects, but most projects don't actually use it.
+
+You can do this by:
+
+```bash
+git commit --signoff
+```
+
+You can verify that this worked by running `git log`
+
+The signed off logs will be in the format:
+
+```bash
+commit 977925fa0a1a35afdd60ed40eec34ab6de0c789b (HEAD -> master)
+Author: Dominic Motuka <dominic.motuka@gmail.com>
+Date:   Wed Jul 31 00:11:48 2019 +0300
+
+    I love reddit too
+
+    Signed-off-by: Dominic Motuka <dominic.motuka@gmail.com>
+```
+
 ## Text Editors
 
 If you do not have a preferred editor, consider using a version of [Visual Studio Code](https://code.visualstudio.com/)

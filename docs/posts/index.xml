@@ -112,6 +112,22 @@ usr/local/bin/gpg</code></pre></div>
 
 <p><a href="https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account">Add the GPG key to your GitHub account.</a></p>
 
+<h4 id="what-is-the-sign-off-feature-in-git-for">What is the Sign Off feature in Git for?</h4>
+
+<p>Sign-off is a requirement for getting patches into the Linux kernel and a few other projects, but most projects don&rsquo;t actually use it.</p>
+
+<p>You can do this by:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git commit --signoff</code></pre></div>
+<p>You can verify that this worked by running <code>git log</code></p>
+
+<p>The signed off logs will be in the format:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">commit 977925fa0a1a35afdd60ed40eec34ab6de0c789b <span class="o">(</span>HEAD -&gt; master<span class="o">)</span>
+Author: Dominic Motuka &lt;dominic.motuka@gmail.com&gt;
+Date:   Wed Jul <span class="m">31</span> <span class="m">00</span>:11:48 <span class="m">2019</span> +0300
+
+    I love reddit too
+
+    Signed-off-by: Dominic Motuka &lt;dominic.motuka@gmail.com&gt;</code></pre></div>
 <h2 id="text-editors">Text Editors</h2>
 
 <p>If you do not have a preferred editor, consider using a version of <a href="https://code.visualstudio.com/">Visual Studio Code</a>
