@@ -6,8 +6,95 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Sat, 06 Jul 2019 02:46:32 +0300</lastBuildDate>
+		<lastBuildDate>Wed, 14 Aug 2019 10:13:21 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>What Is Graphql</title>
+			<link>https://dominicmotuka.com/posts/what-is-graphql/</link>
+			<pubDate>Wed, 14 Aug 2019 10:13:21 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/what-is-graphql/</guid>
+			<description>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:
+  It lets the client specify exactly what data it needs. It makes it easier to aggregate data from multiple sources. It uses a type system to describe data.  With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</description>
+			<content type="html"><![CDATA[
+
+<blockquote>
+<p>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:</p>
+</blockquote>
+
+<ul>
+<li>It lets the client specify exactly what data it needs.</li>
+<li>It makes it easier to aggregate data from multiple sources.</li>
+<li>It uses a type system to describe data.</li>
+</ul>
+
+<p>With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</p>
+
+<p><strong>N/B</strong>
+GraphQL and REST are two different things &ndash; GraphQL is a language and a technology, while REST is an architecture pattern, which means that even as teams increasingly adopt GraphQL, it does not mean the end of the road for REST.</p>
+
+<p>GraphQL has proven itself as a solution to aggregate data from multiple sources, specify data, and describe data. The real secret is that GraphQL ensures that the developer and application only loads the relevant and absolute necessary data, even if it&rsquo;s from multiple sources.</p>
+
+<h3 id="what-is-a-graphql-server">What is a GraphQL Server?</h3>
+
+<p>The GraphQL execution engine is what is responsible for processing a GraphQL query and returning a JSON response. All GraphQL servers are made up of two core components that define the structure and behavior of the execution engine: a schema and resolvers, respectively.</p>
+
+<p>A GraphQL schema is a custom typed language that exposes which queries are both permitted (valid) and handled by a GraphQL server implementation. The schema for our user example query above might look like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">type</span> <span class="nx">User</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span>
+        <span class="nx">email</span><span class="o">:</span> <span class="nb">String</span>
+        <span class="nx">phoneNumber</span><span class="o">:</span> <span class="nb">String</span>
+        <span class="nx">address</span><span class="o">:</span> <span class="nb">String</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Query</span> <span class="p">{</span>
+        <span class="nx">user</span><span class="o">:</span> <span class="nx">User</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This schema defines a user query that returns a user. Clients can request any of the fields on a user via the user query, and the GraphQL server will return only those fields in its response. By using the strongly typed schema, a GraphQL server can validate incoming queries to ensure they are valid based on the defined schema.</p>
+
+<p>Once a query is determined to be valid, it is processed by a GraphQL server by resolvers. A resolver function backs each field of each GraphQL type. An example resolver for our user query might look like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Query</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">user</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">context</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">loadUserById</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+      <span class="nx">userData</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nx">userData</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>While the above example is in JavaScript, GraphQL servers can be written in any number of languages. This is due to the fact that GraphQL is also a specification!</p>
+
+<p>A GraphQL server should be able to:</p>
+
+<ul>
+<li><p>Receive requests following the GraphQL format, for example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="s2">&#34;query { allLinks { url } }&#34;</span> <span class="p">}</span></code></pre></div></li>
+
+<li><p>Connect to any necessary databases or services responsible for storing/fetching the actual data.</p></li>
+
+<li><p>Return a GraphQL response with the requested data, such as this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;allLinks&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://graphql.org/&#34;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span></code></pre></div></li>
+
+<li><p>Validate incoming requests against the schema definition and the supported format. For example, if a query is made with an unknown field, the response should be something like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<span class="nt">&#34;errors&#34;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Cannot query field \&#34;unknown\&#34; on type \&#34;Link\&#34;.&#34;</span>
+<span class="p">}]</span>
+<span class="p">}</span></code></pre></div></li>
+</ul>
+
+<p>More can be found in the <a href="https://facebook.github.io/graphql/">official specification</a></p>
+
+<h3 id="references">References</h3>
+
+<ol>
+<li><p><a href="https://opensource.com/article/19/6/what-is-graphql">What is GraphQL?</a></p></li>
+
+<li></li>
+</ol>
+]]></content>
+		</item>
 		
 		<item>
 			<title>MacOS Setup for Software Development</title>
