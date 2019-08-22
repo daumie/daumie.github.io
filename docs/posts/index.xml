@@ -6,8 +6,124 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 14 Aug 2019 10:13:21 +0300</lastBuildDate>
+		<lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>How to Docker Machine</title>
+			<link>https://dominicmotuka.com/posts/how-to-docker-machine/</link>
+			<pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/how-to-docker-machine/</guid>
+			<description>What is Docker? Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &amp;ndash; a container is basically a lightweight virtual machine.
+Where does docker machine come in? When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.
+Since Docker isn&amp;rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such.</description>
+			<content type="html"><![CDATA[
+
+<h3 id="what-is-docker">What is Docker?</h3>
+
+<p>Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &ndash; a container is basically a lightweight virtual machine.</p>
+
+<h3 id="where-does-docker-machine-come-in">Where does docker machine come in?</h3>
+
+<p>When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.</p>
+
+<p>Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such. And its settings are saved in environment variables, which means you have to run commands like this every time you open a new shell:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env default<span class="k">)</span>
+docker-machine ip default</code></pre></div>
+<h3 id="what-are-some-of-the-benefits-of-using-docker-machine">What are some of the benefits of using docker machine?</h3>
+
+<p>For instance, you can easily have a development, staging and production environment accessible from your own machine and update them accordingly.</p>
+
+<h3 id="how-does-docker-work">How does docker work?</h3>
+
+<p>Docker has a client server-architecture, in which the Client sends the command to the Docker Host, which runs the Docker Daemon. Both the Client and the Docker Host can be in the same machine, or the Client can communicate with any of the Docker Hosts running anywhere, as long as it can reach and access the Docker Daemon.</p>
+
+<p>The Docker Client and the Docker Daemon communicate over REST APIs, even on the same system. One tool that can help you manage Docker Daemons running on different systems from our local workstation is Docker Machine.</p>
+
+<p>Docker-machine sets up Docker hosts on any supported system via <a href="https://docs.docker.com/machine/drivers/">provider drivers</a>.</p>
+
+<h3 id="deploying-containers-to-a-remote-host-using-docker-machine-we-ll-be-using-aws-in-this-example">Deploying Containers to a remote host using docker-machine. ( we&rsquo;ll be using AWS in this example)</h3>
+
+<p><a href="https://searchaws.techtarget.com/tip/Manually-spin-up-an-EC2-server-instance-in-7-steps">Spin up an EC2 instance</a> ( Bare metal with virtualization enabled )</p>
+
+<blockquote>
+<p>When using an already existing instance, you can spin up a container in the machine with:</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  docker-machine create --driver generic <span class="se">\
+</span><span class="se"></span>    --generic-ip-address <span class="s2">&#34;&lt;publicIP_of_instance&gt;&#34;</span> <span class="se">\
+</span><span class="se"></span>    --generic-ssh-user <span class="s2">&#34;ubuntu&#34;</span> <span class="se">\
+</span><span class="se"></span>    --generic-ssh-key ~/.ssh/id_rsa <span class="se">\
+</span><span class="se"></span>    hello-world</code></pre></div>
+<p>Note the following details: You can refer to the official <a href="https://docs.docker.com/machine/drivers/aws/">aws driver documentation</a></p>
+
+<blockquote>
+<p>You can spin up an instance at the same time creating docker containers inside the instance.</p>
+</blockquote>
+
+<ul>
+<li>AWS_ACCESS_KEY_ID</li>
+<li>AWS_SECRET_ACCESS_KEY</li>
+<li>AWS_AMI</li>
+<li>AWS_DEFAULT_REGION</li>
+<li>AWS_ZONE</li>
+<li>AWS_SSH_USER # default user for the instance ( ubuntu )</li>
+<li>AWS_ROOT_SIZE</li>
+<li>AWS_SECURITY_GROUP</li>
+<li>AWS_SSH_KEYPATH</li>
+<li>AWS_VPC_ID</li>
+<li>AWS_SUBNET_ID</li>
+<li>AWS_KEYPAIR_NAME</li>
+<li>AWS_INSTANCE_TYPE</li>
+<li>AWS_VOLUME_TYPE</li>
+
+<li><p>MACHINE_NAME</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver amazonec2 <span class="se">\
+</span><span class="se"></span>--amazonec2-access-key AKI****** <span class="se">\
+</span><span class="se"></span>--amazonec2-secret-key Jei****** <span class="se">\
+</span><span class="se"></span>--amazonec2-open-port <span class="m">2376</span> <span class="se">\
+</span><span class="se"></span>--amazonec2-region us-east-1 <span class="se">\
+</span><span class="se"></span>--amazonec2-zone f <span class="se">\
+</span><span class="se"></span>--amazonec2-ami ami-07d0cf3af28718ef8 <span class="se">\
+</span><span class="se"></span>--amazonec2-instance-type m5a.xlarge <span class="se">\
+</span><span class="se"></span>--amazonec2-keypair-name instance-keypair <span class="se">\
+</span><span class="se"></span>--amazonec2-ssh-keypath ~/.sshid_rsa <span class="se">\
+</span><span class="se"></span>--amazonec2-root-size <span class="m">16</span> <span class="se">\
+</span><span class="se"></span>--amazonec2-security-group &lt;insert_security_group_here&gt; <span class="se">\
+</span><span class="se"></span>--amazonec2-ssh-user ubuntu <span class="se">\
+</span><span class="se"></span>--amazonec2-vpc-id vpc-********* <span class="se">\
+</span><span class="se"></span>--amazonec2-subnet-id subnet-********** <span class="se">\
+</span><span class="se"></span>--amazonec2-use-ebs-optimized-instance <span class="se">\
+</span><span class="se"></span>--amazonec2-use-private-address <span class="se">\
+</span><span class="se"></span>--amazonec2-volume-type gp2 <span class="se">\
+</span><span class="se"></span><span class="si">${</span><span class="nv">MACHINE_NAME</span><span class="si">}</span></code></pre></div></li>
+</ul>
+
+<h3 id="essential-docker-machine-commands">Essential docker-machine commands</h3>
+
+<p>You can confirm the number of docker-machines you have with</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ls</code></pre></div>
+<p>To change local docker environment variables to the remote machine ones</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env remote-machine<span class="k">)</span></code></pre></div>
+<p>To validate which docker-machine you point to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine active</code></pre></div>
+<p>To ssh into the remote machine. Once the machine is created, it’s really easy to ssh into it because the SSH certificates are generated on the machine and kept locally.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ssh remote-machine</code></pre></div>
+<p>To copy files to/from the machine</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine scp ~/localfile.txt remote-machine:~/</code></pre></div>
+<p>To go back to using your local instance</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env -u<span class="k">)</span></code></pre></div>
+<h3 id="what-if-you-want-to-share-the-machines">What if you want to share the machines?</h3>
+
+<p>Install <a href="https://github.com/bhurlow/machine-share">machine-share</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g machine-share</code></pre></div>
+<p>To export machines</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ machine-export &lt;machine-name&gt;
+&gt;&gt; exported to &lt;machine-name&gt;.zip</code></pre></div>
+<p>To import machines</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">machine-import &lt;machine-name&gt;.zip
+&gt;&gt; imported</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>What Is Graphql</title>
