@@ -181,8 +181,38 @@ else
 fi
 ```
 
+### Some other cool tips on this topic
+
+The trick is to disable pseudo-tty allocation. Otherwise extra characters are added to the backup file. They prevent mongorestore from working properly.
+
+- Using `docker`
+
+With docker, pseudo-tty allocation is deactivated by default, but the `-i` (interactive) option is required with the restore command.
+
+```bash
+docker exec <mongodb container> sh -c 'mongodump --archive' > db.dump
+```
+
+```bash
+docker exec -i <mongodb container> sh -c 'mongorestore --archive' < db.dump
+```
+
+- using `docker-compose`
+
+With docker-compose, pseudo-tty allocation needs to be deactivated explicitly each time with `-T`
+
+```bash
+docker-compose exec -T <mongodb service> sh -c 'mongodump --archive' > db.dump
+```
+
+```bash
+docker-compose exec -T <mongodb service> sh -c 'mongorestore --archive' < db.dump
+```
+
 #### References
 
 - [mongodb](https://docs.mongodb.com/manual/reference/program/mongodump/#bin.mongodump)
 
 - [Export Docker Mongo Data](https://github.com/wekan/wekan/wiki/Export-Docker-Mongo-Data)
+
+- [mongodump and mongorestore with Docker](https://jeromejaglale.com/doc/programming/mongodb_docker_mongodump_mongorestore)

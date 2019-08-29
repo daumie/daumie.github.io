@@ -158,12 +158,30 @@ docker ps -a <span class="p">|</span> grep <span class="s1">&#39;mongodb&#39;</s
   <span class="nb">echo</span> <span class="s2">&#34;mongodb container is not running&#34;</span>
   <span class="nb">exit</span> <span class="m">1</span>
 <span class="k">fi</span></code></pre></div>
+<h3 id="some-other-cool-tips-on-this-topic">Some other cool tips on this topic</h3>
+
+<p>The trick is to disable pseudo-tty allocation. Otherwise extra characters are added to the backup file. They prevent mongorestore from working properly.</p>
+
+<ul>
+<li>Using <code>docker</code></li>
+</ul>
+
+<p>With docker, pseudo-tty allocation is deactivated by default, but the <code>-i</code> (interactive) option is required with the restore command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> &lt;mongodb container&gt; sh -c <span class="s1">&#39;mongodump --archive&#39;</span> &gt; db.dump</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -i &lt;mongodb container&gt; sh -c <span class="s1">&#39;mongorestore --archive&#39;</span> &lt; db.dump</code></pre></div>
+<ul>
+<li>using <code>docker-compose</code></li>
+</ul>
+
+<p>With docker-compose, pseudo-tty allocation needs to be deactivated explicitly each time with <code>-T</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose <span class="nb">exec</span> -T &lt;mongodb service&gt; sh -c <span class="s1">&#39;mongodump --archive&#39;</span> &gt; db.dump</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose <span class="nb">exec</span> -T &lt;mongodb service&gt; sh -c <span class="s1">&#39;mongorestore --archive&#39;</span> &lt; db.dump</code></pre></div>
 <h4 id="references">References</h4>
 
 <ul>
 <li><p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#bin.mongodump">mongodb</a></p></li>
 
 <li><p><a href="https://github.com/wekan/wekan/wiki/Export-Docker-Mongo-Data">Export Docker Mongo Data</a></p></li>
+
+<li><p><a href="https://jeromejaglale.com/doc/programming/mongodb_docker_mongodump_mongorestore">mongodump and mongorestore with Docker</a></p></li>
 </ul>
 ]]></content>
 		</item>
