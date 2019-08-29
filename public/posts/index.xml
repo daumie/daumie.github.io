@@ -1,42 +1,369 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Posts on Dominic Motuka</title>
-		<link>http://localhost/posts/</link>
+		<link>https://dominicmotuka.com/posts/</link>
 		<description>Recent content in Posts on Dominic Motuka</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Sat, 06 Jul 2019 02:46:39 +0300</lastBuildDate>
-		<atom:link href="http://localhost/posts/index.xml" rel="self" type="application/rss+xml" />
+		<lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
+		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title>My Third Post</title>
-			<link>http://localhost/posts/my-third-post/</link>
-			<pubDate>Sat, 06 Jul 2019 02:46:39 +0300</pubDate>
+			<title>How to Docker Machine</title>
+			<link>https://dominicmotuka.com/posts/how-to-docker-machine/</link>
+			<pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
 			
-			<guid>http://localhost/posts/my-third-post/</guid>
-			<description></description>
-			<content type="html"><![CDATA[]]></content>
+			<guid>https://dominicmotuka.com/posts/how-to-docker-machine/</guid>
+			<description>What is Docker? Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &amp;ndash; a container is basically a lightweight virtual machine.
+Where does docker machine come in? When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.
+Since Docker isn&amp;rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such.</description>
+			<content type="html"><![CDATA[
+
+<h3 id="what-is-docker">What is Docker?</h3>
+
+<p>Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &ndash; a container is basically a lightweight virtual machine.</p>
+
+<h3 id="where-does-docker-machine-come-in">Where does docker machine come in?</h3>
+
+<p>When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.</p>
+
+<p>Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such. And its settings are saved in environment variables, which means you have to run commands like this every time you open a new shell:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env default<span class="k">)</span>
+docker-machine ip default</code></pre></div>
+<h3 id="what-are-some-of-the-benefits-of-using-docker-machine">What are some of the benefits of using docker machine?</h3>
+
+<p>For instance, you can easily have a development, staging and production environment accessible from your own machine and update them accordingly.</p>
+
+<h3 id="how-does-docker-work">How does docker work?</h3>
+
+<p>Docker has a client server-architecture, in which the Client sends the command to the Docker Host, which runs the Docker Daemon. Both the Client and the Docker Host can be in the same machine, or the Client can communicate with any of the Docker Hosts running anywhere, as long as it can reach and access the Docker Daemon.</p>
+
+<p>The Docker Client and the Docker Daemon communicate over REST APIs, even on the same system. One tool that can help you manage Docker Daemons running on different systems from our local workstation is Docker Machine.</p>
+
+<p>Docker-machine sets up Docker hosts on any supported system via <a href="https://docs.docker.com/machine/drivers/">provider drivers</a>.</p>
+
+<h3 id="deploying-containers-to-a-remote-host-using-docker-machine-we-ll-be-using-aws-in-this-example">Deploying Containers to a remote host using docker-machine. ( we&rsquo;ll be using AWS in this example)</h3>
+
+<p><a href="https://searchaws.techtarget.com/tip/Manually-spin-up-an-EC2-server-instance-in-7-steps">Spin up an EC2 instance</a> ( Bare metal with virtualization enabled )</p>
+
+<blockquote>
+<p>When using an already existing instance, you can spin up a container in the machine with:</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  docker-machine create --driver generic <span class="se">\
+</span><span class="se"></span>    --generic-ip-address <span class="s2">&#34;&lt;publicIP_of_instance&gt;&#34;</span> <span class="se">\
+</span><span class="se"></span>    --generic-ssh-user <span class="s2">&#34;ubuntu&#34;</span> <span class="se">\
+</span><span class="se"></span>    --generic-ssh-key ~/.ssh/id_rsa <span class="se">\
+</span><span class="se"></span>    hello-world</code></pre></div>
+<p>Note the following details: You can refer to the official <a href="https://docs.docker.com/machine/drivers/aws/">aws driver documentation</a></p>
+
+<blockquote>
+<p>You can spin up an instance at the same time creating docker containers inside the instance.</p>
+</blockquote>
+
+<ul>
+<li>AWS_ACCESS_KEY_ID</li>
+<li>AWS_SECRET_ACCESS_KEY</li>
+<li>AWS_AMI</li>
+<li>AWS_DEFAULT_REGION</li>
+<li>AWS_ZONE</li>
+<li>AWS_SSH_USER # default user for the instance ( ubuntu )</li>
+<li>AWS_ROOT_SIZE</li>
+<li>AWS_SECURITY_GROUP</li>
+<li>AWS_SSH_KEYPATH</li>
+<li>AWS_VPC_ID</li>
+<li>AWS_SUBNET_ID</li>
+<li>AWS_KEYPAIR_NAME</li>
+<li>AWS_INSTANCE_TYPE</li>
+<li>AWS_VOLUME_TYPE</li>
+
+<li><p>MACHINE_NAME</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver amazonec2 <span class="se">\
+</span><span class="se"></span>--amazonec2-access-key AKI****** <span class="se">\
+</span><span class="se"></span>--amazonec2-secret-key Jei****** <span class="se">\
+</span><span class="se"></span>--amazonec2-open-port <span class="m">2376</span> <span class="se">\
+</span><span class="se"></span>--amazonec2-region us-east-1 <span class="se">\
+</span><span class="se"></span>--amazonec2-zone f <span class="se">\
+</span><span class="se"></span>--amazonec2-ami ami-07d0cf3af28718ef8 <span class="se">\
+</span><span class="se"></span>--amazonec2-instance-type m5a.xlarge <span class="se">\
+</span><span class="se"></span>--amazonec2-keypair-name instance-keypair <span class="se">\
+</span><span class="se"></span>--amazonec2-ssh-keypath ~/.sshid_rsa <span class="se">\
+</span><span class="se"></span>--amazonec2-root-size <span class="m">16</span> <span class="se">\
+</span><span class="se"></span>--amazonec2-security-group &lt;insert_security_group_here&gt; <span class="se">\
+</span><span class="se"></span>--amazonec2-ssh-user ubuntu <span class="se">\
+</span><span class="se"></span>--amazonec2-vpc-id vpc-********* <span class="se">\
+</span><span class="se"></span>--amazonec2-subnet-id subnet-********** <span class="se">\
+</span><span class="se"></span>--amazonec2-use-ebs-optimized-instance <span class="se">\
+</span><span class="se"></span>--amazonec2-use-private-address <span class="se">\
+</span><span class="se"></span>--amazonec2-volume-type gp2 <span class="se">\
+</span><span class="se"></span><span class="si">${</span><span class="nv">MACHINE_NAME</span><span class="si">}</span></code></pre></div></li>
+</ul>
+
+<h3 id="essential-docker-machine-commands">Essential docker-machine commands</h3>
+
+<p>You can confirm the number of docker-machines you have with</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ls</code></pre></div>
+<p>To change local docker environment variables to the remote machine ones</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env remote-machine<span class="k">)</span></code></pre></div>
+<p>To validate which docker-machine you point to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine active</code></pre></div>
+<p>To ssh into the remote machine. Once the machine is created, it’s really easy to ssh into it because the SSH certificates are generated on the machine and kept locally.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ssh remote-machine</code></pre></div>
+<p>To copy files to/from the machine</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine scp ~/localfile.txt remote-machine:~/</code></pre></div>
+<p>To go back to using your local instance</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env -u<span class="k">)</span></code></pre></div>
+<h3 id="what-if-you-want-to-share-the-machines">What if you want to share the machines?</h3>
+
+<p>Install <a href="https://github.com/bhurlow/machine-share">machine-share</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g machine-share</code></pre></div>
+<p>To export machines</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ machine-export &lt;machine-name&gt;
+&gt;&gt; exported to &lt;machine-name&gt;.zip</code></pre></div>
+<p>To import machines</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">machine-import &lt;machine-name&gt;.zip
+&gt;&gt; imported</code></pre></div>]]></content>
 		</item>
 		
 		<item>
-			<title>My Second Post</title>
-			<link>http://localhost/posts/my-second-post/</link>
+			<title>What Is Graphql</title>
+			<link>https://dominicmotuka.com/posts/what-is-graphql/</link>
+			<pubDate>Wed, 14 Aug 2019 10:13:21 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/what-is-graphql/</guid>
+			<description>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:
+  It lets the client specify exactly what data it needs. It makes it easier to aggregate data from multiple sources. It uses a type system to describe data.  With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</description>
+			<content type="html"><![CDATA[
+
+<blockquote>
+<p>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:</p>
+</blockquote>
+
+<ul>
+<li>It lets the client specify exactly what data it needs.</li>
+<li>It makes it easier to aggregate data from multiple sources.</li>
+<li>It uses a type system to describe data.</li>
+</ul>
+
+<p>With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</p>
+
+<p><strong>N/B</strong>
+GraphQL and REST are two different things &ndash; GraphQL is a language and a technology, while REST is an architecture pattern, which means that even as teams increasingly adopt GraphQL, it does not mean the end of the road for REST.</p>
+
+<p>GraphQL has proven itself as a solution to aggregate data from multiple sources, specify data, and describe data. The real secret is that GraphQL ensures that the developer and application only loads the relevant and absolute necessary data, even if it&rsquo;s from multiple sources.</p>
+
+<h3 id="what-is-a-graphql-server">What is a GraphQL Server?</h3>
+
+<p>The GraphQL execution engine is what is responsible for processing a GraphQL query and returning a JSON response. All GraphQL servers are made up of two core components that define the structure and behavior of the execution engine: a schema and resolvers, respectively.</p>
+
+<p>A GraphQL schema is a custom typed language that exposes which queries are both permitted (valid) and handled by a GraphQL server implementation. The schema for our user example query above might look like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">type</span> <span class="nx">User</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span>
+        <span class="nx">email</span><span class="o">:</span> <span class="nb">String</span>
+        <span class="nx">phoneNumber</span><span class="o">:</span> <span class="nb">String</span>
+        <span class="nx">address</span><span class="o">:</span> <span class="nb">String</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Query</span> <span class="p">{</span>
+        <span class="nx">user</span><span class="o">:</span> <span class="nx">User</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This schema defines a user query that returns a user. Clients can request any of the fields on a user via the user query, and the GraphQL server will return only those fields in its response. By using the strongly typed schema, a GraphQL server can validate incoming queries to ensure they are valid based on the defined schema.</p>
+
+<p>Once a query is determined to be valid, it is processed by a GraphQL server by resolvers. A resolver function backs each field of each GraphQL type. An example resolver for our user query might look like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Query</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">user</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">context</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">loadUserById</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+      <span class="nx">userData</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nx">userData</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>While the above example is in JavaScript, GraphQL servers can be written in any number of languages. This is due to the fact that GraphQL is also a specification!</p>
+
+<p>A GraphQL server should be able to:</p>
+
+<ul>
+<li><p>Receive requests following the GraphQL format, for example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="s2">&#34;query { allLinks { url } }&#34;</span> <span class="p">}</span></code></pre></div></li>
+
+<li><p>Connect to any necessary databases or services responsible for storing/fetching the actual data.</p></li>
+
+<li><p>Return a GraphQL response with the requested data, such as this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;allLinks&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://graphql.org/&#34;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span></code></pre></div></li>
+
+<li><p>Validate incoming requests against the schema definition and the supported format. For example, if a query is made with an unknown field, the response should be something like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<span class="nt">&#34;errors&#34;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Cannot query field \&#34;unknown\&#34; on type \&#34;Link\&#34;.&#34;</span>
+<span class="p">}]</span>
+<span class="p">}</span></code></pre></div></li>
+</ul>
+
+<p>More can be found in the <a href="https://facebook.github.io/graphql/">official specification</a></p>
+
+<h3 id="references">References</h3>
+
+<ol>
+<li><p><a href="https://opensource.com/article/19/6/what-is-graphql">What is GraphQL?</a></p></li>
+
+<li></li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>MacOS Setup for Software Development</title>
+			<link>https://dominicmotuka.com/posts/development-setup/</link>
 			<pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
 			
-			<guid>http://localhost/posts/my-second-post/</guid>
-			<description></description>
-			<content type="html"><![CDATA[]]></content>
+			<guid>https://dominicmotuka.com/posts/development-setup/</guid>
+			<description>First Things First After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.
+ To do that go: Apple menu () &amp;gt; About This Mac &amp;gt; Software Update.
+ Restart the computer when prompted to.</description>
+			<content type="html"><![CDATA[
+
+<h2 id="first-things-first">First Things First</h2>
+
+<p>After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.</p>
+
+<blockquote>
+<p>To do that go: Apple menu () &gt; About This Mac &gt; Software Update.</p>
+</blockquote>
+
+<p>Restart the computer when prompted to.</p>
+
+<p>The default account created is the admin account. If other people will be using the machine, create Standard accounts as necessary.</p>
+
+<blockquote>
+<p>Admin accounts have sudo privileges: All Admin accounts on a Mac may use sudo to run command-line utilities with administrative (root) privileges.</p>
+</blockquote>
+
+<h3 id="enable-file-vault">Enable File Vault</h3>
+
+<p>FileVault is a disk encryption program in Mac OS X 10.3 and later. It performs on-the-fly encryption with volumes on Mac computers.</p>
+
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Disk_encryption_software">disk encryption program</a> - Disk encryption is a technology which protects information by converting it into unreadable code that cannot be deciphered easily by unauthorized people. Disk encryption uses disk encryption software like Apple&rsquo;s File Vault 2.</p></li>
+
+<li><p><a href="https://en.wikipedia.org/wiki/Volume_(computing)">volumes</a> - a volume or logical drive is a single accessible storage area with a single file system, typically (though not necessarily) resident on a single partition of a hard disk. Although a volume might be different from a physical disk drive, it can still be accessed with an operating system&rsquo;s logical interface. However, a volume differs from a partition.</p></li>
+</ul>
+
+<h3 id="set-a-firmware-password">Set a Firmware Password</h3>
+
+<p>A firmware password prevents starting up from any internal or external storage device other than the startup disk you&rsquo;ve selected.
+<a href="https://support.apple.com/en-gb/HT204455">Apple Knowledge Base article HT204455</a> has full details on how to go around this</p>
+
+<p>If you did not enable File Vault, then the attacker will have complete access to all of the files on the system.</p>
+
+<h2 id="setting-up-for-development">Setting Up for Development</h2>
+
+<p>The first step is to install a compiler. The easiest way to install one is with the Xcode Command Line Tools package.
+Xcode is an integrated development environment for macOS containing a suite of software development tools developed by Apple for developing software for macOS, iOS, watchOS and tvOS.
+Once you have the compiler that is provided by Xcode, you can use Homebrew to install everything else that you need.</p>
+
+<p>From the Terminal App run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ xcode-select --install
+.......</code></pre></div>
+<p>It&rsquo;ll prompt you to install the command line tools. Follow the instructions and you&rsquo;ll have Xcode and Xcode command line tools both installed.</p>
+
+<h2 id="setting-up-homebrew">Setting up Homebrew</h2>
+
+<p><a href="http://brew.sh/">Homebrew</a> is a free and open-source software package management system that simplifies the installation of software on Apple&rsquo;s macOS operating system and Linux. The name is intended to suggest the idea of building software on the Mac depending on the user&rsquo;s taste.
+Follow the instructions on the site.</p>
+
+<p>You should also amend your PATH, so that the versions of tools that are installed with Homebrew take precedence over others. To do this, edit the file .bashrc in your home directory to include this line:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/usr/local/bin:/usr/local/sbin:~/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span></code></pre></div>
+<p>To check that Homebrew is installed correctly, run this command in a terminal window:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew doctor
+Your system is ready to brew.</code></pre></div>
+<p>To update the index of available packages, run this command in a terminal window:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew update</code></pre></div>
+<p>You can now use the brew install command to add command-line software to your Mac, and brew cask install to add graphical software. For example, this command installs the Slack app:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew cask install slack</code></pre></div>
+<h2 id="installing-and-configuring-git">Installing and Configuring Git</h2>
+
+<p>Git is a software that is used for Version Control. It is free and open source. Version Control is the management of changes to documents, computer programs, large websites and other collection of information.</p>
+
+<p>Xcode Command Line Tools include a copy of Git but it&rsquo;s mostly an outdated version. To install a newer version. Run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew install git</code></pre></div>
+<p>Set your details before creating or cloning repositories.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global user.name <span class="s2">&#34;Your Name&#34;</span>
+git config --global user.email <span class="s2">&#34;you@your-domain.com&#34;</span></code></pre></div>
+<p>The <em>global</em> option means that the setting will apply to every repository that you work with in the current user account.</p>
+
+<p>You can create a global gitignore in your home directory <code>~/.gitignore</code>  and use it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.excludesfile <span class="s1">&#39;~/.gitignore&#39;</span></code></pre></div>
+<p>The editor used to edit the commit log message will be chosen from the <code>GIT_EDITOR</code> environment variable, the <code>core.editor</code> configuration variable, the <code>VISUAL</code> environment variable, or the <code>EDITOR environment</code> variable <em>(in that order)</em>.</p>
+
+<p>To use <code>vim</code> as your editor, run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.editor <span class="s2">&#34;vim&#34;</span></code></pre></div>
+<p>There&rsquo;s a way to skip typing  username and/password everytime when using HTTPS on Git. To have this configuration, run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config — global credential.helper osxkeychain</code></pre></div>
+<h3 id="signing-commits">Signing Commits</h3>
+
+<p>When you sign a Git commit, you can prove that the code you submitted came from you and wasn&rsquo;t altered while you were transferring it. You also can prove that you submitted the code and not someone else.</p>
+
+<p>You can protect your code commits from malicious changes by GPG-signing them. GPG stand for <em>GNU Privacy Guard</em></p>
+
+<p>The simplest way of getting GPG is by downloading and installing the <a href="https://gpgtools.org/">GPG suite for Macos</a></p>
+
+<p>Confirm that you have GPG installed by running this on your terminal:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ which gpg
+usr/local/bin/gpg</code></pre></div>
+<p>Use the following <a href="https://help.github.com/en/articles/generating-a-new-gpg-key">steps to sign every commit with GPG</a>.</p>
+
+<p><a href="https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account">Add the GPG key to your GitHub account.</a></p>
+
+<h4 id="what-is-the-sign-off-feature-in-git-for">What is the Sign Off feature in Git for?</h4>
+
+<p>Sign-off is a requirement for getting patches into the Linux kernel and a few other projects, but most projects don&rsquo;t actually use it.</p>
+
+<p>You can do this by:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git commit --signoff</code></pre></div>
+<p>You can verify that this worked by running <code>git log</code></p>
+
+<p>The signed off logs will be in the format:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">commit 977925fa0a1a35afdd60ed40eec34ab6de0c789b <span class="o">(</span>HEAD -&gt; master<span class="o">)</span>
+Author: Dominic Motuka &lt;dominic.motuka@gmail.com&gt;
+Date:   Wed Jul <span class="m">31</span> <span class="m">00</span>:11:48 <span class="m">2019</span> +0300
+
+    I love reddit too
+
+    Signed-off-by: Dominic Motuka &lt;dominic.motuka@gmail.com&gt;</code></pre></div>
+<h2 id="text-editors">Text Editors</h2>
+
+<p>If you do not have a preferred editor, consider using a version of <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+To work with a modern Vim editor, install <a href="https://neovim.io/">Neovim</a></p>
+
+<p>Remember to setup the <code>EDITOR</code>  environment variable in your ~/.bashrc file, so that this editor is automatically invoked by command-line tools like your version control system like git as discussed before.</p>
+
+<h3 id="todo">TODO</h3>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> ssh setup instructions</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>python</code> development setup ( Hello World using Docker too)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>go</code> development setup</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>node</code> development setup</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>kubernetes</code> setup ( includes <code>helm</code>, <code>minikube</code> and <code>docker</code>)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>VS Code</code> configuration ( custom themes, fonts and plugins)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> <code>neovim</code> setup ( fonts, plugins e.t.c)</label></li>
+</ul>
+]]></content>
 		</item>
 		
 		<item>
-			<title>My First Post</title>
-			<link>http://localhost/posts/my-first-post/</link>
+			<title>Samurai Jack Introduction</title>
+			<link>https://dominicmotuka.com/posts/samurai-jack-introduction/</link>
 			<pubDate>Sat, 06 Jul 2019 02:46:26 +0300</pubDate>
 			
-			<guid>http://localhost/posts/my-first-post/</guid>
-			<description></description>
-			<content type="html"><![CDATA[]]></content>
+			<guid>https://dominicmotuka.com/posts/samurai-jack-introduction/</guid>
+			<description>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.
+Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</description>
+			<content type="html"><![CDATA[<p>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.</p>
+
+<p>Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</p>
+]]></content>
 		</item>
 		
 	</channel>

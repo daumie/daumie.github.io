@@ -3,59 +3,108 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://localhost/</loc>
-    <lastmod>2019-07-06T02:46:39+03:00</lastmod>
-    <priority>0</priority>
+    <loc>https://dominicmotuka.com/tags/aws/</loc>
+    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/posts/my-third-post/</loc>
-    <lastmod>2019-07-06T02:46:39+03:00</lastmod>
+    <loc>https://dominicmotuka.com/tags/containers/</loc>
+    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/posts/</loc>
-    <lastmod>2019-07-06T02:46:39+03:00</lastmod>
-    <priority>0</priority>
+    <loc>https://dominicmotuka.com/tags/docker/</loc>
+    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/tags/</loc>
-    <lastmod>2019-07-06T02:46:39+03:00</lastmod>
-    <priority>0</priority>
+    <loc>https://dominicmotuka.com/</loc>
+    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/tags/untagged/</loc>
-    <lastmod>2019-07-06T02:46:39+03:00</lastmod>
-    <priority>0</priority>
+    <loc>https://dominicmotuka.com/posts/how-to-docker-machine/</loc>
+    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/posts/my-second-post/</loc>
+    <loc>https://dominicmotuka.com/posts/</loc>
+    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/</loc>
+    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/api/</loc>
+    <lastmod>2019-08-14T10:13:21+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/graphql/</loc>
+    <lastmod>2019-08-14T10:13:21+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/introduction/</loc>
+    <lastmod>2019-08-14T10:13:21+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/what-is-graphql/</loc>
+    <lastmod>2019-08-14T10:13:21+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/development/</loc>
     <lastmod>2019-07-06T02:46:32+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/posts/my-first-post/</loc>
+    <loc>https://dominicmotuka.com/tags/encryption/</loc>
+    <lastmod>2019-07-06T02:46:32+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/git/</loc>
+    <lastmod>2019-07-06T02:46:32+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/gpg/</loc>
+    <lastmod>2019-07-06T02:46:32+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/macos/</loc>
+    <lastmod>2019-07-06T02:46:32+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/development-setup/</loc>
+    <lastmod>2019-07-06T02:46:32+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/unix/</loc>
+    <lastmod>2019-07-06T02:46:32+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/samurai/</loc>
     <lastmod>2019-07-06T02:46:26+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/about-hugo/</loc>
-    <lastmod>2019-07-06T02:45:07+03:00</lastmod>
+    <loc>https://dominicmotuka.com/posts/samurai-jack-introduction/</loc>
+    <lastmod>2019-07-06T02:46:26+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost/tags/aboutme/</loc>
+    <loc>https://dominicmotuka.com/about-dominic/</loc>
     <lastmod>2019-07-06T02:45:07+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost/tags/resume/</loc>
-    <lastmod>2019-07-06T02:45:07+03:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

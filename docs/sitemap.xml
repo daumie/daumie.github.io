@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://dominicmotuka.com/</loc>
+    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</loc>
+    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/</loc>
+    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/</loc>
+    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/untagged/</loc>
+    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dominicmotuka.com/tags/aws/</loc>
     <lastmod>2019-08-22T15:12:53+03:00</lastmod>
   </url>
@@ -18,22 +43,7 @@
   </url>
   
   <url>
-    <loc>https://dominicmotuka.com/</loc>
-    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dominicmotuka.com/posts/how-to-docker-machine/</loc>
-    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dominicmotuka.com/posts/</loc>
-    <lastmod>2019-08-22T15:12:53+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dominicmotuka.com/tags/</loc>
     <lastmod>2019-08-22T15:12:53+03:00</lastmod>
   </url>
   

@@ -6,8 +6,167 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
+		<lastBuildDate>Thu, 29 Aug 2019 20:49:18 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>MongoDump and MongoRestore MongoDB Database</title>
+			<link>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</link>
+			<pubDate>Thu, 29 Aug 2019 20:49:18 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</guid>
+			<description>How to Dump MongoDB Ddatabase from a container What is mongodump mongodump is a utility for creating a binary export of the contents of a database. mongodump can export data from either mongod or mongos instances.
+Run mongodump from the system command line, not the mongo shell.
+How to connect to a MongoDB instance  Local MongoDB instance running on port 27017 using the default settings
+mongodump By specifying a host and/or port of the MongoDB instance</description>
+			<content type="html"><![CDATA[
+
+<h3 id="how-to-dump-mongodb-ddatabase-from-a-container">How to Dump MongoDB Ddatabase from a container</h3>
+
+<h4 id="what-is-mongodump-https-docs-mongodb-com-manual-reference-program-mongodump-bin-mongodump">What is <a href="https://docs.mongodb.com/manual/reference/program/mongodump/#bin.mongodump">mongodump</a></h4>
+
+<p><strong>mongodump</strong> is a utility for creating a binary export of the contents of a database. mongodump can export data from either <em>mongod</em> or <em>mongos</em> instances.</p>
+
+<p>Run <em>mongodump</em> from the system command line, not the <em>mongo</em> shell.</p>
+
+<h4 id="how-to-connect-to-a-mongodb-instance">How to connect to a MongoDB instance</h4>
+
+<ul>
+<li><p>Local MongoDB instance running on port <code>27017</code> using the default settings</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump</code></pre></div></li>
+
+<li><p>By specifying a host and/or port of the MongoDB instance</p>
+
+<ul>
+<li><p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-uri">&ndash;uri connection string</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump --uri <span class="s2">&#34;mongodb://mongodb0.example.com:27017&#34;</span> <span class="o">[</span>additional options<span class="o">]</span></code></pre></div></li>
+
+<li><p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-host">&ndash;host</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump --host <span class="s2">&#34;mongodb0.example.com:27017&#34;</span>  <span class="o">[</span>additional options<span class="o">]</span></code></pre></div></li>
+
+<li><p>Specify the hostname and port in the <a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-host">&ndash;host</a> and <a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-port">&ndash;port</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump --host <span class="s2">&#34;mongodb0.example.com&#34;</span> --port <span class="m">27017</span> <span class="o">[</span>additional options<span class="o">]</span></code></pre></div></li>
+</ul></li>
+</ul>
+
+<h4 id="you-can-also-check">You can also check</h4>
+
+<ul>
+<li><p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#connect-to-a-replica-set">Connect to a Replica Set</a></p></li>
+
+<li><p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#connect-to-a-sharded-cluster">Connect to a Sharded Cluster</a></p></li>
+</ul>
+
+<h3 id="how-to-restore-mongodb-database-from-a-container">How to restore MongoDB Database from a container</h3>
+
+<p>Say you are using <code>docker-compose</code> to link/connect mongo with API and you need to backup your database. You will need to first of all stop your API before proceeding i.e if using docker:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  docker stop api-app</code></pre></div>
+<p>When backups it&rsquo;s important to <a href="https://askubuntu.com/questions/225865/copy-files-without-losing-file-folder-permissions">save file and directory permissions.</a>.</p>
+
+<ul>
+<li><p>On source computer</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path/to/folder/to/copy
+tar cvpzf put_your_name_here.tar.gz .</code></pre></div></li>
+
+<li><p>On destination computer</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path/to/destination/folder
+tar xpvzf put_your_name_here.tar.gz</code></pre></div></li>
+</ul>
+
+<p><code>tar</code>  will recreate the archived folder structure with all permissions intact</p>
+
+<p>Check from your Dockerfile or docker-compose.yml  the name of MongoDB container.</p>
+
+<ol>
+<li><p>List docker containers</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker ps -a</code></pre></div></li>
+
+<li><p>Enter inside mongo container</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it mongodb /bin/bash
+<span class="c1"># mongodb is the containers name</span></code></pre></div></li>
+
+<li><p>Go to root <code>/</code> directory and backup database to files inside container to directory <code>/dump</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump -o /dump/</code></pre></div></li>
+
+<li><p>Exit from inside of container and Copy backup directory <code>/dump</code> from inside of container to current directory</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker cp mongodb:/dump .
+<span class="c1"># mongodb is the containers name</span></code></pre></div></li>
+
+<li><p>Restore backup later (restore from /data/dump) &ndash; inside container</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker cp dump mongodb:/data/
+
+<span class="c1"># /data/ is a directory inside the container</span>
+
+$ docker <span class="nb">exec</span> -it mongodb /bin/bash
+$ <span class="nb">cd</span> /data
+$ mongorestore --drop --noIndexRestore --db &lt;database_name&gt; /data/dump/&lt;database_name&gt;/
+$ <span class="nb">exit</span>
+
+<span class="c1"># That db_name can be for example &#34;cities&#34;</span>
+
+$ mongorestore --drop --noIndexRestore --db cities /data/dump/cities/</code></pre></div></li>
+</ol>
+
+<ul>
+<li><p>Restore to another mongo database, in different port.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongorestore --port &lt;port_no&gt;</code></pre></div></li>
+</ul>
+
+<h4 id="useful-backup-and-restore-scripts">Useful Backup and restore scripts</h4>
+
+<h5 id="backup-script">Backup Script</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date +%Y-%m-%d-%H-%M<span class="k">)</span>
+<span class="nv">SCRIPTPATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span>dirname <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2">&#34;</span> <span class="p">;</span> <span class="nb">pwd</span> -P <span class="k">)</span><span class="s2">&#34;</span>
+<span class="nb">cd</span> <span class="nv">$SCRIPTPATH</span>
+mkdir -p backups/<span class="nv">$DATE</span>
+docker ps -a <span class="p">|</span> grep <span class="s1">&#39;mongodb&#39;</span> <span class="p">&amp;</span>&gt; /dev/null
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">=</span> <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  docker <span class="nb">exec</span> -t mongodb bash -c <span class="s2">&#34;rm -fr /dump ; mkdir /dump ; mongodump -o /dump/&#34;</span>
+  docker cp mongodb:/dump <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>
+  tar -zc -f backups/<span class="nv">$DATE</span>.tgz -C <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span> wekan
+  <span class="k">if</span> <span class="o">[</span> -f backups/<span class="nv">$DATE</span>.tgz <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    rm -fr backups/<span class="nv">$DATE</span>
+    find <span class="nv">$SCRIPTPATH</span>/backups/ -name <span class="s2">&#34;*.tgz&#34;</span> -mtime +7 -delete
+  <span class="k">fi</span> 
+<span class="k">else</span>
+  <span class="nb">echo</span> <span class="s2">&#34;mongodb container is not running&#34;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span></code></pre></div>
+<h5 id="restore-script">Restore Script</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">0</span> <span class="o">]</span>
+  <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Supply a path to a tgz file!&#34;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">SCRIPTPATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span>dirname <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2">&#34;</span> <span class="p">;</span> <span class="nb">pwd</span> -P <span class="k">)</span><span class="s2">&#34;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date +%Y-%m-%d-%H-%M<span class="k">)</span>
+
+docker ps -a <span class="p">|</span> grep <span class="s1">&#39;mongodb&#39;</span> <span class="p">&amp;</span>&gt; /dev/null
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">=</span> <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+
+  <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    mkdir -p <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>-restore
+    tar -zx -f <span class="nv">$1</span> -C <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>-restore
+    docker <span class="nb">exec</span> -t mongodb bash -c <span class="s2">&#34;rm -fr /restore ; mkdir /restore&#34;</span>
+    docker cp <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>-restore/wekan mongodb:/restore
+    docker <span class="nb">exec</span> -t mongodb bash -c <span class="s2">&#34;mongorestore --drop --noIndexRestore --db wekan /restore/wekan/&#34;</span>
+  <span class="k">fi</span>
+<span class="k">else</span>
+  <span class="nb">echo</span> <span class="s2">&#34;mongodb container is not running&#34;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span></code></pre></div>
+<h4 id="references">References</h4>
+
+<ul>
+<li><p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#bin.mongodump">mongodb</a></p></li>
+
+<li><p><a href="https://github.com/wekan/wekan/wiki/Export-Docker-Mongo-Data">Export Docker Mongo Data</a></p></li>
+</ul>
+]]></content>
+		</item>
 		
 		<item>
 			<title>How to Docker Machine</title>

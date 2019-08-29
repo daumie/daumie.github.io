@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>api on Dominic Motuka</title>
+    <link>https://dominicmotuka.com/tags/api/</link>
+    <description>Recent content in api on Dominic Motuka</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 14 Aug 2019 10:13:21 +0300</lastBuildDate>
+    
+	<atom:link href="https://dominicmotuka.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>What Is Graphql</title>
+      <link>https://dominicmotuka.com/posts/what-is-graphql/</link>
+      <pubDate>Wed, 14 Aug 2019 10:13:21 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/what-is-graphql/</guid>
+      <description>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:
+  It lets the client specify exactly what data it needs. It makes it easier to aggregate data from multiple sources. It uses a type system to describe data.  With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</description>
+    </item>
+    
+  </channel>
+</rss>

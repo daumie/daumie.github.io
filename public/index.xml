@@ -2,52 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dominic Motuka</title>
-    <link>http://localhost/</link>
+    <link>https://dominicmotuka.com/</link>
     <description>Recent content on Dominic Motuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 06 Jul 2019 02:46:39 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
     
-	<atom:link href="http://localhost/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dominicmotuka.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My Third Post</title>
-      <link>http://localhost/posts/my-third-post/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:39 +0300</pubDate>
+      <title>How to Docker Machine</title>
+      <link>https://dominicmotuka.com/posts/how-to-docker-machine/</link>
+      <pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-third-post/</guid>
-      <description></description>
+      <guid>https://dominicmotuka.com/posts/how-to-docker-machine/</guid>
+      <description>What is Docker? Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &amp;ndash; a container is basically a lightweight virtual machine.
+Where does docker machine come in? When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.
+Since Docker isn&amp;rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such.</description>
     </item>
     
     <item>
-      <title>My Second Post</title>
-      <link>http://localhost/posts/my-second-post/</link>
+      <title>What Is Graphql</title>
+      <link>https://dominicmotuka.com/posts/what-is-graphql/</link>
+      <pubDate>Wed, 14 Aug 2019 10:13:21 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/what-is-graphql/</guid>
+      <description>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:
+  It lets the client specify exactly what data it needs. It makes it easier to aggregate data from multiple sources. It uses a type system to describe data.  With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</description>
+    </item>
+    
+    <item>
+      <title>MacOS Setup for Software Development</title>
+      <link>https://dominicmotuka.com/posts/development-setup/</link>
       <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-second-post/</guid>
-      <description></description>
+      <guid>https://dominicmotuka.com/posts/development-setup/</guid>
+      <description>First Things First After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.
+ To do that go: Apple menu () &amp;gt; About This Mac &amp;gt; Software Update.
+ Restart the computer when prompted to.</description>
     </item>
     
     <item>
-      <title>My First Post</title>
-      <link>http://localhost/posts/my-first-post/</link>
+      <title>Samurai Jack Introduction</title>
+      <link>https://dominicmotuka.com/posts/samurai-jack-introduction/</link>
       <pubDate>Sat, 06 Jul 2019 02:46:26 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-first-post/</guid>
-      <description></description>
+      <guid>https://dominicmotuka.com/posts/samurai-jack-introduction/</guid>
+      <description>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.
+Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</description>
     </item>
     
     <item>
       <title>About Dominic Motuka</title>
-      <link>http://localhost/about-hugo/</link>
+      <link>https://dominicmotuka.com/about-dominic/</link>
       <pubDate>Sat, 06 Jul 2019 02:45:07 +0300</pubDate>
       
-      <guid>http://localhost/about-hugo/</guid>
-      <description>Hello! I am a passionate software developer driven by the motivation to help teams achieve a common goal by leveraging technology.
-Currently, I&amp;rsquo;m a DevOps engineer overseeing in-house Andela software. I work in teams to establish automation pipelines, develop scripts to automate development operations, configuration management and provide actionable feedback.
-I am a lifelong learner and I continuously seek avenues to improve my knowledge, skills, and capabilities to both strengthen familiar skills and learn new technologies.</description>
+      <guid>https://dominicmotuka.com/about-dominic/</guid>
+      <description>DevOps Engineer driven by the motivation to help teams achieve a common goal by leveraging technology.
+I work in teams to establish automation pipelines, develop scripts to automate development operations, configuration management and provide actionable feedback.
+I am a lifelong learner and I continuously seek avenues to improve my knowledge, skills, and capabilities to both strengthen familiar skills and learn new technologies. This means that I work with others to define approaches and execute solutions comprising:</description>
     </item>
     
   </channel>
