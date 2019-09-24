@@ -3,22 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://dominicmotuka.com/</loc>
-    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+    <loc>https://dominicmotuka.com/tags/ci/cd/</loc>
+    <lastmod>2019-09-24T17:30:53+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</loc>
-    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+    <loc>https://dominicmotuka.com/tags/circleci/</loc>
+    <lastmod>2019-09-24T17:30:53+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/</loc>
+    <lastmod>2019-09-24T17:30:53+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/dotnet/</loc>
+    <lastmod>2019-09-24T17:30:53+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/dotnet-ci-cd-with-circleci/</loc>
+    <lastmod>2019-09-24T17:30:53+03:00</lastmod>
   </url>
   
   <url>
     <loc>https://dominicmotuka.com/posts/</loc>
-    <lastmod>2019-08-29T20:49:18+03:00</lastmod>
+    <lastmod>2019-09-24T17:30:53+03:00</lastmod>
   </url>
   
   <url>
     <loc>https://dominicmotuka.com/tags/</loc>
+    <lastmod>2019-09-24T17:30:53+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</loc>
     <lastmod>2019-08-29T20:49:18+03:00</lastmod>
   </url>
   

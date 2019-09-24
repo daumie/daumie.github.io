@@ -6,8 +6,114 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Thu, 29 Aug 2019 20:49:18 +0300</lastBuildDate>
+		<lastBuildDate>Tue, 24 Sep 2019 17:30:53 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Dotnet(.NET) CI CD With CircleCI</title>
+			<link>https://dominicmotuka.com/posts/dotnet-ci-cd-with-circleci/</link>
+			<pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/dotnet-ci-cd-with-circleci/</guid>
+			<description>What is .NET sdk .NET Core SDK consists of two parts: the .NET Core runtime and the .NET CLI. The runtime allows you to run .NET Core applications, whereas the CLI tools are a command-line interface that allows you to develop .NET Core applications.
+In this blog post, we will build a small .NET Core console application, then, we will use CircleCi to show how continuous Integrations can be setup.</description>
+			<content type="html"><![CDATA[
+
+<h2 id="what-is-net-sdk">What is .NET sdk</h2>
+
+<p><a href="https://docs.microsoft.com/en-us/dotnet/core/sdk">.NET Core SDK</a> consists of two parts: the <em>.NET Core runtime</em> and the <em>.NET CLI</em>. The runtime allows you to run .NET Core applications, whereas the CLI tools are a command-line interface that allows you to develop .NET Core applications.</p>
+
+<p>In this blog post, we will build a small <strong>.NET Core console</strong> application, then, we will use <a href="https://circleci.com">CircleCi</a> to show how continuous Integrations can be setup.</p>
+
+<h3 id="step-1">Step 1</h3>
+
+<ul>
+<li><a href="https://dotnet.microsoft.com/download">Download</a> and install the .NET Core SDK.</li>
+
+<li><p>You should see .NET CLI’s version number when running:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ dotnet --version
+<span class="m">3</span>.0.100</code></pre></div></li>
+
+<li><p>For demonstration purposes we will use the <a href="https://github.com/daumie/dotnet-cli.git">dotnet-cli</a> application hosted on Github. Feel free to clone and make changes as desired.</p></li>
+</ul>
+
+<p>dotnet-cli&rsquo;s directory structure</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">.
+├── Program.cs
+├── README.md
+├── dotnet-cli.csproj
+
+3 files</code></pre></div>
+<p><code>Program.cs</code>: the C# source file for our application.</p>
+
+<p><code>dotnetcore-ci.csproj</code>: a C# project for our application.</p>
+
+<p>These are the main files  .NET CLI needs to build and run our application.</p>
+
+<ul>
+<li><p>Resolve the applications dependencies with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dotnet restore</code></pre></div></li>
+
+<li><p>Next, we can build our application with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dotnet build</code></pre></div></li>
+</ul>
+
+<p>The above command will build the application and  output some diagnostic information i.e</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Microsoft <span class="o">(</span>R<span class="o">)</span> Build Engine version <span class="m">16</span>.3.0+0f4c62fea <span class="k">for</span> .NET Core
+Copyright <span class="o">(</span>C<span class="o">)</span> Microsoft Corporation. All rights reserved.
+
+  Restore completed in <span class="m">275</span>.89 ms <span class="k">for</span> /Users/dominic/workspace/personal/dotnet-cli/dotnet-cli.csproj.
+  dotnet-cli -&gt; /Users/dominic/workspace/personal/dotnet-cli/bin/Debug/netcoreapp2.2/dotnet-cli.dll
+
+Build succeeded.
+    <span class="m">0</span> Warning<span class="o">(</span>s<span class="o">)</span>
+    <span class="m">0</span> Error<span class="o">(</span>s<span class="o">)</span>
+
+Time Elapsed <span class="m">00</span>:00:02.40</code></pre></div>
+<ul>
+<li><p>Let&rsquo;s now run the application with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ dotnet run
+_   _      _ _         __        __         _     _ _
+<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> ___<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> ___    <span class="se">\ \ </span>     / /__  _ __<span class="p">|</span> <span class="p">|</span> __<span class="p">|</span> <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>/ _ <span class="se">\ </span><span class="p">|</span> <span class="p">|</span>/ _ <span class="se">\ </span>   <span class="se">\ \ </span>/<span class="se">\ </span>/ / _ <span class="se">\|</span> <span class="err">&#39;</span>__<span class="p">|</span> <span class="p">|</span>/ _<span class="sb">`</span> <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span>  _  <span class="p">|</span>  __/ <span class="p">|</span> <span class="p">|</span> <span class="o">(</span>_<span class="o">)</span> <span class="p">|</span>    <span class="se">\ </span>V  V / <span class="o">(</span>_<span class="o">)</span> <span class="p">|</span> <span class="p">|</span>  <span class="p">|</span> <span class="p">|</span> <span class="o">(</span>_<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span>
+<span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span><span class="se">\_</span>__<span class="p">|</span>_<span class="p">|</span>_<span class="p">|</span><span class="se">\_</span>__<span class="o">(</span> <span class="o">)</span>    <span class="se">\_</span>/<span class="se">\_</span>/ <span class="se">\_</span>__/<span class="p">|</span>_<span class="p">|</span>  <span class="p">|</span>_<span class="p">|</span><span class="se">\_</span>_,_<span class="o">(</span>_<span class="o">)</span>
+                 <span class="p">|</span>/</code></pre></div></li>
+</ul>
+
+<h3 id="adding-ci-cd-using-circleci">Adding CI/CD using CircleCI</h3>
+
+<p>Add <code>.circleci</code> config to the application&rsquo;s root directory by creating a directory <em>.circleci</em> and add a <em>config.yml</em> file inside.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir .circleci
+touch .circleci/config.yml</code></pre></div>
+<p>Add the following content to the <em>config.yml</em> file</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">version<span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w"></span>jobs<span class="p">:</span><span class="w">
+</span><span class="w">  </span>build<span class="p">:</span><span class="w">
+</span><span class="w">    </span>working_directory<span class="p">:</span><span class="w"> </span>/temp<span class="w">
+</span><span class="w">    </span>docker<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>image<span class="p">:</span><span class="w"> </span>microsoft/dotnet<span class="p">:</span>sdk<span class="w">
+</span><span class="w">    </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">      </span>DOTNET_SKIP_FIRST_TIME_EXPERIENCE<span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">      </span>DOTNET_CLI_TELEMETRY_OPTOUT<span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>checkout<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>run<span class="p">:</span><span class="w"> </span>dotnet<span class="w"> </span>restore<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>run<span class="p">:</span><span class="w"> </span>dotnet<span class="w"> </span>build<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>run<span class="p">:</span><span class="w"> </span>dotnet<span class="w"> </span>run</code></pre></div>
+<p>In the first line, we specify that we want to use version 2 of CircleCI, which is currently in beta. With version 2, builds are based on Docker images. That allows us to use the official .NET Core SDK Docker image to build our application.</p>
+
+<p>Once again, we also set the .NET CLI environment variables.</p>
+
+<p>Finally, we specify the steps to execute. First, we checkout our repository and then we run <code>dotnet restore</code> followed by <code>dotnet build</code> then <code>dotnet run</code></p>
+
+<p>The output of the last command will be similar to what we had locally.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Using CircleCI for continuous integration with .NET applications is straightforward.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>MongoDump and MongoRestore MongoDB Database</title>
