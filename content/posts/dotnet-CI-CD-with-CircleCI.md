@@ -75,7 +75,7 @@ Time Elapsed 00:00:02.40
 
 - Let's now run the application with:
 
-```bash
+```text
 $ dotnet run
   _   _      _ _         __        __         _     _ _
  | | | | ___| | | ___    \ \      / /__  _ __| | __| | |

@@ -72,13 +72,13 @@ Build succeeded.
 Time Elapsed <span class="m">00</span>:00:02.40</code></pre></div>
 <ul>
 <li><p>Let&rsquo;s now run the application with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ dotnet run
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">$ dotnet run
 _   _      _ _         __        __         _     _ _
-<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> ___<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> ___    <span class="se">\ \ </span>     / /__  _ __<span class="p">|</span> <span class="p">|</span> __<span class="p">|</span> <span class="p">|</span> <span class="p">|</span>
-<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>/ _ <span class="se">\ </span><span class="p">|</span> <span class="p">|</span>/ _ <span class="se">\ </span>   <span class="se">\ \ </span>/<span class="se">\ </span>/ / _ <span class="se">\|</span> <span class="err">&#39;</span>__<span class="p">|</span> <span class="p">|</span>/ _<span class="sb">`</span> <span class="p">|</span> <span class="p">|</span>
-<span class="p">|</span>  _  <span class="p">|</span>  __/ <span class="p">|</span> <span class="p">|</span> <span class="o">(</span>_<span class="o">)</span> <span class="p">|</span>    <span class="se">\ </span>V  V / <span class="o">(</span>_<span class="o">)</span> <span class="p">|</span> <span class="p">|</span>  <span class="p">|</span> <span class="p">|</span> <span class="o">(</span>_<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span>
-<span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span><span class="se">\_</span>__<span class="p">|</span>_<span class="p">|</span>_<span class="p">|</span><span class="se">\_</span>__<span class="o">(</span> <span class="o">)</span>    <span class="se">\_</span>/<span class="se">\_</span>/ <span class="se">\_</span>__/<span class="p">|</span>_<span class="p">|</span>  <span class="p">|</span>_<span class="p">|</span><span class="se">\_</span>_,_<span class="o">(</span>_<span class="o">)</span>
-                 <span class="p">|</span>/</code></pre></div></li>
+| | | | ___| | | ___    \ \      / /__  _ __| | __| | |
+| |_| |/ _ \ | |/ _ \    \ \ /\ / / _ \| &#39;__| |/ _` | |
+|  _  |  __/ | | (_) |    \ V  V / (_) | |  | | (_| |_|
+|_| |_|\___|_|_|\___( )    \_/\_/ \___/|_|  |_|\__,_(_)
+                 |/</code></pre></div></li>
 </ul>
 
 <h3 id="adding-ci-cd-using-circleci">Adding CI/CD using CircleCI</h3>
