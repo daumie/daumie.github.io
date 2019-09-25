@@ -6,8 +6,139 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Tue, 24 Sep 2019 17:30:53 +0300</lastBuildDate>
+		<lastBuildDate>Wed, 25 Sep 2019 11:23:09 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Commonly Used Potgres Commands</title>
+			<link>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</link>
+			<pubDate>Wed, 25 Sep 2019 11:23:09 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</guid>
+			<description>What is psql psql is the interactive terminal for administering postgre. The most important flags available are:
+ h the host to connect to U the user to connect with p the port to connect to (default is 5432)   psql -h localhost -U username databasename
+ The other option is to use a string and let psql parse it:
+ psql &amp;ldquo;dbname=dbhere host=hosthere user=userhere password=pwhere port=5432 sslmode=require&amp;rdquo;</description>
+			<content type="html"><![CDATA[
+
+<h2 id="what-is-psql">What is psql</h2>
+
+<p><code>psql</code> is the interactive terminal for administering postgre. The most important flags available are:</p>
+
+<ul>
+<li><code>h</code> the host to connect to</li>
+<li><code>U</code> the user to connect with</li>
+<li><code>p</code> the port to connect to (default is 5432)</li>
+</ul>
+
+<blockquote>
+<p>psql -h localhost -U username databasename</p>
+</blockquote>
+
+<p>The other option is to use a string and let psql parse it:</p>
+
+<blockquote>
+<p>psql &ldquo;dbname=dbhere host=hosthere user=userhere password=pwhere port=5432 sslmode=require&rdquo;</p>
+</blockquote>
+
+<p>Once connected, you can use <code>\?</code> which will give you a list of available commands.</p>
+
+<h3 id="meta-commands">Meta-commands</h3>
+
+<p>Meta-commands are commands that are evaluated by psql and often translated into SQL that is issued against the system tables on the server, saving administrators time when performing routine tasks. Denoted by a backslash <code>\</code></p>
+
+<h3 id="turn-query-timing-on">Turn query timing on</h3>
+
+<p>By default the timing of query results will not be available, but we can turn it on by using the following command. This will show query timining in millisecnds.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \timing</span>
+Timing is on.</code></pre></div>
+<h3 id="list-tables-in-database">List tables in database</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \d</span>
+      List of relations
+ Schema <span class="p">|</span>   Name    <span class="p">|</span> Type  <span class="p">|</span> Owner
+--------+-----------+-------+-------
+ public <span class="p">|</span> employees <span class="p">|</span> table <span class="p">|</span> craig
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span></code></pre></div>
+<h3 id="describe-a-table">Describe a table</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \d employees</span> 
+           Table <span class="s2">&#34;public.employees&#34;</span>
+  Column   <span class="p">|</span>         Type          <span class="p">|</span> Modifiers 
+-----------+-----------------------+-----------
+ id        <span class="p">|</span> integer               <span class="p">|</span>
+ last_name <span class="p">|</span> character varying<span class="o">(</span><span class="m">50</span><span class="o">)</span> <span class="p">|</span>
+ salary    <span class="p">|</span> integer               <span class="p">|</span>
+Indexes:
+    <span class="s2">&#34;idx_emps&#34;</span> btree <span class="o">(</span>salary<span class="o">)</span></code></pre></div>
+<h3 id="list-all-tables-in-database-along-with-some-additional-information">List all tables in database along with some additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \d+</span>
+       List of relations
+Schema <span class="p">|</span> Name  <span class="p">|</span> Type  <span class="p">|</span>   Owner   <span class="p">|</span>  Size  <span class="p">|</span> Description
+-------+-------+-------+-----------+--------+-------------
+public <span class="p">|</span> users <span class="p">|</span> table <span class="p">|</span> jarvis    <span class="p">|</span> <span class="m">401</span> MB <span class="p">|</span>
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span></code></pre></div>
+<h3 id="describe-a-table-with-additional-information">Describe a table with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\d+ users</span>
+          Table <span class="s2">&#34;public.users&#34;</span>
+  Column   <span class="p">|</span>  Type   <span class="p">|</span>   Modifiers   <span class="p">|</span> Storage  <span class="p">|</span> Stats target <span class="p">|</span> Description
+-----------+---------+---------------+----------+--------------+-------------
+userid     <span class="p">|</span> bigint  <span class="p">|</span> not null      <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+fullname   <span class="p">|</span> text    <span class="p">|</span> not null      <span class="p">|</span> extended <span class="p">|</span>              <span class="p">|</span>
+email      <span class="p">|</span> text    <span class="p">|</span> not null      <span class="p">|</span> extended <span class="p">|</span>              <span class="p">|</span>
+phone      <span class="p">|</span> text    <span class="p">|</span> not null      <span class="p">|</span> extended <span class="p">|</span>              <span class="p">|</span>
+credits    <span class="p">|</span> money   <span class="p">|</span> default <span class="m">0</span>.0   <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+parked     <span class="p">|</span> boolean <span class="p">|</span> default <span class="nb">false</span> <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+terminated <span class="p">|</span> boolean <span class="p">|</span> default <span class="nb">false</span> <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+
+Indexes:
+    <span class="s2">&#34;users_pkey&#34;</span> PRIMARY KEY, btree <span class="o">(</span>userid<span class="o">)</span></code></pre></div>
+<h3 id="list-all-databases">List all databases</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \l</span>
+          List of databases
+Name     <span class="p">|</span>   Owner   <span class="p">|</span> Encoding <span class="p">|</span> Collate <span class="p">|</span> Ctype <span class="p">|</span>      Access privileges
+---------+-----------+----------+---------+-------+-----------------------------
+learning <span class="p">|</span> jarvis    <span class="p">|</span> UTF8     <span class="p">|</span> C       <span class="p">|</span> UTF-8 <span class="p">|</span></code></pre></div>
+<h3 id="list-all-databases-with-additional-information">List all databases with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \l+</span>
+          List of databases
+  Name    <span class="p">|</span>   Owner   <span class="p">|</span> Encoding <span class="p">|</span> Collate <span class="p">|</span> Ctype <span class="p">|</span>      Access privileges      <span class="p">|</span>  Size   <span class="p">|</span> Tablespace <span class="p">|</span>                Description
+----------+-----------+----------+---------+-------+-----------------------------+---------+------------+--------------------------------------------
+learning  <span class="p">|</span> jarvis    <span class="p">|</span> UTF8     <span class="p">|</span> C       <span class="p">|</span> UTF-8 <span class="p">|</span>                             <span class="p">|</span> <span class="m">492</span> MB  <span class="p">|</span> pg_default <span class="p">|</span></code></pre></div>
+<h3 id="list-all-schemas">List all schemas</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \dn</span>
+List of schemas
+ Name  <span class="p">|</span> Owner
+-------+--------
+public <span class="p">|</span> jarvis
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span></code></pre></div>
+<h3 id="list-all-schemas-with-additional-information">List all schemas with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \dn+</span>
+List of schemas
+Name   <span class="p">|</span> Owner  <span class="p">|</span> Access privileges <span class="p">|</span>      Description
+-------+--------+-------------------+------------------------
+public <span class="p">|</span> jarvis <span class="p">|</span> <span class="nv">jarvis</span><span class="o">=</span>UC/jarvis +<span class="p">|</span> standard public schema
+       <span class="p">|</span>        <span class="p">|</span> <span class="o">=</span>UC/jarvis        <span class="p">|</span>
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span></code></pre></div>
+<h3 id="list-all-functions">List all functions</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\df</span></code></pre></div>
+<h3 id="list-all-functions-with-additional-information">List all functions with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\df+</span></code></pre></div>
+<h3 id="connect-to-another-database">Connect to another database</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\c dbname</span></code></pre></div>
+<h3 id="quit-from-postgres-shell">Quit from postgres shell</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\q</span></code></pre></div>
+<h3 id="text-editor-inside-psql">Text editor inside psql</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\e</span></code></pre></div>
+<p>This opens your default text editor inside psql shell.Pretty handy for query modifications.</p>
+
+<p>The commands can be given a regex for eg. \df <em>to_array</em> lists all functions that contain to_array in its name.</p>
+
+<p>Of course there are lot many other commands, as said above <code>\?</code> will list all of them, and from there we can pick up whatever we want.</p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>Psql is a powerful tool once we master it, and since it is command line, we can use it across environments.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Dotnet(.NET) CI CD With CircleCI</title>

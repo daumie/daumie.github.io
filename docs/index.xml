@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 24 Sep 2019 17:30:53 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 25 Sep 2019 11:23:09 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Commonly Used Potgres Commands</title>
+      <link>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</link>
+      <pubDate>Wed, 25 Sep 2019 11:23:09 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</guid>
+      <description>What is psql psql is the interactive terminal for administering postgre. The most important flags available are:
+ h the host to connect to U the user to connect with p the port to connect to (default is 5432)   psql -h localhost -U username databasename
+ The other option is to use a string and let psql parse it:
+ psql &amp;ldquo;dbname=dbhere host=hosthere user=userhere password=pwhere port=5432 sslmode=require&amp;rdquo;</description>
+    </item>
     
     <item>
       <title>Dotnet(.NET) CI CD With CircleCI</title>
