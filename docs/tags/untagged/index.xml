@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 25 Sep 2019 11:23:09 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 11 Oct 2019 12:01:37 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Google Stackdriver Monitoring</title>
+      <link>https://dominicmotuka.com/posts/google-stackdriver-monitoring/</link>
+      <pubDate>Fri, 11 Oct 2019 12:01:37 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/google-stackdriver-monitoring/</guid>
+      <description>Stackdriver Monitoring provides visibility into the performance, uptime, and overall health of cloud-powered applications.
+Stackdriver collects metrics, events, and metadata from:
+ Google Cloud Platform Amazon Web Services Hosted uptime probes Application instrumentation Common application components including Cassandra, Nginx, Apache Web Server, Elasticsearch e.t.c  Stackdriver ingests that data and generates insights via:
+ Dashboards Charts And alerts.  Stackdriver alerting helps you collaborate by integrating with Slack, PagerDuty, HipChat, Campfire, and more.</description>
+    </item>
     
     <item>
       <title>Commonly Used Potgres Commands</title>
