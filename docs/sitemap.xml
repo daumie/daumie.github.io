@@ -13,7 +13,22 @@
   </url>
   
   <url>
+    <loc>https://dominicmotuka.com/tags/logging/</loc>
+    <lastmod>2019-10-11T12:01:37+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/monitoring/</loc>
+    <lastmod>2019-10-11T12:01:37+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dominicmotuka.com/posts/</loc>
+    <lastmod>2019-10-11T12:01:37+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/stackdriver/</loc>
     <lastmod>2019-10-11T12:01:37+03:00</lastmod>
   </url>
   
@@ -23,12 +38,12 @@
   </url>
   
   <url>
-    <loc>https://dominicmotuka.com/tags/untagged/</loc>
-    <lastmod>2019-10-11T12:01:37+03:00</lastmod>
+    <loc>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</loc>
+    <lastmod>2019-09-25T11:23:09+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</loc>
+    <loc>https://dominicmotuka.com/tags/untagged/</loc>
     <lastmod>2019-09-25T11:23:09+03:00</lastmod>
   </url>
   

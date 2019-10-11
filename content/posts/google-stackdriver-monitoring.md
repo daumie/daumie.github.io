@@ -5,7 +5,9 @@ draft: false
 toc: false
 images:
 tags: 
-  - untagged
+  - monitoring
+  - logging
+  - stackdriver
 ---
 
 Stackdriver Monitoring provides visibility into the _performance_, _uptime_, and _overall health_ of cloud-powered applications.
