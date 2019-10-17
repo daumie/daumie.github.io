@@ -3,8 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://dominicmotuka.com/tags/centos/</loc>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dominicmotuka.com/</loc>
-    <lastmod>2019-10-11T12:01:37+03:00</lastmod>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</loc>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/linux/</loc>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/posts/</loc>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/redhat/</loc>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/</loc>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dominicmotuka.com/tags/virtualbox/</loc>
+    <lastmod>2019-10-17T12:35:18+03:00</lastmod>
   </url>
   
   <url>
@@ -23,17 +58,7 @@
   </url>
   
   <url>
-    <loc>https://dominicmotuka.com/posts/</loc>
-    <lastmod>2019-10-11T12:01:37+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dominicmotuka.com/tags/stackdriver/</loc>
-    <lastmod>2019-10-11T12:01:37+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dominicmotuka.com/tags/</loc>
     <lastmod>2019-10-11T12:01:37+03:00</lastmod>
   </url>
   

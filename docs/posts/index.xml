@@ -6,8 +6,61 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Fri, 11 Oct 2019 12:01:37 +0300</lastBuildDate>
+		<lastBuildDate>Thu, 17 Oct 2019 12:35:18 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Installing Virtualbox Guest Additions Centos8</title>
+			<link>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</link>
+			<pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</guid>
+			<description>From tecmint ; VirtualBox Guest Additions are a collection of device drivers and system applications designed to achieve closer integration between the host and guest operating systems. They help to enhance the overall interactive performance and usability of guest systems.
+The VirtualBox Guest Additions offer the following features:
+ Easy mouse pointer integration. Easy way to share folders between the host and the guest. Drag and drop feature allows copying or opening files, copy clipboard formats from the host to the guest or from the guest to the host.</description>
+			<content type="html"><![CDATA[
+
+<p>From <a href="https://www.tecmint.com/install-virtualbox-guest-additions-in-ubuntu/">tecmint</a> ; VirtualBox Guest Additions
+are a collection of device drivers and system applications designed to achieve closer integration between the host
+and guest operating systems. They help to enhance the overall interactive performance and usability of guest systems.</p>
+
+<p>The VirtualBox Guest Additions offer the following features:</p>
+
+<ul>
+<li>Easy mouse pointer integration.</li>
+<li>Easy way to share folders between the host and the guest.</li>
+<li>Drag and drop feature allows copying or opening files, copy clipboard formats from the host to the guest or from the guest to the host.</li>
+<li>Share clipboard (for copy and paste) of the guest operating system with your host operating system.</li>
+<li>Better video support provides accelerated video performance.</li>
+<li>Better Time synchronization between guest and host.</li>
+<li>Standard host/guest communication channels.</li>
+</ul>
+
+<h3 id="installing-guest-additions-on-centos-8">Installing Guest Additions on CentOs 8</h3>
+
+<p>CentOS is a Linux distribution that provides a free, community-supported computing platform functionally compatible with its upstream source, Red Hat Enterprise Linux.</p>
+
+<h4 id="install-build-depencies">Install build depencies</h4>
+
+<h5 id="step1-change-to-root-user">Step1: Change to root user</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo -i
+or
+su -</code></pre></div>
+<h4 id="step2-make-sure-you-are-using-the-latest-kernel">Step2: Make sure you are using the latest kernel</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># yum update</span></code></pre></div>
+<p>**Reboot</p>
+
+<h4 id="step3-install-packages-necessary-for-build">Step3: Install Packages necessary for build</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># yum install gcc make kernel-devel kernel-headers elfutils-libelf-devel bzip2 perl</span></code></pre></div>
+<h4 id="step4-mount-guest-additons-iso">Step4: Mount guest additons iso</h4>
+
+<h4 id="step5-install-guest-additions">Step5: Install guest additions</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># cd /media/VirtualBoxGuestAdditions</span></code></pre></div>
+<p>Then run</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ./VBoxLinuxAdditions.run</span></code></pre></div>
+<h4 id="step6-reboot-guest-system">Step6: Reboot guest system</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># reboot now</span></code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Google Stackdriver Monitoring</title>
@@ -19,7 +72,9 @@
 Stackdriver collects metrics, events, and metadata from:
  Google Cloud Platform Amazon Web Services Hosted uptime probes Application instrumentation Common application components including Cassandra, Nginx, Apache Web Server, Elasticsearch e.t.c  Stackdriver ingests that data and generates insights via:
  Dashboards Charts And alerts.  Stackdriver alerting helps you collaborate by integrating with Slack, PagerDuty, HipChat, Campfire, and more.</description>
-			<content type="html"><![CDATA[<p>Stackdriver Monitoring provides visibility into the <em>performance</em>, <em>uptime</em>, and <em>overall health</em> of cloud-powered applications.</p>
+			<content type="html"><![CDATA[
+
+<p>Stackdriver Monitoring provides visibility into the <em>performance</em>, <em>uptime</em>, and <em>overall health</em> of cloud-powered applications.</p>
 
 <p>Stackdriver collects metrics, events, and metadata from:</p>
 
@@ -45,9 +100,23 @@ Stackdriver collects metrics, events, and metadata from:
 
 <p>Install Stackdriver monitoring agent and Stackdriver logging agent for your instance.</p>
 
-<p>Uptime checks verify that a resource is always accessible</p>
+<p>Uptime checks verify that a resource is always accessible. Uptime checks let you quickly verify the health of any web page,
+instance, or group of resources. Each configured check is regularly contacted from a variety of locations around the world.
+Uptime checks can be used as conditions in alerting policy definitions.</p>
 
 <p>Alerting gives timely awareness to problems in your cloud applications so you can resolve the problems quickly. To create an alerting policy, you must describe the circumstances under which you want to be alerted and how you want to be notified.</p>
+
+<h3 id="about-stackdriver-groups">About Stackdriver Groups</h3>
+
+<p>Stackdriver lets you define and monitor groups of resources, such as VM instances, databases, and load balancers.
+Groups can be based on names, tags, regions, applications, and other criteria. You can also create subgroups, up to
+six levels deep, within groups.</p>
+
+<h3 id="incidents">Incidents</h3>
+
+<p>When the alerting policy conditions are violated, an &ldquo;incident&rsquo; is created and displayed in the Incident section.</p>
+
+<p>Responders can acknowledge receipt of the notification and can close the incident when it has been taken care of.</p>
 ]]></content>
 		</item>
 		

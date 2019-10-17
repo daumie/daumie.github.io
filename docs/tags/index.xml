@@ -7,10 +7,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 11 Oct 2019 12:01:37 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 17 Oct 2019 12:35:18 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>centos</title>
+      <link>https://dominicmotuka.com/tags/centos/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://dominicmotuka.com/tags/linux/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redhat</title>
+      <link>https://dominicmotuka.com/tags/redhat/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/redhat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualbox</title>
+      <link>https://dominicmotuka.com/tags/virtualbox/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/virtualbox/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>logging</title>
@@ -63,42 +99,6 @@
       <pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
       
       <guid>https://dominicmotuka.com/tags/circleci/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dotnet</title>
-      <link>https://dominicmotuka.com/tags/dotnet/</link>
-      <pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/dotnet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>aws</title>
-      <link>https://dominicmotuka.com/tags/aws/</link>
-      <pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>containers</title>
-      <link>https://dominicmotuka.com/tags/containers/</link>
-      <pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/containers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>docker</title>
-      <link>https://dominicmotuka.com/tags/docker/</link>
-      <pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/docker/</guid>
       <description></description>
     </item>
     

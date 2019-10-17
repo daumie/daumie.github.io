@@ -16,7 +16,7 @@ Stackdriver collects metrics, events, and metadata from:
 
 <meta itemprop="datePublished" content="2019-10-11T12:01:37&#43;03:00" />
 <meta itemprop="dateModified" content="2019-10-11T12:01:37&#43;03:00" />
-<meta itemprop="wordCount" content="141">
+<meta itemprop="wordCount" content="264">
 
 
 
@@ -84,7 +84,9 @@ Stackdriver collects metrics, events, and metadata from:
 				<h1>Google Stackdriver Monitoring</h1>
 			</header>
 			<div class="content">
-				<p>Stackdriver Monitoring provides visibility into the <em>performance</em>, <em>uptime</em>, and <em>overall health</em> of cloud-powered applications.</p>
+				
+
+<p>Stackdriver Monitoring provides visibility into the <em>performance</em>, <em>uptime</em>, and <em>overall health</em> of cloud-powered applications.</p>
 
 <p>Stackdriver collects metrics, events, and metadata from:</p>
 
@@ -110,9 +112,23 @@ Stackdriver collects metrics, events, and metadata from:
 
 <p>Install Stackdriver monitoring agent and Stackdriver logging agent for your instance.</p>
 
-<p>Uptime checks verify that a resource is always accessible</p>
+<p>Uptime checks verify that a resource is always accessible. Uptime checks let you quickly verify the health of any web page,
+instance, or group of resources. Each configured check is regularly contacted from a variety of locations around the world.
+Uptime checks can be used as conditions in alerting policy definitions.</p>
 
 <p>Alerting gives timely awareness to problems in your cloud applications so you can resolve the problems quickly. To create an alerting policy, you must describe the circumstances under which you want to be alerted and how you want to be notified.</p>
+
+<h3 id="about-stackdriver-groups">About Stackdriver Groups<a href="#about-stackdriver-groups" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>Stackdriver lets you define and monitor groups of resources, such as VM instances, databases, and load balancers.
+Groups can be based on names, tags, regions, applications, and other criteria. You can also create subgroups, up to
+six levels deep, within groups.</p>
+
+<h3 id="incidents">Incidents<a href="#incidents" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>When the alerting policy conditions are violated, an &ldquo;incident&rsquo; is created and displayed in the Incident section.</p>
+
+<p>Responders can acknowledge receipt of the notification and can close the incident when it has been taken care of.</p>
 
 			</div>
 			<hr class="post-end">
@@ -120,11 +136,14 @@ Stackdriver collects metrics, events, and metadata from:
 				<p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://dominicmotuka.com/tags/monitoring">monitoring</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/logging">logging</a></span><span class="tag"><a href="https://dominicmotuka.com/tags/stackdriver">stackdriver</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>141 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>264 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-10-11 12:01 &#43;0300</p>
 			</footer>
 		</article>
 		<div class="post-nav thin">
+			<a class="next-post" href="https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Installing Virtualbox Guest Additions Centos8</span>
+			</a>
 			<a class="prev-post" href="https://dominicmotuka.com/posts/commonly-used-potgres-commands/">
 				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Commonly Used Potgres Commands</span>
 			</a>
