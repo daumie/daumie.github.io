@@ -5,7 +5,9 @@ draft: false
 toc: false
 images:
 tags: 
-  - untagged
+  - certification
+  - GCP
+  - associate
 ---
 
 ## Short Notes In Preparation of Google Associate Cloud Engineer Exam
