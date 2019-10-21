@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 25 Sep 2019 11:23:09 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 23:37:41 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Associate Cloud Engineer Notes</title>
+      <link>https://dominicmotuka.com/posts/associate-cloud-engineer-notes/</link>
+      <pubDate>Sun, 20 Oct 2019 23:37:41 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/associate-cloud-engineer-notes/</guid>
+      <description>Short Notes In Preparation of Google Associate Cloud Engineer Exam Stackdriver ( Monitoring, logging, and debugging. ) Stackdriver metadata is stored in the host project.
+Stackdriver was previously a third-party application. When using Stackdriver, you may be transferred between different domains.
+A good project ID describes the project and environment e.g bench-projects-production
+When creating a new account, choose the payments profile to pay for a Google Play developer license.</description>
+    </item>
     
     <item>
       <title>Commonly Used Potgres Commands</title>
