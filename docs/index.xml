@@ -7,22 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 20 Oct 2019 23:37:41 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 17 Oct 2019 12:35:18 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Associate Cloud Engineer Notes</title>
-      <link>https://dominicmotuka.com/posts/associate-cloud-engineer-notes/</link>
-      <pubDate>Sun, 20 Oct 2019 23:37:41 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/posts/associate-cloud-engineer-notes/</guid>
-      <description>Short Notes In Preparation of Google Associate Cloud Engineer Exam Stackdriver ( Monitoring, logging, and debugging. ) Stackdriver metadata is stored in the host project.
-Stackdriver was previously a third-party application. When using Stackdriver, you may be transferred between different domains.
-A good project ID describes the project and environment e.g bench-projects-production
-When creating a new account, choose the payments profile to pay for a Google Play developer license.</description>
-    </item>
     
     <item>
       <title>Installing Virtualbox Guest Additions Centos8</title>
@@ -121,6 +109,17 @@ Since Docker isn&amp;rsquo;t running on your actual host OS, docker-machine need
       <guid>https://dominicmotuka.com/posts/samurai-jack-introduction/</guid>
       <description>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.
 Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</description>
+    </item>
+    
+    <item>
+      <title>About Dominic Motuka</title>
+      <link>https://dominicmotuka.com/about-dominic/</link>
+      <pubDate>Sat, 06 Jul 2019 02:45:07 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/about-dominic/</guid>
+      <description>DevOps Engineer driven by the motivation to help teams achieve a common goal by leveraging technology.
+I work in teams to establish automation pipelines, develop scripts to automate development operations, configuration management and provide actionable feedback.
+I am a lifelong learner and I continuously seek avenues to improve my knowledge, skills, and capabilities to both strengthen familiar skills and learn new technologies. This means that I work with others to define approaches and execute solutions comprising:</description>
     </item>
     
   </channel>

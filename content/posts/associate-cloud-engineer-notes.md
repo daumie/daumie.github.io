@@ -1,7 +1,7 @@
 ---
 title: "Associate Cloud Engineer Notes"
 date: 2019-10-20T23:37:41+03:00
-draft: false
+draft: true
 toc: false
 images:
 tags: 

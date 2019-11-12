@@ -7,37 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 20 Oct 2019 23:37:41 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 17 Oct 2019 12:35:18 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>associate</title>
-      <link>https://dominicmotuka.com/tags/associate/</link>
-      <pubDate>Sun, 20 Oct 2019 23:37:41 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/associate/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>certification</title>
-      <link>https://dominicmotuka.com/tags/certification/</link>
-      <pubDate>Sun, 20 Oct 2019 23:37:41 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/certification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GCP</title>
-      <link>https://dominicmotuka.com/tags/gcp/</link>
-      <pubDate>Sun, 20 Oct 2019 23:37:41 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/gcp/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>centos</title>
@@ -99,6 +72,33 @@
       <pubDate>Fri, 11 Oct 2019 12:01:37 +0300</pubDate>
       
       <guid>https://dominicmotuka.com/tags/stackdriver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>untagged</title>
+      <link>https://dominicmotuka.com/tags/untagged/</link>
+      <pubDate>Wed, 25 Sep 2019 11:23:09 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/untagged/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://dominicmotuka.com/tags/ci/cd/</link>
+      <pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/ci/cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>circleci</title>
+      <link>https://dominicmotuka.com/tags/circleci/</link>
+      <pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/circleci/</guid>
       <description></description>
     </item>
     
