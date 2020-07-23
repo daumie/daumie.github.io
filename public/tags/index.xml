@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Dominic Motuka</title>
@@ -7,98 +7,98 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2019 17:44:28 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>aws</title>
-      <link>https://dominicmotuka.com/tags/aws/</link>
-      <pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>containers</title>
-      <link>https://dominicmotuka.com/tags/containers/</link>
-      <pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/tags/containers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>docker</title>
       <link>https://dominicmotuka.com/tags/docker/</link>
-      <pubDate>Thu, 22 Aug 2019 15:12:53 +0300</pubDate>
+      <pubDate>Fri, 08 Nov 2019 17:44:28 +0300</pubDate>
       
       <guid>https://dominicmotuka.com/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>api</title>
-      <link>https://dominicmotuka.com/tags/api/</link>
-      <pubDate>Wed, 14 Aug 2019 10:13:21 +0300</pubDate>
+      <title>centos</title>
+      <link>https://dominicmotuka.com/tags/centos/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/tags/api/</guid>
+      <guid>https://dominicmotuka.com/tags/centos/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>graphql</title>
-      <link>https://dominicmotuka.com/tags/graphql/</link>
-      <pubDate>Wed, 14 Aug 2019 10:13:21 +0300</pubDate>
+      <title>linux</title>
+      <link>https://dominicmotuka.com/tags/linux/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/tags/graphql/</guid>
+      <guid>https://dominicmotuka.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>introduction</title>
-      <link>https://dominicmotuka.com/tags/introduction/</link>
-      <pubDate>Wed, 14 Aug 2019 10:13:21 +0300</pubDate>
+      <title>redhat</title>
+      <link>https://dominicmotuka.com/tags/redhat/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/tags/introduction/</guid>
+      <guid>https://dominicmotuka.com/tags/redhat/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>development</title>
-      <link>https://dominicmotuka.com/tags/development/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
+      <title>virtualbox</title>
+      <link>https://dominicmotuka.com/tags/virtualbox/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/tags/development/</guid>
+      <guid>https://dominicmotuka.com/tags/virtualbox/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>encryption</title>
-      <link>https://dominicmotuka.com/tags/encryption/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
+      <title>logging</title>
+      <link>https://dominicmotuka.com/tags/logging/</link>
+      <pubDate>Fri, 11 Oct 2019 12:01:37 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/tags/encryption/</guid>
+      <guid>https://dominicmotuka.com/tags/logging/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>git</title>
-      <link>https://dominicmotuka.com/tags/git/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
+      <title>monitoring</title>
+      <link>https://dominicmotuka.com/tags/monitoring/</link>
+      <pubDate>Fri, 11 Oct 2019 12:01:37 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/tags/git/</guid>
+      <guid>https://dominicmotuka.com/tags/monitoring/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>gpg</title>
-      <link>https://dominicmotuka.com/tags/gpg/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
+      <title>stackdriver</title>
+      <link>https://dominicmotuka.com/tags/stackdriver/</link>
+      <pubDate>Fri, 11 Oct 2019 12:01:37 +0300</pubDate>
       
-      <guid>https://dominicmotuka.com/tags/gpg/</guid>
+      <guid>https://dominicmotuka.com/tags/stackdriver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>untagged</title>
+      <link>https://dominicmotuka.com/tags/untagged/</link>
+      <pubDate>Wed, 25 Sep 2019 11:23:09 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/untagged/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>circleci</title>
+      <link>https://dominicmotuka.com/tags/circleci/</link>
+      <pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/tags/circleci/</guid>
       <description></description>
     </item>
     

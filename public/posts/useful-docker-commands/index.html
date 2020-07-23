@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Useful Docker Commands">
+<meta itemprop="description" content="Docker commands you should know Automatically start containers - restart policies   Restart policies to control whether your containers start automatically when they exit, or when Docker restart
+  Restart policies ensure that linked containers are started in the correct order.
+  Docker recommends that you use restart policies, and avoid using process managers to start containers.
+  To configure the restart policy for a container, use the &ndash;restart flag when using the docker run command.">
+<meta itemprop="datePublished" content="2019-11-08T17:44:28&#43;03:00" />
+<meta itemprop="dateModified" content="2019-11-08T17:44:28&#43;03:00" />
+<meta itemprop="wordCount" content="1149">
+
+
+
+<meta itemprop="keywords" content="docker," /><meta property="og:title" content="Useful Docker Commands" />
+<meta property="og:description" content="Docker commands you should know Automatically start containers - restart policies   Restart policies to control whether your containers start automatically when they exit, or when Docker restart
+  Restart policies ensure that linked containers are started in the correct order.
+  Docker recommends that you use restart policies, and avoid using process managers to start containers.
+  To configure the restart policy for a container, use the &ndash;restart flag when using the docker run command." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dominicmotuka.com/posts/useful-docker-commands/" />
+<meta property="article:published_time" content="2019-11-08T17:44:28+03:00" />
+<meta property="article:modified_time" content="2019-11-08T17:44:28+03:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Useful Docker Commands"/>
+<meta name="twitter:description" content="Docker commands you should know Automatically start containers - restart policies   Restart policies to control whether your containers start automatically when they exit, or when Docker restart
+  Restart policies ensure that linked containers are started in the correct order.
+  Docker recommends that you use restart policies, and avoid using process managers to start containers.
+  To configure the restart policy for a container, use the &ndash;restart flag when using the docker run command."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Useful Docker Commands</title>
+	<link rel="stylesheet" href="https://dominicmotuka.com/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://dominicmotuka.com/">Dominic Motuka</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://dominicmotuka.com/posts/">Posts</a>
+				<a href="https://dominicmotuka.com/about-dominic/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://www.linkedin.com/in/dominic-motuka/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="https://twitter.com/DominicMotuka" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/daumie" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://dominicmotuka.com/posts/">Posts</a></li>
+			<li><a href="https://dominicmotuka.com/about-dominic/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Nov 8, 2019</span></div>
+				<h1>Useful Docker Commands</h1>
+			</header>
+			<div class="content">
+				<h3 id="docker-commands-you-should-know">Docker commands you should know<a href="#docker-commands-you-should-know" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h4 id="automatically-start-containers---restart-policies">Automatically start containers - restart policies<a href="#automatically-start-containers---restart-policies" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<ul>
+<li>
+<p>Restart policies to control whether your containers start automatically when they exit, or when Docker restart</p>
+</li>
+<li>
+<p>Restart policies ensure that linked containers are started in the correct order.</p>
+</li>
+<li>
+<p>Docker recommends that you use restart policies, and avoid using process managers to start containers.</p>
+</li>
+</ul>
+<p>To configure the restart policy for a container, use the &ndash;restart flag when using the docker run command. The value of the <code>--restart</code>
+flag can be:</p>
+<ul>
+<li>
+<p><code>--restart no</code> : (default) Do not automatically restart the container.</p>
+</li>
+<li>
+<p><code>--restart on-failure</code> :  Restart the container if it exits due to an error, which manifests as a non-zero exit code.</p>
+</li>
+<li>
+<p><code>--restart always</code> : Always restart the container if it stops. If it is manually stopped, it is restarted only when Docker daemon restarts or the container itself is manually restarted.</p>
+</li>
+<li>
+<p><code>--restart unless-stopped</code> : Similar to <code>always</code>, except that when the container is stopped (manually or otherwise), it is not restarted even after Docker daemon restarts.</p>
+</li>
+</ul>
+<h4 id="cmd-directive--dockerfile"><code>CMD</code> directive ( Dockerfile)<a href="#cmd-directive--dockerfile" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>It sets the default command for the image that runs if no other command is specified.</p>
+<h4 id="expose-directive"><code>EXPOSE</code> directive<a href="#expose-directive" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>The <code>EXPOSE</code> directive documents the ports that should be published when running a container from the image.</p>
+<h4 id="env-directive"><code>ENV</code> directive<a href="#env-directive" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>It sets environment variables that are made available in subsequent build steps and to containers at the runtime.</p>
+<h4 id="add-versus-copy-directive"><code>ADD</code> versus <code>COPY</code> directive<a href="#add-versus-copy-directive" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<ul>
+<li>The ADD directive can pull a file from an external URL.</li>
+<li>The ADD directive can extract an archive into the image.</li>
+</ul>
+<h4 id="flattening-an-existing-multi-layered-image-into-a-single-layer">Flattening an existing multi-layered image into a single layer<a href="#flattening-an-existing-multi-layered-image-into-a-single-layer" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>We can run a container from the image, export it, and then import it as a new image.</p>
+<ul>
+<li><code>docker service ps nginx</code> list all of the replicas that are part of a service <code>nginx</code></li>
+</ul>
+<h4 id="view-detailed-metadata-about-a-container">view detailed metadata about a container<a href="#view-detailed-metadata-about-a-container" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker container inspect
+</code></pre></div><p>find metadata about any container.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker inspect
+</code></pre></div><p>query metadata about any Docker object.</p>
+<h4 id="command-to-view-logs-for-all-of-the-tasks-in-a-service-called-my-service">Command to view logs for all of the tasks in a service called <code>my-service</code><a href="#command-to-view-logs-for-all-of-the-tasks-in-a-service-called-my-service" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service logs my-service
+</code></pre></div><p>This command will retrieve logs for all of the tasks in the service.</p>
+<p>This command will evenly spread out tasks based upon the values of the availability_zone label.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service create --placement-pref <span class="nv">spread</span><span class="o">=</span>node.labels.availability_zone nginx
+</code></pre></div><p>What flag should we use to specify a custom volume driver when creating a volume alongside a service that has <code>docker service create</code> ?</p>
+<blockquote>
+<p>&ndash;mount volume-driver=<!-- raw HTML omitted --></p>
+</blockquote>
+<p>Which storage driver is the default for current versions of CentOS/RHEL and Ubuntu?</p>
+<blockquote>
+<p>overlay2</p>
+</blockquote>
+<p>Which of the following commands may result in the creation of a new named volume?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -v my-vol:/tmp nginx
+</code></pre></div><p>This command will create a new volume called <code>my-vol</code> if one does not already exist under that name.</p>
+<p>Which of the following commands will allow us to mount the <code>/my/path</code> directory on the host to a container?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -v /my/path:/tmp nginx
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run --mount <span class="nv">source</span><span class="o">=</span>/my/path,destination<span class="o">=</span>/tmp nginx
+</code></pre></div><p>Which of the following statements about the <code>overlay</code> network driver is accurate?</p>
+<blockquote>
+<p>The <code>overlay</code> network driver dynamically creates networking components on the node when a relevant task gets scheduled on that node.</p>
+</blockquote>
+<p>Which of the following tasks can we perform to set a custom DNS server for a container?</p>
+<blockquote>
+<p>We can use the <code>--dns</code> flag with <code>docker run</code>.</p>
+</blockquote>
+<p>Which of the following commands will create a new bridge network?</p>
+<blockquote>
+<p><code>docker network create my-network</code> Since the bridge is the default, a new bridge network will generate even when <code>--driver</code> is not specified.</p>
+</blockquote>
+<p>Which of the following statements about Docker Content Trust (DCT) is accurate?</p>
+<blockquote>
+<p>When Docker Content Trust is enabled, unsigned images will not be allowed to run on the system.</p>
+</blockquote>
+<p>Which command allows us to create an encrypted overlay network?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker network create --opt encrypted --driver overlay my-net
+</code></pre></div><p>Which of the following is a secure method for allowing a Docker client to authenticate with a registry that uses a self-signed certificate?</p>
+<blockquote>
+<p>We add the self-signed certificate as a trusted registry certificate under <code>/etc/docker/certs.d/</code></p>
+</blockquote>
+<p>N/B</p>
+<blockquote>
+<p>The <strong>Docker daemon</strong> must run as root, so it is essential to ensure that it&rsquo;s being protected and has limited access to it.</p>
+</blockquote>
+<p>We can set <code>dns</code> in <code>/etc/docker/daemon.json</code> ; valid method that we can use for setting the default DNS server for all containers on a host</p>
+<p>When creating a container, how would we specify that the container should be attached to an existing network called <code>my-network</code>?</p>
+<blockquote>
+<p>We can use <code>docker run --network my-network nginx</code></p>
+</blockquote>
+<p>When creating an <code>overlay</code> network, what flag can we use to allow containers to attach to the network after it is created?</p>
+<blockquote>
+<p><code>--attachable</code></p>
+</blockquote>
+<p>View container logs</p>
+<blockquote>
+<p>docker logs <!-- raw HTML omitted --></p>
+</blockquote>
+<p>Which component of the Docker Container Networking Model (CNM) is responsible for allocating IP addresses within Docker networks?</p>
+<blockquote>
+<p>The <em>IP Address Management</em> (IPAM) Driver is responsible</p>
+</blockquote>
+<p>The <code>none</code> driver</p>
+<blockquote>
+<p>The <em>none</em> driver implements sandboxes.</p>
+</blockquote>
+<p>Which of the following commands will publish a service&rsquo;s port, but only on nodes that are running a task for that service?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service create -p <span class="nv">mode</span><span class="o">=</span>host,published<span class="o">=</span>8082,target<span class="o">=</span><span class="m">80</span> nginx
+</code></pre></div><p>How would we create a volume called <code>new-volume</code> without running a container?</p>
+<blockquote>
+<p>We would run <code>docker volume create new-volume</code></p>
+</blockquote>
+<p>Which of the following commands would we use to locate the data for a volume on the host?</p>
+<blockquote>
+<p>docker volume inspect <!-- raw HTML omitted --></p>
+</blockquote>
+<p>Which storage driver is the default for CentOS 7 and earlier?</p>
+<blockquote>
+<p><code>devicemapper</code></p>
+</blockquote>
+<p>This command will return the container metadata, including the location of its data on the host.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker container inspect &lt;container&gt;
+</code></pre></div><p>What volume driver allows you to create and access external storage that can be shared across a Docker Swarm cluster using SSH?</p>
+<blockquote>
+<p><code>vieux/sshfs</code> This is a custom driver that uses SSH to access remote storage from any node in the cluster.</p>
+</blockquote>
+<p>What command would we use to list the services that are part of a stack called <code>web-store</code>?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker stack services web-store
+</code></pre></div><p>Which of the following commands will allow us to add a label to a Docker Swarm node?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker node update --label-add &lt;label&gt; &lt;node name&gt;
+</code></pre></div><p>Which of the following commands would successfully change the number of replicas to 5 in a service called my-service?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service update --replicas <span class="m">5</span> my-service
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service scale my-service<span class="o">=</span><span class="m">5</span>
+</code></pre></div><p>Daniel has some nodes with labels that specify the availability zone of each node. He wants to run a service that can run tasks on any node and that do not have the label availability_zone=east. Which command should he use?</p>
+<p><code>docker service create --constraint node.labels.availability_zone!=east nginx</code></p>
+<blockquote>
+<p><code>docker swarm unlock-key</code> command</p>
+</blockquote>
+<p>Which of the following best describes the procedure for backing up the Universal Control Plane (UCP) metadata?</p>
+<blockquote>
+<p>Run a container from the <code>ucp</code> image with the <code>backup</code> command</p>
+</blockquote>
+<p>What Linux feature does Docker use in order to limit memory usage for containers?</p>
+<blockquote>
+<p>Control groups (<code>cgroups</code>)</p>
+</blockquote>
+<p>How would we back up Docker Swarm?</p>
+<blockquote>
+<p>Back up the contents of <code>/var/lib/docker/swarm</code> on a Swarm manager.</p>
+</blockquote>
+<p>How would we create a new swarm cluster?</p>
+<blockquote>
+<p>Run <code>docker swarm init</code></p>
+</blockquote>
+<p>What does the <strong>HEALTHCHECK</strong> directive do?</p>
+<blockquote>
+<p>It sets a command that will be used by the Docker daemon to determine whether the container is healthy.</p>
+</blockquote>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://dominicmotuka.com/tags/docker">docker</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1149 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-11-08 17:44 &#43;0300</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="prev-post" href="https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Installing Virtualbox Guest Additions Centos8</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dominicmotuka" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://dominicmotuka.com/">Dominic Motuka</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://dominicmotuka.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://dominicmotuka.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-80222908-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

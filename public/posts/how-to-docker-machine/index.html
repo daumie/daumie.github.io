@@ -11,16 +11,13 @@
 <meta itemprop="description" content="What is Docker? Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &ndash; a container is basically a lightweight virtual machine.
 Where does docker machine come in? When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.
 Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such.">
-
-
 <meta itemprop="datePublished" content="2019-08-22T15:12:53&#43;03:00" />
 <meta itemprop="dateModified" content="2019-08-22T15:12:53&#43;03:00" />
 <meta itemprop="wordCount" content="552">
 
 
 
-<meta itemprop="keywords" content="docker,containers,aws," />
-<meta property="og:title" content="How to Docker Machine" />
+<meta itemprop="keywords" content="docker,containers,aws," /><meta property="og:title" content="How to Docker Machine" />
 <meta property="og:description" content="What is Docker? Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &ndash; a container is basically a lightweight virtual machine.
 Where does docker machine come in? When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.
 Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such." />
@@ -42,13 +39,13 @@ Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to
 	<link rel="shortcut icon" href="/favicon.ico">
 
 	<title>How to Docker Machine</title>
-	<link rel="stylesheet" href="https://dominicmotuka.com/css/style.min.568c54a56780af2a70c45272522247710b69dbfc080b315211fb98381e3796f8.css" integrity="sha256-VoxUpWeArypwxFJyUiJHcQtp2/wICzFSEfuYOB43lvg=">
+	<link rel="stylesheet" href="https://dominicmotuka.com/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
 	
 </head>
 
 <body id="page">
 	
-	<header id="site-header" class="animated slideInUp faster">
+	<header id="site-header" class="animated slideInUp">
 		<div class="hdr-wrapper section-inner">
 			<div class="hdr-left">
 				<div class="site-branding">
@@ -62,7 +59,7 @@ Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to
 				</nav>
 			</div>
 			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://www.linkedin.com/in/dominic-motuka/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="https://twitter.com/DominicMotuka" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/daumie" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+				<span class="hdr-social hide-in-mobile"><a href="https://www.linkedin.com/in/dominic-motuka/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="https://twitter.com/DominicMotuka" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/daumie" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
 			</div>
 		</div>
 	</header>
@@ -81,49 +78,33 @@ Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to
 				<h1>How to Docker Machine</h1>
 			</header>
 			<div class="content">
-				
-
-<h3 id="what-is-docker">What is Docker?<a href="#what-is-docker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
+				<h3 id="what-is-docker">What is Docker?<a href="#what-is-docker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &ndash; a container is basically a lightweight virtual machine.</p>
-
 <h3 id="where-does-docker-machine-come-in">Where does docker machine come in?<a href="#where-does-docker-machine-come-in" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
 <p>When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.</p>
-
 <p>Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such. And its settings are saved in environment variables, which means you have to run commands like this every time you open a new shell:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env default<span class="k">)</span>
-docker-machine ip default</code></pre></div>
-<h3 id="what-are-some-of-the-benefits-of-using-docker-machine">What are some of the benefits of using docker machine?<a href="#what-are-some-of-the-benefits-of-using-docker-machine" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
+docker-machine ip default
+</code></pre></div><h3 id="what-are-some-of-the-benefits-of-using-docker-machine">What are some of the benefits of using docker machine?<a href="#what-are-some-of-the-benefits-of-using-docker-machine" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>For instance, you can easily have a development, staging and production environment accessible from your own machine and update them accordingly.</p>
-
 <h3 id="how-does-docker-work">How does docker work?<a href="#how-does-docker-work" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
 <p>Docker has a client server-architecture, in which the Client sends the command to the Docker Host, which runs the Docker Daemon. Both the Client and the Docker Host can be in the same machine, or the Client can communicate with any of the Docker Hosts running anywhere, as long as it can reach and access the Docker Daemon.</p>
-
 <p>The Docker Client and the Docker Daemon communicate over REST APIs, even on the same system. One tool that can help you manage Docker Daemons running on different systems from our local workstation is Docker Machine.</p>
-
 <p>Docker-machine sets up Docker hosts on any supported system via <a href="https://docs.docker.com/machine/drivers/">provider drivers</a>.</p>
-
-<h3 id="deploying-containers-to-a-remote-host-using-docker-machine-we-ll-be-using-aws-in-this-example">Deploying Containers to a remote host using docker-machine. ( we&rsquo;ll be using AWS in this example)<a href="#deploying-containers-to-a-remote-host-using-docker-machine-we-ll-be-using-aws-in-this-example" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
+<h3 id="deploying-containers-to-a-remote-host-using-docker-machine--well-be-using-aws-in-this-example">Deploying Containers to a remote host using docker-machine. ( we&rsquo;ll be using AWS in this example)<a href="#deploying-containers-to-a-remote-host-using-docker-machine--well-be-using-aws-in-this-example" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p><a href="https://searchaws.techtarget.com/tip/Manually-spin-up-an-EC2-server-instance-in-7-steps">Spin up an EC2 instance</a> ( Bare metal with virtualization enabled )</p>
-
 <blockquote>
 <p>When using an already existing instance, you can spin up a container in the machine with:</p>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  docker-machine create --driver generic <span class="se">\
-</span><span class="se"></span>    --generic-ip-address <span class="s2">&#34;&lt;publicIP_of_instance&gt;&#34;</span> <span class="se">\
-</span><span class="se"></span>    --generic-ssh-user <span class="s2">&#34;ubuntu&#34;</span> <span class="se">\
-</span><span class="se"></span>    --generic-ssh-key ~/.ssh/id_rsa <span class="se">\
-</span><span class="se"></span>    hello-world</code></pre></div>
-<p>Note the following details: You can refer to the official <a href="https://docs.docker.com/machine/drivers/aws/">aws driver documentation</a></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver generic <span class="se">\
+</span><span class="se"></span>  --generic-ip-address <span class="s2">&#34;&lt;publicIP_of_instance&gt;&#34;</span> <span class="se">\
+</span><span class="se"></span>  --generic-ssh-user <span class="s2">&#34;ubuntu&#34;</span> <span class="se">\
+</span><span class="se"></span>  --generic-ssh-key ~/.ssh/id_rsa <span class="se">\
+</span><span class="se"></span>  hello-world
+</code></pre></div><p>Note the following details: You can refer to the official <a href="https://docs.docker.com/machine/drivers/aws/">aws driver documentation</a></p>
 <blockquote>
 <p>You can spin up an instance at the same time creating docker containers inside the instance.</p>
 </blockquote>
-
 <ul>
 <li>AWS_ACCESS_KEY_ID</li>
 <li>AWS_SECRET_ACCESS_KEY</li>
@@ -139,53 +120,50 @@ docker-machine ip default</code></pre></div>
 <li>AWS_KEYPAIR_NAME</li>
 <li>AWS_INSTANCE_TYPE</li>
 <li>AWS_VOLUME_TYPE</li>
-
-<li><p>MACHINE_NAME</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver amazonec2 <span class="se">\
-</span><span class="se"></span>--amazonec2-access-key AKI****** <span class="se">\
-</span><span class="se"></span>--amazonec2-secret-key Jei****** <span class="se">\
-</span><span class="se"></span>--amazonec2-open-port <span class="m">2376</span> <span class="se">\
-</span><span class="se"></span>--amazonec2-region us-east-1 <span class="se">\
-</span><span class="se"></span>--amazonec2-zone f <span class="se">\
-</span><span class="se"></span>--amazonec2-ami ami-07d0cf3af28718ef8 <span class="se">\
-</span><span class="se"></span>--amazonec2-instance-type m5a.xlarge <span class="se">\
-</span><span class="se"></span>--amazonec2-keypair-name instance-keypair <span class="se">\
-</span><span class="se"></span>--amazonec2-ssh-keypath ~/.sshid_rsa <span class="se">\
-</span><span class="se"></span>--amazonec2-root-size <span class="m">16</span> <span class="se">\
-</span><span class="se"></span>--amazonec2-security-group &lt;insert_security_group_here&gt; <span class="se">\
-</span><span class="se"></span>--amazonec2-ssh-user ubuntu <span class="se">\
-</span><span class="se"></span>--amazonec2-vpc-id vpc-********* <span class="se">\
-</span><span class="se"></span>--amazonec2-subnet-id subnet-********** <span class="se">\
-</span><span class="se"></span>--amazonec2-use-ebs-optimized-instance <span class="se">\
-</span><span class="se"></span>--amazonec2-use-private-address <span class="se">\
-</span><span class="se"></span>--amazonec2-volume-type gp2 <span class="se">\
-</span><span class="se"></span><span class="si">${</span><span class="nv">MACHINE_NAME</span><span class="si">}</span></code></pre></div></li>
+<li>MACHINE_NAME</li>
 </ul>
-
-<h3 id="essential-docker-machine-commands">Essential docker-machine commands<a href="#essential-docker-machine-commands" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver amazonec2 <span class="se">\
+</span><span class="se"></span>    --amazonec2-access-key AKI****** <span class="se">\
+</span><span class="se"></span>    --amazonec2-secret-key Jei****** <span class="se">\
+</span><span class="se"></span>    --amazonec2-open-port <span class="m">2376</span> <span class="se">\
+</span><span class="se"></span>    --amazonec2-region us-east-1 <span class="se">\
+</span><span class="se"></span>    --amazonec2-zone f <span class="se">\
+</span><span class="se"></span>    --amazonec2-ami ami-07d0cf3af28718ef8 <span class="se">\
+</span><span class="se"></span>    --amazonec2-instance-type m5a.xlarge <span class="se">\
+</span><span class="se"></span>    --amazonec2-keypair-name instance-keypair <span class="se">\
+</span><span class="se"></span>    --amazonec2-ssh-keypath ~/.sshid_rsa <span class="se">\
+</span><span class="se"></span>    --amazonec2-root-size <span class="m">16</span> <span class="se">\
+</span><span class="se"></span>    --amazonec2-security-group &lt;insert_security_group_here&gt; <span class="se">\
+</span><span class="se"></span>    --amazonec2-ssh-user ubuntu <span class="se">\
+</span><span class="se"></span>    --amazonec2-vpc-id vpc-********* <span class="se">\
+</span><span class="se"></span>    --amazonec2-subnet-id subnet-********** <span class="se">\
+</span><span class="se"></span>    --amazonec2-use-ebs-optimized-instance <span class="se">\
+</span><span class="se"></span>    --amazonec2-use-private-address <span class="se">\
+</span><span class="se"></span>    --amazonec2-volume-type gp2 <span class="se">\
+</span><span class="se"></span>    <span class="si">${</span><span class="nv">MACHINE_NAME</span><span class="si">}</span>
+</code></pre></div><h3 id="essential-docker-machine-commands">Essential docker-machine commands<a href="#essential-docker-machine-commands" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>You can confirm the number of docker-machines you have with</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ls</code></pre></div>
-<p>To change local docker environment variables to the remote machine ones</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env remote-machine<span class="k">)</span></code></pre></div>
-<p>To validate which docker-machine you point to:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine active</code></pre></div>
-<p>To ssh into the remote machine. Once the machine is created, it’s really easy to ssh into it because the SSH certificates are generated on the machine and kept locally.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ssh remote-machine</code></pre></div>
-<p>To copy files to/from the machine</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine scp ~/localfile.txt remote-machine:~/</code></pre></div>
-<p>To go back to using your local instance</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env -u<span class="k">)</span></code></pre></div>
-<h3 id="what-if-you-want-to-share-the-machines">What if you want to share the machines?<a href="#what-if-you-want-to-share-the-machines" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ls
+</code></pre></div><p>To change local docker environment variables to the remote machine ones</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env remote-machine<span class="k">)</span>
+</code></pre></div><p>To validate which docker-machine you point to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine active
+</code></pre></div><p>To ssh into the remote machine. Once the machine is created, it’s really easy to ssh into it because the SSH certificates are generated on the machine and kept locally.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ssh remote-machine
+</code></pre></div><p>To copy files to/from the machine</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine scp ~/localfile.txt remote-machine:~/
+</code></pre></div><p>To go back to using your local instance</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env -u<span class="k">)</span>
+</code></pre></div><h3 id="what-if-you-want-to-share-the-machines">What if you want to share the machines?<a href="#what-if-you-want-to-share-the-machines" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>Install <a href="https://github.com/bhurlow/machine-share">machine-share</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g machine-share</code></pre></div>
-<p>To export machines</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g machine-share
+</code></pre></div><p>To export machines</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ machine-export &lt;machine-name&gt;
-&gt;&gt; exported to &lt;machine-name&gt;.zip</code></pre></div>
-<p>To import machines</p>
+&gt;&gt; exported to &lt;machine-name&gt;.zip
+</code></pre></div><p>To import machines</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">machine-import &lt;machine-name&gt;.zip
-&gt;&gt; imported</code></pre></div>
+&gt;&gt; imported
+</code></pre></div>
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
@@ -197,6 +175,9 @@ docker-machine ip default</code></pre></div>
 			</footer>
 		</article>
 		<div class="post-nav thin">
+			<a class="next-post" href="https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>MongoDump and MongoRestore MongoDB Database</span>
+			</a>
 			<a class="prev-post" href="https://dominicmotuka.com/posts/what-is-graphql/">
 				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>What Is Graphql</span>
 			</a>
@@ -226,14 +207,16 @@ docker-machine ip default</code></pre></div>
 	</main>
 
 	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2019 <a href="https://dominicmotuka.com/">Dominic Motuka</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>&copy; 2020 <a href="https://dominicmotuka.com/">Dominic Motuka</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
 		<p>
 			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://dominicmotuka.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
 		</p>
 	</footer>
 
 
-	<script src="https://dominicmotuka.com/js/main.min.35ccbf1cdceb91e4c64c06b5d009d6e2977fafe56beda7762febd4e67528d2ac.js" integrity="sha256-Ncy/HNzrkeTGTAa10AnW4pd/r+Vr7ad2L+vU5nUo0qw="></script>
+
+	<script src="https://dominicmotuka.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

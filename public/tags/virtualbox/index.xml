@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>virtualbox on Dominic Motuka</title>
+    <link>https://dominicmotuka.com/tags/virtualbox/</link>
+    <description>Recent content in virtualbox on Dominic Motuka</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 17 Oct 2019 12:35:18 +0300</lastBuildDate>
+    
+	<atom:link href="https://dominicmotuka.com/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing Virtualbox Guest Additions Centos8</title>
+      <link>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</guid>
+      <description>From tecmint ; VirtualBox Guest Additions are a collection of device drivers and system applications designed to achieve closer integration between the host and guest operating systems. They help to enhance the overall interactive performance and usability of guest systems.
+The VirtualBox Guest Additions offer the following features:
+ Easy mouse pointer integration. Easy way to share folders between the host and the guest. Drag and drop feature allows copying or opening files, copy clipboard formats from the host to the guest or from the guest to the host.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dominic Motuka</title>
@@ -7,10 +7,79 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2019 17:44:28 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Useful Docker Commands</title>
+      <link>https://dominicmotuka.com/posts/useful-docker-commands/</link>
+      <pubDate>Fri, 08 Nov 2019 17:44:28 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/useful-docker-commands/</guid>
+      <description>Docker commands you should know Automatically start containers - restart policies   Restart policies to control whether your containers start automatically when they exit, or when Docker restart
+  Restart policies ensure that linked containers are started in the correct order.
+  Docker recommends that you use restart policies, and avoid using process managers to start containers.
+  To configure the restart policy for a container, use the &amp;ndash;restart flag when using the docker run command.</description>
+    </item>
+    
+    <item>
+      <title>Installing Virtualbox Guest Additions Centos8</title>
+      <link>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</link>
+      <pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</guid>
+      <description>From tecmint ; VirtualBox Guest Additions are a collection of device drivers and system applications designed to achieve closer integration between the host and guest operating systems. They help to enhance the overall interactive performance and usability of guest systems.
+The VirtualBox Guest Additions offer the following features:
+ Easy mouse pointer integration. Easy way to share folders between the host and the guest. Drag and drop feature allows copying or opening files, copy clipboard formats from the host to the guest or from the guest to the host.</description>
+    </item>
+    
+    <item>
+      <title>Google Stackdriver Monitoring</title>
+      <link>https://dominicmotuka.com/posts/google-stackdriver-monitoring/</link>
+      <pubDate>Fri, 11 Oct 2019 12:01:37 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/google-stackdriver-monitoring/</guid>
+      <description>Stackdriver Monitoring provides visibility into the performance, uptime, and overall health of cloud-powered applications.
+Stackdriver collects metrics, events, and metadata from:
+ Google Cloud Platform Amazon Web Services Hosted uptime probes Application instrumentation Common application components including Cassandra, Nginx, Apache Web Server, Elasticsearch e.t.c  Stackdriver ingests that data and generates insights via:
+ Dashboards Charts And alerts.  Stackdriver alerting helps you collaborate by integrating with Slack, PagerDuty, HipChat, Campfire, and more.</description>
+    </item>
+    
+    <item>
+      <title>Commonly Used Potgres Commands</title>
+      <link>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</link>
+      <pubDate>Wed, 25 Sep 2019 11:23:09 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</guid>
+      <description>What is psql psql is the interactive terminal for administering postgre. The most important flags available are:
+ h the host to connect to U the user to connect with p the port to connect to (default is 5432)   psql -h localhost -U username databasename
+ The other option is to use a string and let psql parse it:
+ psql &amp;ldquo;dbname=dbhere host=hosthere user=userhere password=pwhere port=5432 sslmode=require&amp;rdquo;
+ Once connected, you can use \?</description>
+    </item>
+    
+    <item>
+      <title>Dotnet(.NET) CI CD With CircleCI</title>
+      <link>https://dominicmotuka.com/posts/dotnet-ci-cd-with-circleci/</link>
+      <pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/dotnet-ci-cd-with-circleci/</guid>
+      <description>What is .NET sdk .NET Core SDK consists of two parts: the .NET Core runtime and the .NET CLI. The runtime allows you to run .NET Core applications, whereas the CLI tools are a command-line interface that allows you to develop .NET Core applications.
+In this blog post, we will build a small .NET Core console application, then, we will use CircleCi to show how continuous Integrations can be setup.</description>
+    </item>
+    
+    <item>
+      <title>MongoDump and MongoRestore MongoDB Database</title>
+      <link>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</link>
+      <pubDate>Thu, 29 Aug 2019 20:49:18 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</guid>
+      <description>How to Dump MongoDB Ddatabase from a container What is mongodump mongodump is a utility for creating a binary export of the contents of a database. mongodump can export data from either mongod or mongos instances.
+Run mongodump from the system command line, not the mongo shell.
+How to connect to a MongoDB instance  Local MongoDB instance running on port 27017 using the default settings  mongodump   By specifying a host and/or port of the MongoDB instance</description>
+    </item>
     
     <item>
       <title>How to Docker Machine</title>
@@ -52,17 +121,6 @@ Since Docker isn&amp;rsquo;t running on your actual host OS, docker-machine need
       <guid>https://dominicmotuka.com/posts/samurai-jack-introduction/</guid>
       <description>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.
 Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</description>
-    </item>
-    
-    <item>
-      <title>About Dominic Motuka</title>
-      <link>https://dominicmotuka.com/about-dominic/</link>
-      <pubDate>Sat, 06 Jul 2019 02:45:07 +0300</pubDate>
-      
-      <guid>https://dominicmotuka.com/about-dominic/</guid>
-      <description>DevOps Engineer driven by the motivation to help teams achieve a common goal by leveraging technology.
-I work in teams to establish automation pipelines, develop scripts to automate development operations, configuration management and provide actionable feedback.
-I am a lifelong learner and I continuously seek avenues to improve my knowledge, skills, and capabilities to both strengthen familiar skills and learn new technologies. This means that I work with others to define approaches and execute solutions comprising:</description>
     </item>
     
   </channel>

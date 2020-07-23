@@ -1,11 +1,11 @@
 ---
 title: "Useful Docker Commands"
 date: 2019-11-08T17:44:28+03:00
-draft: true
+draft: false
 toc: false
 images:
 tags: 
-  - untagged
+  - docker
 ---
 
 ### Docker commands you should know

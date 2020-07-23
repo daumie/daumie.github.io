@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on Dominic Motuka</title>
@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2019 17:44:28 +0300</lastBuildDate>
     
 	<atom:link href="https://dominicmotuka.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Useful Docker Commands</title>
+      <link>https://dominicmotuka.com/posts/useful-docker-commands/</link>
+      <pubDate>Fri, 08 Nov 2019 17:44:28 +0300</pubDate>
+      
+      <guid>https://dominicmotuka.com/posts/useful-docker-commands/</guid>
+      <description>Docker commands you should know Automatically start containers - restart policies   Restart policies to control whether your containers start automatically when they exit, or when Docker restart
+  Restart policies ensure that linked containers are started in the correct order.
+  Docker recommends that you use restart policies, and avoid using process managers to start containers.
+  To configure the restart policy for a container, use the &amp;ndash;restart flag when using the docker run command.</description>
+    </item>
     
     <item>
       <title>How to Docker Machine</title>

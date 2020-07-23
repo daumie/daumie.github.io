@@ -1,42 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>untagged on Dominic Motuka</title>
-    <link>http://localhost/tags/untagged/</link>
+    <link>https://dominicmotuka.com/tags/untagged/</link>
     <description>Recent content in untagged on Dominic Motuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 06 Jul 2019 02:46:39 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 25 Sep 2019 11:23:09 +0300</lastBuildDate>
     
-	<atom:link href="http://localhost/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dominicmotuka.com/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My Third Post</title>
-      <link>http://localhost/posts/my-third-post/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:39 +0300</pubDate>
+      <title>Commonly Used Potgres Commands</title>
+      <link>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</link>
+      <pubDate>Wed, 25 Sep 2019 11:23:09 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-third-post/</guid>
-      <description></description>
+      <guid>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</guid>
+      <description>What is psql psql is the interactive terminal for administering postgre. The most important flags available are:
+ h the host to connect to U the user to connect with p the port to connect to (default is 5432)   psql -h localhost -U username databasename
+ The other option is to use a string and let psql parse it:
+ psql &amp;ldquo;dbname=dbhere host=hosthere user=userhere password=pwhere port=5432 sslmode=require&amp;rdquo;
+ Once connected, you can use \?</description>
     </item>
     
     <item>
-      <title>My Second Post</title>
-      <link>http://localhost/posts/my-second-post/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:32 +0300</pubDate>
+      <title>MongoDump and MongoRestore MongoDB Database</title>
+      <link>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</link>
+      <pubDate>Thu, 29 Aug 2019 20:49:18 +0300</pubDate>
       
-      <guid>http://localhost/posts/my-second-post/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>My First Post</title>
-      <link>http://localhost/posts/my-first-post/</link>
-      <pubDate>Sat, 06 Jul 2019 02:46:26 +0300</pubDate>
-      
-      <guid>http://localhost/posts/my-first-post/</guid>
-      <description></description>
+      <guid>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</guid>
+      <description>How to Dump MongoDB Ddatabase from a container What is mongodump mongodump is a utility for creating a binary export of the contents of a database. mongodump can export data from either mongod or mongos instances.
+Run mongodump from the system command line, not the mongo shell.
+How to connect to a MongoDB instance  Local MongoDB instance running on port 27017 using the default settings  mongodump   By specifying a host and/or port of the MongoDB instance</description>
     </item>
     
   </channel>

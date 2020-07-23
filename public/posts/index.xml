@@ -6,8 +6,655 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Thu, 22 Aug 2019 15:12:53 +0300</lastBuildDate>
+		<lastBuildDate>Fri, 08 Nov 2019 17:44:28 +0300</lastBuildDate>
 		<atom:link href="https://dominicmotuka.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Useful Docker Commands</title>
+			<link>https://dominicmotuka.com/posts/useful-docker-commands/</link>
+			<pubDate>Fri, 08 Nov 2019 17:44:28 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/useful-docker-commands/</guid>
+			<description>Docker commands you should know Automatically start containers - restart policies   Restart policies to control whether your containers start automatically when they exit, or when Docker restart
+  Restart policies ensure that linked containers are started in the correct order.
+  Docker recommends that you use restart policies, and avoid using process managers to start containers.
+  To configure the restart policy for a container, use the &amp;ndash;restart flag when using the docker run command.</description>
+			<content type="html"><![CDATA[<h3 id="docker-commands-you-should-know">Docker commands you should know</h3>
+<h4 id="automatically-start-containers---restart-policies">Automatically start containers - restart policies</h4>
+<ul>
+<li>
+<p>Restart policies to control whether your containers start automatically when they exit, or when Docker restart</p>
+</li>
+<li>
+<p>Restart policies ensure that linked containers are started in the correct order.</p>
+</li>
+<li>
+<p>Docker recommends that you use restart policies, and avoid using process managers to start containers.</p>
+</li>
+</ul>
+<p>To configure the restart policy for a container, use the &ndash;restart flag when using the docker run command. The value of the <code>--restart</code>
+flag can be:</p>
+<ul>
+<li>
+<p><code>--restart no</code> : (default) Do not automatically restart the container.</p>
+</li>
+<li>
+<p><code>--restart on-failure</code> :  Restart the container if it exits due to an error, which manifests as a non-zero exit code.</p>
+</li>
+<li>
+<p><code>--restart always</code> : Always restart the container if it stops. If it is manually stopped, it is restarted only when Docker daemon restarts or the container itself is manually restarted.</p>
+</li>
+<li>
+<p><code>--restart unless-stopped</code> : Similar to <code>always</code>, except that when the container is stopped (manually or otherwise), it is not restarted even after Docker daemon restarts.</p>
+</li>
+</ul>
+<h4 id="cmd-directive--dockerfile"><code>CMD</code> directive ( Dockerfile)</h4>
+<p>It sets the default command for the image that runs if no other command is specified.</p>
+<h4 id="expose-directive"><code>EXPOSE</code> directive</h4>
+<p>The <code>EXPOSE</code> directive documents the ports that should be published when running a container from the image.</p>
+<h4 id="env-directive"><code>ENV</code> directive</h4>
+<p>It sets environment variables that are made available in subsequent build steps and to containers at the runtime.</p>
+<h4 id="add-versus-copy-directive"><code>ADD</code> versus <code>COPY</code> directive</h4>
+<ul>
+<li>The ADD directive can pull a file from an external URL.</li>
+<li>The ADD directive can extract an archive into the image.</li>
+</ul>
+<h4 id="flattening-an-existing-multi-layered-image-into-a-single-layer">Flattening an existing multi-layered image into a single layer</h4>
+<p>We can run a container from the image, export it, and then import it as a new image.</p>
+<ul>
+<li><code>docker service ps nginx</code> list all of the replicas that are part of a service <code>nginx</code></li>
+</ul>
+<h4 id="view-detailed-metadata-about-a-container">view detailed metadata about a container</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker container inspect
+</code></pre></div><p>find metadata about any container.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker inspect
+</code></pre></div><p>query metadata about any Docker object.</p>
+<h4 id="command-to-view-logs-for-all-of-the-tasks-in-a-service-called-my-service">Command to view logs for all of the tasks in a service called <code>my-service</code></h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service logs my-service
+</code></pre></div><p>This command will retrieve logs for all of the tasks in the service.</p>
+<p>This command will evenly spread out tasks based upon the values of the availability_zone label.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service create --placement-pref <span class="nv">spread</span><span class="o">=</span>node.labels.availability_zone nginx
+</code></pre></div><p>What flag should we use to specify a custom volume driver when creating a volume alongside a service that has <code>docker service create</code> ?</p>
+<blockquote>
+<p>&ndash;mount volume-driver=<!-- raw HTML omitted --></p>
+</blockquote>
+<p>Which storage driver is the default for current versions of CentOS/RHEL and Ubuntu?</p>
+<blockquote>
+<p>overlay2</p>
+</blockquote>
+<p>Which of the following commands may result in the creation of a new named volume?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -v my-vol:/tmp nginx
+</code></pre></div><p>This command will create a new volume called <code>my-vol</code> if one does not already exist under that name.</p>
+<p>Which of the following commands will allow us to mount the <code>/my/path</code> directory on the host to a container?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -v /my/path:/tmp nginx
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run --mount <span class="nv">source</span><span class="o">=</span>/my/path,destination<span class="o">=</span>/tmp nginx
+</code></pre></div><p>Which of the following statements about the <code>overlay</code> network driver is accurate?</p>
+<blockquote>
+<p>The <code>overlay</code> network driver dynamically creates networking components on the node when a relevant task gets scheduled on that node.</p>
+</blockquote>
+<p>Which of the following tasks can we perform to set a custom DNS server for a container?</p>
+<blockquote>
+<p>We can use the <code>--dns</code> flag with <code>docker run</code>.</p>
+</blockquote>
+<p>Which of the following commands will create a new bridge network?</p>
+<blockquote>
+<p><code>docker network create my-network</code> Since the bridge is the default, a new bridge network will generate even when <code>--driver</code> is not specified.</p>
+</blockquote>
+<p>Which of the following statements about Docker Content Trust (DCT) is accurate?</p>
+<blockquote>
+<p>When Docker Content Trust is enabled, unsigned images will not be allowed to run on the system.</p>
+</blockquote>
+<p>Which command allows us to create an encrypted overlay network?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker network create --opt encrypted --driver overlay my-net
+</code></pre></div><p>Which of the following is a secure method for allowing a Docker client to authenticate with a registry that uses a self-signed certificate?</p>
+<blockquote>
+<p>We add the self-signed certificate as a trusted registry certificate under <code>/etc/docker/certs.d/</code></p>
+</blockquote>
+<p>N/B</p>
+<blockquote>
+<p>The <strong>Docker daemon</strong> must run as root, so it is essential to ensure that it&rsquo;s being protected and has limited access to it.</p>
+</blockquote>
+<p>We can set <code>dns</code> in <code>/etc/docker/daemon.json</code> ; valid method that we can use for setting the default DNS server for all containers on a host</p>
+<p>When creating a container, how would we specify that the container should be attached to an existing network called <code>my-network</code>?</p>
+<blockquote>
+<p>We can use <code>docker run --network my-network nginx</code></p>
+</blockquote>
+<p>When creating an <code>overlay</code> network, what flag can we use to allow containers to attach to the network after it is created?</p>
+<blockquote>
+<p><code>--attachable</code></p>
+</blockquote>
+<p>View container logs</p>
+<blockquote>
+<p>docker logs <!-- raw HTML omitted --></p>
+</blockquote>
+<p>Which component of the Docker Container Networking Model (CNM) is responsible for allocating IP addresses within Docker networks?</p>
+<blockquote>
+<p>The <em>IP Address Management</em> (IPAM) Driver is responsible</p>
+</blockquote>
+<p>The <code>none</code> driver</p>
+<blockquote>
+<p>The <em>none</em> driver implements sandboxes.</p>
+</blockquote>
+<p>Which of the following commands will publish a service&rsquo;s port, but only on nodes that are running a task for that service?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service create -p <span class="nv">mode</span><span class="o">=</span>host,published<span class="o">=</span>8082,target<span class="o">=</span><span class="m">80</span> nginx
+</code></pre></div><p>How would we create a volume called <code>new-volume</code> without running a container?</p>
+<blockquote>
+<p>We would run <code>docker volume create new-volume</code></p>
+</blockquote>
+<p>Which of the following commands would we use to locate the data for a volume on the host?</p>
+<blockquote>
+<p>docker volume inspect <!-- raw HTML omitted --></p>
+</blockquote>
+<p>Which storage driver is the default for CentOS 7 and earlier?</p>
+<blockquote>
+<p><code>devicemapper</code></p>
+</blockquote>
+<p>This command will return the container metadata, including the location of its data on the host.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker container inspect &lt;container&gt;
+</code></pre></div><p>What volume driver allows you to create and access external storage that can be shared across a Docker Swarm cluster using SSH?</p>
+<blockquote>
+<p><code>vieux/sshfs</code> This is a custom driver that uses SSH to access remote storage from any node in the cluster.</p>
+</blockquote>
+<p>What command would we use to list the services that are part of a stack called <code>web-store</code>?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker stack services web-store
+</code></pre></div><p>Which of the following commands will allow us to add a label to a Docker Swarm node?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker node update --label-add &lt;label&gt; &lt;node name&gt;
+</code></pre></div><p>Which of the following commands would successfully change the number of replicas to 5 in a service called my-service?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service update --replicas <span class="m">5</span> my-service
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker service scale my-service<span class="o">=</span><span class="m">5</span>
+</code></pre></div><p>Daniel has some nodes with labels that specify the availability zone of each node. He wants to run a service that can run tasks on any node and that do not have the label availability_zone=east. Which command should he use?</p>
+<p><code>docker service create --constraint node.labels.availability_zone!=east nginx</code></p>
+<blockquote>
+<p><code>docker swarm unlock-key</code> command</p>
+</blockquote>
+<p>Which of the following best describes the procedure for backing up the Universal Control Plane (UCP) metadata?</p>
+<blockquote>
+<p>Run a container from the <code>ucp</code> image with the <code>backup</code> command</p>
+</blockquote>
+<p>What Linux feature does Docker use in order to limit memory usage for containers?</p>
+<blockquote>
+<p>Control groups (<code>cgroups</code>)</p>
+</blockquote>
+<p>How would we back up Docker Swarm?</p>
+<blockquote>
+<p>Back up the contents of <code>/var/lib/docker/swarm</code> on a Swarm manager.</p>
+</blockquote>
+<p>How would we create a new swarm cluster?</p>
+<blockquote>
+<p>Run <code>docker swarm init</code></p>
+</blockquote>
+<p>What does the <strong>HEALTHCHECK</strong> directive do?</p>
+<blockquote>
+<p>It sets a command that will be used by the Docker daemon to determine whether the container is healthy.</p>
+</blockquote>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Installing Virtualbox Guest Additions Centos8</title>
+			<link>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</link>
+			<pubDate>Thu, 17 Oct 2019 12:35:18 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/installing-virtualbox-guest-additions-centos8/</guid>
+			<description>From tecmint ; VirtualBox Guest Additions are a collection of device drivers and system applications designed to achieve closer integration between the host and guest operating systems. They help to enhance the overall interactive performance and usability of guest systems.
+The VirtualBox Guest Additions offer the following features:
+ Easy mouse pointer integration. Easy way to share folders between the host and the guest. Drag and drop feature allows copying or opening files, copy clipboard formats from the host to the guest or from the guest to the host.</description>
+			<content type="html"><![CDATA[<p>From <a href="https://www.tecmint.com/install-virtualbox-guest-additions-in-ubuntu/">tecmint</a> ; VirtualBox Guest Additions
+are a collection of device drivers and system applications designed to achieve closer integration between the host
+and guest operating systems. They help to enhance the overall interactive performance and usability of guest systems.</p>
+<p>The VirtualBox Guest Additions offer the following features:</p>
+<ul>
+<li>Easy mouse pointer integration.</li>
+<li>Easy way to share folders between the host and the guest.</li>
+<li>Drag and drop feature allows copying or opening files, copy clipboard formats from the host to the guest or from the guest to the host.</li>
+<li>Share clipboard (for copy and paste) of the guest operating system with your host operating system.</li>
+<li>Better video support provides accelerated video performance.</li>
+<li>Better Time synchronization between guest and host.</li>
+<li>Standard host/guest communication channels.</li>
+</ul>
+<h3 id="installing-guest-additions-on-centos-8">Installing Guest Additions on CentOs 8</h3>
+<p>CentOS is a Linux distribution that provides a free, community-supported computing platform functionally compatible with its upstream source, Red Hat Enterprise Linux.</p>
+<h4 id="install-build-depencies">Install build depencies</h4>
+<h5 id="step1-change-to-root-user">Step1: Change to root user</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo -i
+or
+su -
+</code></pre></div><h4 id="step2-make-sure-you-are-using-the-latest-kernel">Step2: Make sure you are using the latest kernel</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># yum update</span>
+</code></pre></div><p>**Reboot</p>
+<h4 id="step3-install-packages-necessary-for-build">Step3: Install Packages necessary for build</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># yum install gcc make kernel-devel kernel-headers elfutils-libelf-devel bzip2 perl</span>
+</code></pre></div><h4 id="step4-mount-guest-additons-iso">Step4: Mount guest additons iso</h4>
+<h4 id="step5-install-guest-additions">Step5: Install guest additions</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># cd /media/VirtualBoxGuestAdditions</span>
+</code></pre></div><p>Then run</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ./VBoxLinuxAdditions.run</span>
+</code></pre></div><h4 id="step6-reboot-guest-system">Step6: Reboot guest system</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># reboot now</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Google Stackdriver Monitoring</title>
+			<link>https://dominicmotuka.com/posts/google-stackdriver-monitoring/</link>
+			<pubDate>Fri, 11 Oct 2019 12:01:37 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/google-stackdriver-monitoring/</guid>
+			<description>Stackdriver Monitoring provides visibility into the performance, uptime, and overall health of cloud-powered applications.
+Stackdriver collects metrics, events, and metadata from:
+ Google Cloud Platform Amazon Web Services Hosted uptime probes Application instrumentation Common application components including Cassandra, Nginx, Apache Web Server, Elasticsearch e.t.c  Stackdriver ingests that data and generates insights via:
+ Dashboards Charts And alerts.  Stackdriver alerting helps you collaborate by integrating with Slack, PagerDuty, HipChat, Campfire, and more.</description>
+			<content type="html"><![CDATA[<p>Stackdriver Monitoring provides visibility into the <em>performance</em>, <em>uptime</em>, and <em>overall health</em> of cloud-powered applications.</p>
+<p>Stackdriver collects metrics, events, and metadata from:</p>
+<ul>
+<li>Google Cloud Platform</li>
+<li>Amazon Web Services</li>
+<li>Hosted uptime probes</li>
+<li>Application instrumentation</li>
+<li>Common application components including <em>Cassandra</em>, <em>Nginx</em>, <em>Apache Web Server</em>, <em>Elasticsearch</em> e.t.c</li>
+</ul>
+<p>Stackdriver ingests that data and generates insights via:</p>
+<ul>
+<li>Dashboards</li>
+<li>Charts</li>
+<li>And alerts.</li>
+</ul>
+<p>Stackdriver alerting helps you collaborate by integrating with <em>Slack</em>, <em>PagerDuty</em>, <em>HipChat</em>, <em>Campfire</em>, and more.</p>
+<p>To use Stackdriver, your project must be in a Stackdriver account.</p>
+<p>Install Stackdriver monitoring agent and Stackdriver logging agent for your instance.</p>
+<p>Uptime checks verify that a resource is always accessible. Uptime checks let you quickly verify the health of any web page,
+instance, or group of resources. Each configured check is regularly contacted from a variety of locations around the world.
+Uptime checks can be used as conditions in alerting policy definitions.</p>
+<p>Alerting gives timely awareness to problems in your cloud applications so you can resolve the problems quickly. To create an alerting policy, you must describe the circumstances under which you want to be alerted and how you want to be notified.</p>
+<h3 id="about-stackdriver-groups">About Stackdriver Groups</h3>
+<p>Stackdriver lets you define and monitor groups of resources, such as VM instances, databases, and load balancers.
+Groups can be based on names, tags, regions, applications, and other criteria. You can also create subgroups, up to
+six levels deep, within groups.</p>
+<h3 id="incidents">Incidents</h3>
+<p>When the alerting policy conditions are violated, an &ldquo;incident&rsquo; is created and displayed in the Incident section.</p>
+<p>Responders can acknowledge receipt of the notification and can close the incident when it has been taken care of.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Commonly Used Potgres Commands</title>
+			<link>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</link>
+			<pubDate>Wed, 25 Sep 2019 11:23:09 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/commonly-used-potgres-commands/</guid>
+			<description>What is psql psql is the interactive terminal for administering postgre. The most important flags available are:
+ h the host to connect to U the user to connect with p the port to connect to (default is 5432)   psql -h localhost -U username databasename
+ The other option is to use a string and let psql parse it:
+ psql &amp;ldquo;dbname=dbhere host=hosthere user=userhere password=pwhere port=5432 sslmode=require&amp;rdquo;
+ Once connected, you can use \?</description>
+			<content type="html"><![CDATA[<h2 id="what-is-psql">What is psql</h2>
+<p><code>psql</code> is the interactive terminal for administering postgre. The most important flags available are:</p>
+<ul>
+<li><code>h</code> the host to connect to</li>
+<li><code>U</code> the user to connect with</li>
+<li><code>p</code> the port to connect to (default is 5432)</li>
+</ul>
+<blockquote>
+<p>psql -h localhost -U username databasename</p>
+</blockquote>
+<p>The other option is to use a string and let psql parse it:</p>
+<blockquote>
+<p>psql &ldquo;dbname=dbhere host=hosthere user=userhere password=pwhere port=5432 sslmode=require&rdquo;</p>
+</blockquote>
+<p>Once connected, you can use <code>\?</code> which will give you a list of available commands.</p>
+<h3 id="meta-commands">Meta-commands</h3>
+<p>Meta-commands are commands that are evaluated by psql and often translated into SQL that is issued against the system tables on the server, saving administrators time when performing routine tasks. Denoted by a backslash <code>\</code></p>
+<h3 id="turn-query-timing-on">Turn query timing on</h3>
+<p>By default the timing of query results will not be available, but we can turn it on by using the following command. This will show query timining in millisecnds.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \timing</span>
+Timing is on.
+</code></pre></div><h3 id="list-tables-in-database">List tables in database</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \d</span>
+      List of relations
+ Schema <span class="p">|</span>   Name    <span class="p">|</span> Type  <span class="p">|</span> Owner
+--------+-----------+-------+-------
+ public <span class="p">|</span> employees <span class="p">|</span> table <span class="p">|</span> craig
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span>
+</code></pre></div><h3 id="describe-a-table">Describe a table</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \d employees</span> 
+           Table <span class="s2">&#34;public.employees&#34;</span>
+  Column   <span class="p">|</span>         Type          <span class="p">|</span> Modifiers 
+-----------+-----------------------+-----------
+ id        <span class="p">|</span> integer               <span class="p">|</span>
+ last_name <span class="p">|</span> character varying<span class="o">(</span>50<span class="o">)</span> <span class="p">|</span>
+ salary    <span class="p">|</span> integer               <span class="p">|</span>
+Indexes:
+    <span class="s2">&#34;idx_emps&#34;</span> btree <span class="o">(</span>salary<span class="o">)</span>
+</code></pre></div><h3 id="list-all-tables-in-database-along-with-some-additional-information">List all tables in database along with some additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \d+</span>
+       List of relations
+Schema <span class="p">|</span> Name  <span class="p">|</span> Type  <span class="p">|</span>   Owner   <span class="p">|</span>  Size  <span class="p">|</span> Description
+-------+-------+-------+-----------+--------+-------------
+public <span class="p">|</span> users <span class="p">|</span> table <span class="p">|</span> jarvis    <span class="p">|</span> <span class="m">401</span> MB <span class="p">|</span>
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span>
+</code></pre></div><h3 id="describe-a-table-with-additional-information">Describe a table with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\d+ users</span>
+          Table <span class="s2">&#34;public.users&#34;</span>
+  Column   <span class="p">|</span>  Type   <span class="p">|</span>   Modifiers   <span class="p">|</span> Storage  <span class="p">|</span> Stats target <span class="p">|</span> Description
+-----------+---------+---------------+----------+--------------+-------------
+userid     <span class="p">|</span> bigint  <span class="p">|</span> not null      <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+fullname   <span class="p">|</span> text    <span class="p">|</span> not null      <span class="p">|</span> extended <span class="p">|</span>              <span class="p">|</span>
+email      <span class="p">|</span> text    <span class="p">|</span> not null      <span class="p">|</span> extended <span class="p">|</span>              <span class="p">|</span>
+phone      <span class="p">|</span> text    <span class="p">|</span> not null      <span class="p">|</span> extended <span class="p">|</span>              <span class="p">|</span>
+credits    <span class="p">|</span> money   <span class="p">|</span> default 0.0   <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+parked     <span class="p">|</span> boolean <span class="p">|</span> default <span class="nb">false</span> <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+terminated <span class="p">|</span> boolean <span class="p">|</span> default <span class="nb">false</span> <span class="p">|</span> plain    <span class="p">|</span>              <span class="p">|</span>
+
+Indexes:
+    <span class="s2">&#34;users_pkey&#34;</span> PRIMARY KEY, btree <span class="o">(</span>userid<span class="o">)</span>
+</code></pre></div><h3 id="list-all-databases">List all databases</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \l</span>
+          List of databases
+Name     <span class="p">|</span>   Owner   <span class="p">|</span> Encoding <span class="p">|</span> Collate <span class="p">|</span> Ctype <span class="p">|</span>      Access privileges
+---------+-----------+----------+---------+-------+-----------------------------
+learning <span class="p">|</span> jarvis    <span class="p">|</span> UTF8     <span class="p">|</span> C       <span class="p">|</span> UTF-8 <span class="p">|</span>
+</code></pre></div><h3 id="list-all-databases-with-additional-information">List all databases with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \l+</span>
+          List of databases
+  Name    <span class="p">|</span>   Owner   <span class="p">|</span> Encoding <span class="p">|</span> Collate <span class="p">|</span> Ctype <span class="p">|</span>      Access privileges      <span class="p">|</span>  Size   <span class="p">|</span> Tablespace <span class="p">|</span>                Description
+----------+-----------+----------+---------+-------+-----------------------------+---------+------------+--------------------------------------------
+learning  <span class="p">|</span> jarvis    <span class="p">|</span> UTF8     <span class="p">|</span> C       <span class="p">|</span> UTF-8 <span class="p">|</span>                             <span class="p">|</span> <span class="m">492</span> MB  <span class="p">|</span> pg_default <span class="p">|</span>
+</code></pre></div><h3 id="list-all-schemas">List all schemas</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \dn</span>
+List of schemas
+ Name  <span class="p">|</span> Owner
+-------+--------
+public <span class="p">|</span> jarvis
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span>
+</code></pre></div><h3 id="list-all-schemas-with-additional-information">List all schemas with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># \dn+</span>
+List of schemas
+Name   <span class="p">|</span> Owner  <span class="p">|</span> Access privileges <span class="p">|</span>      Description
+-------+--------+-------------------+------------------------
+public <span class="p">|</span> jarvis <span class="p">|</span> <span class="nv">jarvis</span><span class="o">=</span>UC/jarvis +<span class="p">|</span> standard public schema
+       <span class="p">|</span>        <span class="p">|</span> <span class="o">=</span>UC/jarvis        <span class="p">|</span>
+<span class="o">(</span><span class="m">1</span> row<span class="o">)</span>
+</code></pre></div><h3 id="list-all-functions">List all functions</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\df</span>
+</code></pre></div><h3 id="list-all-functions-with-additional-information">List all functions with additional information</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\df+</span>
+</code></pre></div><h3 id="connect-to-another-database">Connect to another database</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\c dbname</span>
+</code></pre></div><h3 id="quit-from-postgres-shell">Quit from postgres shell</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\q</span>
+</code></pre></div><h3 id="text-editor-inside-psql">Text editor inside psql</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#\e</span>
+</code></pre></div><p>This opens your default text editor inside psql shell.Pretty handy for query modifications.</p>
+<p>The commands can be given a regex for eg. \df <em>to_array</em> lists all functions that contain to_array in its name.</p>
+<p>Of course there are lot many other commands, as said above <code>\?</code> will list all of them, and from there we can pick up whatever we want.</p>
+<h4 id="conclusion">Conclusion</h4>
+<p>Psql is a powerful tool once we master it, and since it is command line, we can use it across environments.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Dotnet(.NET) CI CD With CircleCI</title>
+			<link>https://dominicmotuka.com/posts/dotnet-ci-cd-with-circleci/</link>
+			<pubDate>Tue, 24 Sep 2019 17:30:53 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/dotnet-ci-cd-with-circleci/</guid>
+			<description>What is .NET sdk .NET Core SDK consists of two parts: the .NET Core runtime and the .NET CLI. The runtime allows you to run .NET Core applications, whereas the CLI tools are a command-line interface that allows you to develop .NET Core applications.
+In this blog post, we will build a small .NET Core console application, then, we will use CircleCi to show how continuous Integrations can be setup.</description>
+			<content type="html"><![CDATA[<h2 id="what-is-net-sdk">What is .NET sdk</h2>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/core/sdk">.NET Core SDK</a> consists of two parts: the <em>.NET Core runtime</em> and the <em>.NET CLI</em>. The runtime allows you to run .NET Core applications, whereas the CLI tools are a command-line interface that allows you to develop .NET Core applications.</p>
+<p>In this blog post, we will build a small <strong>.NET Core console</strong> application, then, we will use <a href="https://circleci.com">CircleCi</a> to show how continuous Integrations can be setup.</p>
+<h3 id="step-1">Step 1</h3>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download">Download</a> and install the .NET Core SDK.</li>
+<li>You should see .NET CLI’s version number when running:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ dotnet --version
+3.0.100
+</code></pre></div><ul>
+<li>For demonstration purposes we will use the <a href="https://github.com/daumie/dotnet-cli.git">dotnet-cli</a> application hosted on Github. Feel free to clone and make changes as desired.</li>
+</ul>
+<p>dotnet-cli&rsquo;s directory structure</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">.
+├── Program.cs
+├── README.md
+├── dotnet-cli.csproj
+
+3 files
+</code></pre></div><p><code>Program.cs</code>: the C# source file for our application.</p>
+<p><code>dotnetcore-ci.csproj</code>: a C# project for our application.</p>
+<p>These are the main files  .NET CLI needs to build and run our application.</p>
+<ul>
+<li>Resolve the applications dependencies with:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dotnet restore
+</code></pre></div><ul>
+<li>Next, we can build our application with:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dotnet build
+</code></pre></div><p>The above command will build the application and  output some diagnostic information i.e</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Microsoft <span class="o">(</span>R<span class="o">)</span> Build Engine version 16.3.0+0f4c62fea <span class="k">for</span> .NET Core
+Copyright <span class="o">(</span>C<span class="o">)</span> Microsoft Corporation. All rights reserved.
+
+  Restore completed in 275.89 ms <span class="k">for</span> /Users/dominic/workspace/personal/dotnet-cli/dotnet-cli.csproj.
+  dotnet-cli -&gt; /Users/dominic/workspace/personal/dotnet-cli/bin/Debug/netcoreapp2.2/dotnet-cli.dll
+
+Build succeeded.
+    <span class="m">0</span> Warning<span class="o">(</span>s<span class="o">)</span>
+    <span class="m">0</span> Error<span class="o">(</span>s<span class="o">)</span>
+
+Time Elapsed 00:00:02.40
+</code></pre></div><ul>
+<li>Let&rsquo;s now run the application with:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">$ dotnet run
+  _   _      _ _         __        __         _     _ _
+ | | | | ___| | | ___    \ \      / /__  _ __| | __| | |
+ | |_| |/ _ \ | |/ _ \    \ \ /\ / / _ \| &#39;__| |/ _` | |
+ |  _  |  __/ | | (_) |    \ V  V / (_) | |  | | (_| |_|
+ |_| |_|\___|_|_|\___( )    \_/\_/ \___/|_|  |_|\__,_(_)
+                     |/
+</code></pre></div><h3 id="adding-cicd-using-circleci">Adding CI/CD using CircleCI</h3>
+<p>Add <code>.circleci</code> config to the application&rsquo;s root directory by creating a directory <em>.circleci</em> and add a <em>config.yml</em> file inside.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir .circleci
+touch .circleci/config.yml
+</code></pre></div><p>Add the following content to the <em>config.yml</em> file</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w"></span><span class="k">jobs</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">build</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">working_directory</span><span class="p">:</span><span class="w"> </span>/temp<span class="w">
+</span><span class="w">    </span><span class="k">docker</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="k">image</span><span class="p">:</span><span class="w"> </span>microsoft/dotnet<span class="p">:</span>sdk<span class="w">
+</span><span class="w">    </span><span class="k">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">DOTNET_SKIP_FIRST_TIME_EXPERIENCE</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">      </span><span class="k">DOTNET_CLI_TELEMETRY_OPTOUT</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="k">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- checkout<span class="w">
+</span><span class="w">      </span>- <span class="k">run</span><span class="p">:</span><span class="w"> </span>dotnet<span class="w"> </span>restore<span class="w">
+</span><span class="w">      </span>- <span class="k">run</span><span class="p">:</span><span class="w"> </span>dotnet<span class="w"> </span>build<span class="w">
+</span><span class="w">      </span>- <span class="k">run</span><span class="p">:</span><span class="w"> </span>dotnet<span class="w"> </span>run<span class="w">
+</span></code></pre></div><p>In the first line, we specify that we want to use version 2 of CircleCI, which is currently in beta. With version 2, builds are based on Docker images. That allows us to use the official .NET Core SDK Docker image to build our application.</p>
+<p>Once again, we also set the .NET CLI environment variables.</p>
+<p>Finally, we specify the steps to execute. First, we checkout our repository and then we run <code>dotnet restore</code> followed by <code>dotnet build</code> then <code>dotnet run</code></p>
+<p>The output of the last command will be similar to what we had locally.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Using CircleCI for continuous integration with .NET applications is straightforward.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>MongoDump and MongoRestore MongoDB Database</title>
+			<link>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</link>
+			<pubDate>Thu, 29 Aug 2019 20:49:18 +0300</pubDate>
+			
+			<guid>https://dominicmotuka.com/posts/mongodump-and-mongorestore-mongodb-database/</guid>
+			<description>How to Dump MongoDB Ddatabase from a container What is mongodump mongodump is a utility for creating a binary export of the contents of a database. mongodump can export data from either mongod or mongos instances.
+Run mongodump from the system command line, not the mongo shell.
+How to connect to a MongoDB instance  Local MongoDB instance running on port 27017 using the default settings  mongodump   By specifying a host and/or port of the MongoDB instance</description>
+			<content type="html"><![CDATA[<h3 id="how-to-dump-mongodb-ddatabase-from-a-container">How to Dump MongoDB Ddatabase from a container</h3>
+<h4 id="what-is-mongodumphttpsdocsmongodbcommanualreferenceprogrammongodumpbinmongodump">What is <a href="https://docs.mongodb.com/manual/reference/program/mongodump/#bin.mongodump">mongodump</a></h4>
+<p><strong>mongodump</strong> is a utility for creating a binary export of the contents of a database. mongodump can export data from either <em>mongod</em> or <em>mongos</em> instances.</p>
+<p>Run <em>mongodump</em> from the system command line, not the <em>mongo</em> shell.</p>
+<h4 id="how-to-connect-to-a-mongodb-instance">How to connect to a MongoDB instance</h4>
+<ul>
+<li>Local MongoDB instance running on port <code>27017</code> using the default settings</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump
+</code></pre></div><ul>
+<li>
+<p>By specifying a host and/or port of the MongoDB instance</p>
+<ul>
+<li><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-uri">&ndash;uri connection string</a></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump --uri <span class="s2">&#34;mongodb://mongodb0.example.com:27017&#34;</span> <span class="o">[</span>additional options<span class="o">]</span>
+</code></pre></div><ul>
+<li><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-host">&ndash;host</a></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump --host <span class="s2">&#34;mongodb0.example.com:27017&#34;</span>  <span class="o">[</span>additional options<span class="o">]</span>
+</code></pre></div><ul>
+<li>Specify the hostname and port in the <a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-host">&ndash;host</a> and <a href="https://docs.mongodb.com/manual/reference/program/mongodump/#cmdoption-mongodump-port">&ndash;port</a></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump --host <span class="s2">&#34;mongodb0.example.com&#34;</span> --port <span class="m">27017</span> <span class="o">[</span>additional options<span class="o">]</span>
+</code></pre></div></li>
+</ul>
+<h4 id="you-can-also-check">You can also check</h4>
+<ul>
+<li>
+<p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#connect-to-a-replica-set">Connect to a Replica Set</a></p>
+</li>
+<li>
+<p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#connect-to-a-sharded-cluster">Connect to a Sharded Cluster</a></p>
+</li>
+</ul>
+<h3 id="how-to-restore-mongodb-database-from-a-container">How to restore MongoDB Database from a container</h3>
+<p>Say you are using <code>docker-compose</code> to link/connect mongo with API and you need to backup your database. You will need to first of all stop your API before proceeding i.e if using docker:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker stop api-app
+</code></pre></div><p>When backups it&rsquo;s important to <a href="https://askubuntu.com/questions/225865/copy-files-without-losing-file-folder-permissions">save file and directory permissions.</a>.</p>
+<ul>
+<li>
+<p>On source computer</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path/to/folder/to/copy
+tar cvpzf put_your_name_here.tar.gz .
+</code></pre></div></li>
+<li>
+<p>On destination computer</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path/to/destination/folder
+tar xpvzf put_your_name_here.tar.gz
+</code></pre></div></li>
+</ul>
+<p><code>tar</code>  will recreate the archived folder structure with all permissions intact</p>
+<p>Check from your Dockerfile or docker-compose.yml  the name of MongoDB container.</p>
+<ol>
+<li>List docker containers</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker ps -a
+</code></pre></div><ol start="2">
+<li>Enter inside mongo container</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it mongodb /bin/bash
+<span class="c1"># mongodb is the containers name</span>
+</code></pre></div><ol start="3">
+<li>Go to root <code>/</code> directory and backup database to files inside container to directory <code>/dump</code></li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongodump -o /dump/
+</code></pre></div><ol start="4">
+<li>Exit from inside of container and Copy backup directory <code>/dump</code> from inside of container to current directory</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker cp mongodb:/dump .
+<span class="c1"># mongodb is the containers name</span>
+</code></pre></div><ol start="5">
+<li>Restore backup later (restore from /data/dump) &ndash; inside container</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker cp dump mongodb:/data/
+
+<span class="c1"># /data/ is a directory inside the container</span>
+
+$ docker <span class="nb">exec</span> -it mongodb /bin/bash
+$ <span class="nb">cd</span> /data
+$ mongorestore --drop --noIndexRestore --db &lt;database_name&gt; /data/dump/&lt;database_name&gt;/
+$ <span class="nb">exit</span>
+
+<span class="c1"># That db_name can be for example &#34;cities&#34;</span>
+
+$ mongorestore --drop --noIndexRestore --db cities /data/dump/cities/
+</code></pre></div><ul>
+<li>
+<p>Restore to another mongo database, in different port.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mongorestore --port &lt;port_no&gt;
+</code></pre></div></li>
+</ul>
+<h4 id="useful-backup-and-restore-scripts">Useful Backup and restore scripts</h4>
+<h5 id="backup-script">Backup Script</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date +%Y-%m-%d-%H-%M<span class="k">)</span>
+<span class="nv">SCRIPTPATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span>dirname <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2">&#34;</span> <span class="p">;</span> <span class="nb">pwd</span> -P <span class="k">)</span><span class="s2">&#34;</span>
+<span class="nb">cd</span> <span class="nv">$SCRIPTPATH</span>
+mkdir -p backups/<span class="nv">$DATE</span>
+docker ps -a <span class="p">|</span> grep <span class="s1">&#39;mongodb&#39;</span> <span class="p">&amp;</span>&gt; /dev/null
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">=</span> <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  docker <span class="nb">exec</span> -t mongodb bash -c <span class="s2">&#34;rm -fr /dump ; mkdir /dump ; mongodump -o /dump/&#34;</span>
+  docker cp mongodb:/dump <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>
+  tar -zc -f backups/<span class="nv">$DATE</span>.tgz -C <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span> wekan
+  <span class="k">if</span> <span class="o">[</span> -f backups/<span class="nv">$DATE</span>.tgz <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    rm -fr backups/<span class="nv">$DATE</span>
+    find <span class="nv">$SCRIPTPATH</span>/backups/ -name <span class="s2">&#34;*.tgz&#34;</span> -mtime +7 -delete
+  <span class="k">fi</span> 
+<span class="k">else</span>
+  <span class="nb">echo</span> <span class="s2">&#34;mongodb container is not running&#34;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+</code></pre></div><h5 id="restore-script">Restore Script</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">0</span> <span class="o">]</span>
+  <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Supply a path to a tgz file!&#34;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">SCRIPTPATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span>dirname <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2">&#34;</span> <span class="p">;</span> <span class="nb">pwd</span> -P <span class="k">)</span><span class="s2">&#34;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date +%Y-%m-%d-%H-%M<span class="k">)</span>
+
+docker ps -a <span class="p">|</span> grep <span class="s1">&#39;mongodb&#39;</span> <span class="p">&amp;</span>&gt; /dev/null
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">=</span> <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+
+  <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    mkdir -p <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>-restore
+    tar -zx -f <span class="nv">$1</span> -C <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>-restore
+    docker <span class="nb">exec</span> -t mongodb bash -c <span class="s2">&#34;rm -fr /restore ; mkdir /restore&#34;</span>
+    docker cp <span class="nv">$SCRIPTPATH</span>/backups/<span class="nv">$DATE</span>-restore/wekan mongodb:/restore
+    docker <span class="nb">exec</span> -t mongodb bash -c <span class="s2">&#34;mongorestore --drop --noIndexRestore --db wekan /restore/wekan/&#34;</span>
+  <span class="k">fi</span>
+<span class="k">else</span>
+  <span class="nb">echo</span> <span class="s2">&#34;mongodb container is not running&#34;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+</code></pre></div><h3 id="some-other-cool-tips-on-this-topic">Some other cool tips on this topic</h3>
+<p>The trick is to disable pseudo-tty allocation. Otherwise extra characters are added to the backup file. They prevent mongorestore from working properly.</p>
+<ul>
+<li>Using <code>docker</code></li>
+</ul>
+<p>With docker, pseudo-tty allocation is deactivated by default, but the <code>-i</code> (interactive) option is required with the restore command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> &lt;mongodb container&gt; sh -c <span class="s1">&#39;mongodump --archive&#39;</span> &gt; db.dump
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -i &lt;mongodb container&gt; sh -c <span class="s1">&#39;mongorestore --archive&#39;</span> &lt; db.dump
+</code></pre></div><ul>
+<li>using <code>docker-compose</code></li>
+</ul>
+<p>With docker-compose, pseudo-tty allocation needs to be deactivated explicitly each time with <code>-T</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose <span class="nb">exec</span> -T &lt;mongodb service&gt; sh -c <span class="s1">&#39;mongodump --archive&#39;</span> &gt; db.dump
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose <span class="nb">exec</span> -T &lt;mongodb service&gt; sh -c <span class="s1">&#39;mongorestore --archive&#39;</span> &lt; db.dump
+</code></pre></div><h4 id="references">References</h4>
+<ul>
+<li>
+<p><a href="https://docs.mongodb.com/manual/reference/program/mongodump/#bin.mongodump">mongodb</a></p>
+</li>
+<li>
+<p><a href="https://github.com/wekan/wekan/wiki/Export-Docker-Mongo-Data">Export Docker Mongo Data</a></p>
+</li>
+<li>
+<p><a href="https://jeromejaglale.com/doc/programming/mongodb_docker_mongodump_mongorestore">mongodump and mongorestore with Docker</a></p>
+</li>
+</ul>
+]]></content>
+		</item>
 		
 		<item>
 			<title>How to Docker Machine</title>
@@ -18,49 +665,33 @@
 			<description>What is Docker? Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &amp;ndash; a container is basically a lightweight virtual machine.
 Where does docker machine come in? When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.
 Since Docker isn&amp;rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such.</description>
-			<content type="html"><![CDATA[
-
-<h3 id="what-is-docker">What is Docker?</h3>
-
+			<content type="html"><![CDATA[<h3 id="what-is-docker">What is Docker?</h3>
 <p>Docker is the command-line tool that uses containerization to manage multiple images and containers and volumes and such &ndash; a container is basically a lightweight virtual machine.</p>
-
 <h3 id="where-does-docker-machine-come-in">Where does docker machine come in?</h3>
-
 <p>When using a containerized application, it’s important to be able to easily deploy them in the cloud. Docker-Machine is a tool that lets you install Docker Engine on Virtual Hosts.</p>
-
 <p>Since Docker isn&rsquo;t running on your actual host OS, docker-machine needs to deal with IP addresses and ports and volumes and such. And its settings are saved in environment variables, which means you have to run commands like this every time you open a new shell:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env default<span class="k">)</span>
-docker-machine ip default</code></pre></div>
-<h3 id="what-are-some-of-the-benefits-of-using-docker-machine">What are some of the benefits of using docker machine?</h3>
-
+docker-machine ip default
+</code></pre></div><h3 id="what-are-some-of-the-benefits-of-using-docker-machine">What are some of the benefits of using docker machine?</h3>
 <p>For instance, you can easily have a development, staging and production environment accessible from your own machine and update them accordingly.</p>
-
 <h3 id="how-does-docker-work">How does docker work?</h3>
-
 <p>Docker has a client server-architecture, in which the Client sends the command to the Docker Host, which runs the Docker Daemon. Both the Client and the Docker Host can be in the same machine, or the Client can communicate with any of the Docker Hosts running anywhere, as long as it can reach and access the Docker Daemon.</p>
-
 <p>The Docker Client and the Docker Daemon communicate over REST APIs, even on the same system. One tool that can help you manage Docker Daemons running on different systems from our local workstation is Docker Machine.</p>
-
 <p>Docker-machine sets up Docker hosts on any supported system via <a href="https://docs.docker.com/machine/drivers/">provider drivers</a>.</p>
-
-<h3 id="deploying-containers-to-a-remote-host-using-docker-machine-we-ll-be-using-aws-in-this-example">Deploying Containers to a remote host using docker-machine. ( we&rsquo;ll be using AWS in this example)</h3>
-
+<h3 id="deploying-containers-to-a-remote-host-using-docker-machine--well-be-using-aws-in-this-example">Deploying Containers to a remote host using docker-machine. ( we&rsquo;ll be using AWS in this example)</h3>
 <p><a href="https://searchaws.techtarget.com/tip/Manually-spin-up-an-EC2-server-instance-in-7-steps">Spin up an EC2 instance</a> ( Bare metal with virtualization enabled )</p>
-
 <blockquote>
 <p>When using an already existing instance, you can spin up a container in the machine with:</p>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  docker-machine create --driver generic <span class="se">\
-</span><span class="se"></span>    --generic-ip-address <span class="s2">&#34;&lt;publicIP_of_instance&gt;&#34;</span> <span class="se">\
-</span><span class="se"></span>    --generic-ssh-user <span class="s2">&#34;ubuntu&#34;</span> <span class="se">\
-</span><span class="se"></span>    --generic-ssh-key ~/.ssh/id_rsa <span class="se">\
-</span><span class="se"></span>    hello-world</code></pre></div>
-<p>Note the following details: You can refer to the official <a href="https://docs.docker.com/machine/drivers/aws/">aws driver documentation</a></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver generic <span class="se">\
+</span><span class="se"></span>  --generic-ip-address <span class="s2">&#34;&lt;publicIP_of_instance&gt;&#34;</span> <span class="se">\
+</span><span class="se"></span>  --generic-ssh-user <span class="s2">&#34;ubuntu&#34;</span> <span class="se">\
+</span><span class="se"></span>  --generic-ssh-key ~/.ssh/id_rsa <span class="se">\
+</span><span class="se"></span>  hello-world
+</code></pre></div><p>Note the following details: You can refer to the official <a href="https://docs.docker.com/machine/drivers/aws/">aws driver documentation</a></p>
 <blockquote>
 <p>You can spin up an instance at the same time creating docker containers inside the instance.</p>
 </blockquote>
-
 <ul>
 <li>AWS_ACCESS_KEY_ID</li>
 <li>AWS_SECRET_ACCESS_KEY</li>
@@ -76,53 +707,50 @@ docker-machine ip default</code></pre></div>
 <li>AWS_KEYPAIR_NAME</li>
 <li>AWS_INSTANCE_TYPE</li>
 <li>AWS_VOLUME_TYPE</li>
-
-<li><p>MACHINE_NAME</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver amazonec2 <span class="se">\
-</span><span class="se"></span>--amazonec2-access-key AKI****** <span class="se">\
-</span><span class="se"></span>--amazonec2-secret-key Jei****** <span class="se">\
-</span><span class="se"></span>--amazonec2-open-port <span class="m">2376</span> <span class="se">\
-</span><span class="se"></span>--amazonec2-region us-east-1 <span class="se">\
-</span><span class="se"></span>--amazonec2-zone f <span class="se">\
-</span><span class="se"></span>--amazonec2-ami ami-07d0cf3af28718ef8 <span class="se">\
-</span><span class="se"></span>--amazonec2-instance-type m5a.xlarge <span class="se">\
-</span><span class="se"></span>--amazonec2-keypair-name instance-keypair <span class="se">\
-</span><span class="se"></span>--amazonec2-ssh-keypath ~/.sshid_rsa <span class="se">\
-</span><span class="se"></span>--amazonec2-root-size <span class="m">16</span> <span class="se">\
-</span><span class="se"></span>--amazonec2-security-group &lt;insert_security_group_here&gt; <span class="se">\
-</span><span class="se"></span>--amazonec2-ssh-user ubuntu <span class="se">\
-</span><span class="se"></span>--amazonec2-vpc-id vpc-********* <span class="se">\
-</span><span class="se"></span>--amazonec2-subnet-id subnet-********** <span class="se">\
-</span><span class="se"></span>--amazonec2-use-ebs-optimized-instance <span class="se">\
-</span><span class="se"></span>--amazonec2-use-private-address <span class="se">\
-</span><span class="se"></span>--amazonec2-volume-type gp2 <span class="se">\
-</span><span class="se"></span><span class="si">${</span><span class="nv">MACHINE_NAME</span><span class="si">}</span></code></pre></div></li>
+<li>MACHINE_NAME</li>
 </ul>
-
-<h3 id="essential-docker-machine-commands">Essential docker-machine commands</h3>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine create --driver amazonec2 <span class="se">\
+</span><span class="se"></span>    --amazonec2-access-key AKI****** <span class="se">\
+</span><span class="se"></span>    --amazonec2-secret-key Jei****** <span class="se">\
+</span><span class="se"></span>    --amazonec2-open-port <span class="m">2376</span> <span class="se">\
+</span><span class="se"></span>    --amazonec2-region us-east-1 <span class="se">\
+</span><span class="se"></span>    --amazonec2-zone f <span class="se">\
+</span><span class="se"></span>    --amazonec2-ami ami-07d0cf3af28718ef8 <span class="se">\
+</span><span class="se"></span>    --amazonec2-instance-type m5a.xlarge <span class="se">\
+</span><span class="se"></span>    --amazonec2-keypair-name instance-keypair <span class="se">\
+</span><span class="se"></span>    --amazonec2-ssh-keypath ~/.sshid_rsa <span class="se">\
+</span><span class="se"></span>    --amazonec2-root-size <span class="m">16</span> <span class="se">\
+</span><span class="se"></span>    --amazonec2-security-group &lt;insert_security_group_here&gt; <span class="se">\
+</span><span class="se"></span>    --amazonec2-ssh-user ubuntu <span class="se">\
+</span><span class="se"></span>    --amazonec2-vpc-id vpc-********* <span class="se">\
+</span><span class="se"></span>    --amazonec2-subnet-id subnet-********** <span class="se">\
+</span><span class="se"></span>    --amazonec2-use-ebs-optimized-instance <span class="se">\
+</span><span class="se"></span>    --amazonec2-use-private-address <span class="se">\
+</span><span class="se"></span>    --amazonec2-volume-type gp2 <span class="se">\
+</span><span class="se"></span>    <span class="si">${</span><span class="nv">MACHINE_NAME</span><span class="si">}</span>
+</code></pre></div><h3 id="essential-docker-machine-commands">Essential docker-machine commands</h3>
 <p>You can confirm the number of docker-machines you have with</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ls</code></pre></div>
-<p>To change local docker environment variables to the remote machine ones</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env remote-machine<span class="k">)</span></code></pre></div>
-<p>To validate which docker-machine you point to:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine active</code></pre></div>
-<p>To ssh into the remote machine. Once the machine is created, it’s really easy to ssh into it because the SSH certificates are generated on the machine and kept locally.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ssh remote-machine</code></pre></div>
-<p>To copy files to/from the machine</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine scp ~/localfile.txt remote-machine:~/</code></pre></div>
-<p>To go back to using your local instance</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env -u<span class="k">)</span></code></pre></div>
-<h3 id="what-if-you-want-to-share-the-machines">What if you want to share the machines?</h3>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ls
+</code></pre></div><p>To change local docker environment variables to the remote machine ones</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env remote-machine<span class="k">)</span>
+</code></pre></div><p>To validate which docker-machine you point to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine active
+</code></pre></div><p>To ssh into the remote machine. Once the machine is created, it’s really easy to ssh into it because the SSH certificates are generated on the machine and kept locally.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine ssh remote-machine
+</code></pre></div><p>To copy files to/from the machine</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-machine scp ~/localfile.txt remote-machine:~/
+</code></pre></div><p>To go back to using your local instance</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>docker-machine env -u<span class="k">)</span>
+</code></pre></div><h3 id="what-if-you-want-to-share-the-machines">What if you want to share the machines?</h3>
 <p>Install <a href="https://github.com/bhurlow/machine-share">machine-share</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g machine-share</code></pre></div>
-<p>To export machines</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g machine-share
+</code></pre></div><p>To export machines</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ machine-export &lt;machine-name&gt;
-&gt;&gt; exported to &lt;machine-name&gt;.zip</code></pre></div>
-<p>To import machines</p>
+&gt;&gt; exported to &lt;machine-name&gt;.zip
+</code></pre></div><p>To import machines</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">machine-import &lt;machine-name&gt;.zip
-&gt;&gt; imported</code></pre></div>]]></content>
+&gt;&gt; imported
+</code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -133,29 +761,20 @@ docker-machine ip default</code></pre></div>
 			<guid>https://dominicmotuka.com/posts/what-is-graphql/</guid>
 			<description>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:
   It lets the client specify exactly what data it needs. It makes it easier to aggregate data from multiple sources. It uses a type system to describe data.  With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</description>
-			<content type="html"><![CDATA[
-
-<blockquote>
+			<content type="html"><![CDATA[<blockquote>
 <p>GraphQL is a syntax that describes how to ask for data, and is generally used to load data from a server to a client. GraphQL has three main characteristics:</p>
 </blockquote>
-
 <ul>
 <li>It lets the client specify exactly what data it needs.</li>
 <li>It makes it easier to aggregate data from multiple sources.</li>
 <li>It uses a type system to describe data.</li>
 </ul>
-
 <p>With GraphQL, the user is able to make a single call to fetch the required information rather than to construct several REST requests to fetch the same.</p>
-
 <p><strong>N/B</strong>
 GraphQL and REST are two different things &ndash; GraphQL is a language and a technology, while REST is an architecture pattern, which means that even as teams increasingly adopt GraphQL, it does not mean the end of the road for REST.</p>
-
 <p>GraphQL has proven itself as a solution to aggregate data from multiple sources, specify data, and describe data. The real secret is that GraphQL ensures that the developer and application only loads the relevant and absolute necessary data, even if it&rsquo;s from multiple sources.</p>
-
 <h3 id="what-is-a-graphql-server">What is a GraphQL Server?</h3>
-
 <p>The GraphQL execution engine is what is responsible for processing a GraphQL query and returning a JSON response. All GraphQL servers are made up of two core components that define the structure and behavior of the execution engine: a schema and resolvers, respectively.</p>
-
 <p>A GraphQL schema is a custom typed language that exposes which queries are both permitted (valid) and handled by a GraphQL server implementation. The schema for our user example query above might look like:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">type</span> <span class="nx">User</span> <span class="p">{</span>
         <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span>
@@ -167,9 +786,7 @@ GraphQL and REST are two different things &ndash; GraphQL is a language and a te
 <span class="nx">type</span> <span class="nx">Query</span> <span class="p">{</span>
         <span class="nx">user</span><span class="o">:</span> <span class="nx">User</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>This schema defines a user query that returns a user. Clients can request any of the fields on a user via the user query, and the GraphQL server will return only those fields in its response. By using the strongly typed schema, a GraphQL server can validate incoming queries to ensure they are valid based on the defined schema.</p>
-
+</code></pre></div><p>This schema defines a user query that returns a user. Clients can request any of the fields on a user via the user query, and the GraphQL server will return only those fields in its response. By using the strongly typed schema, a GraphQL server can validate incoming queries to ensure they are valid based on the defined schema.</p>
 <p>Once a query is determined to be valid, it is processed by a GraphQL server by resolvers. A resolver function backs each field of each GraphQL type. An example resolver for our user query might look like:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Query</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">user</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
@@ -178,35 +795,35 @@ GraphQL and REST are two different things &ndash; GraphQL is a language and a te
     <span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>While the above example is in JavaScript, GraphQL servers can be written in any number of languages. This is due to the fact that GraphQL is also a specification!</p>
-
+</code></pre></div><p>While the above example is in JavaScript, GraphQL servers can be written in any number of languages. This is due to the fact that GraphQL is also a specification!</p>
 <p>A GraphQL server should be able to:</p>
-
 <ul>
-<li><p>Receive requests following the GraphQL format, for example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="s2">&#34;query { allLinks { url } }&#34;</span> <span class="p">}</span></code></pre></div></li>
-
-<li><p>Connect to any necessary databases or services responsible for storing/fetching the actual data.</p></li>
-
-<li><p>Return a GraphQL response with the requested data, such as this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;allLinks&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://graphql.org/&#34;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span></code></pre></div></li>
-
-<li><p>Validate incoming requests against the schema definition and the supported format. For example, if a query is made with an unknown field, the response should be something like:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-<span class="nt">&#34;errors&#34;</span><span class="p">:</span> <span class="p">[{</span>
-<span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Cannot query field \&#34;unknown\&#34; on type \&#34;Link\&#34;.&#34;</span>
-<span class="p">}]</span>
-<span class="p">}</span></code></pre></div></li>
+<li>Receive requests following the GraphQL format, for example:</li>
 </ul>
-
-<p>More can be found in the <a href="https://facebook.github.io/graphql/">official specification</a></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="s2">&#34;query { allLinks { url } }&#34;</span> <span class="p">}</span>
+</code></pre></div><ul>
+<li>
+<p>Connect to any necessary databases or services responsible for storing/fetching the actual data.</p>
+</li>
+<li>
+<p>Return a GraphQL response with the requested data, such as this:</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;allLinks&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://graphql.org/&#34;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+</code></pre></div><ul>
+<li>Validate incoming requests against the schema definition and the supported format. For example, if a query is made with an unknown field, the response should be something like:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;errors&#34;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Cannot query field \&#34;unknown\&#34; on type \&#34;Link\&#34;.&#34;</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div><p>More can be found in the <a href="https://facebook.github.io/graphql/">official specification</a></p>
 <h3 id="references">References</h3>
-
 <ol>
-<li><p><a href="https://opensource.com/article/19/6/what-is-graphql">What is GraphQL?</a></p></li>
-
+<li>
+<p><a href="https://opensource.com/article/19/6/what-is-graphql">What is GraphQL?</a></p>
+</li>
 <li></li>
 </ol>
 ]]></content>
@@ -221,133 +838,100 @@ GraphQL and REST are two different things &ndash; GraphQL is a language and a te
 			<description>First Things First After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.
  To do that go: Apple menu () &amp;gt; About This Mac &amp;gt; Software Update.
  Restart the computer when prompted to.</description>
-			<content type="html"><![CDATA[
-
-<h2 id="first-things-first">First Things First</h2>
-
+			<content type="html"><![CDATA[<h2 id="first-things-first">First Things First</h2>
 <p>After first login, run Software Update and ensure that the operating system is at the latest point of release. This will ensure that you have a more secure OS. Also since macOS upgrades are free, you might as well keep your machine up to date.</p>
-
 <blockquote>
 <p>To do that go: Apple menu () &gt; About This Mac &gt; Software Update.</p>
 </blockquote>
-
 <p>Restart the computer when prompted to.</p>
-
 <p>The default account created is the admin account. If other people will be using the machine, create Standard accounts as necessary.</p>
-
 <blockquote>
 <p>Admin accounts have sudo privileges: All Admin accounts on a Mac may use sudo to run command-line utilities with administrative (root) privileges.</p>
 </blockquote>
-
 <h3 id="enable-file-vault">Enable File Vault</h3>
-
 <p>FileVault is a disk encryption program in Mac OS X 10.3 and later. It performs on-the-fly encryption with volumes on Mac computers.</p>
-
 <ul>
-<li><p><a href="https://en.wikipedia.org/wiki/Disk_encryption_software">disk encryption program</a> - Disk encryption is a technology which protects information by converting it into unreadable code that cannot be deciphered easily by unauthorized people. Disk encryption uses disk encryption software like Apple&rsquo;s File Vault 2.</p></li>
-
-<li><p><a href="https://en.wikipedia.org/wiki/Volume_(computing)">volumes</a> - a volume or logical drive is a single accessible storage area with a single file system, typically (though not necessarily) resident on a single partition of a hard disk. Although a volume might be different from a physical disk drive, it can still be accessed with an operating system&rsquo;s logical interface. However, a volume differs from a partition.</p></li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Disk_encryption_software">disk encryption program</a> - Disk encryption is a technology which protects information by converting it into unreadable code that cannot be deciphered easily by unauthorized people. Disk encryption uses disk encryption software like Apple&rsquo;s File Vault 2.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Volume_(computing)">volumes</a> - a volume or logical drive is a single accessible storage area with a single file system, typically (though not necessarily) resident on a single partition of a hard disk. Although a volume might be different from a physical disk drive, it can still be accessed with an operating system&rsquo;s logical interface. However, a volume differs from a partition.</p>
+</li>
 </ul>
-
 <h3 id="set-a-firmware-password">Set a Firmware Password</h3>
-
 <p>A firmware password prevents starting up from any internal or external storage device other than the startup disk you&rsquo;ve selected.
 <a href="https://support.apple.com/en-gb/HT204455">Apple Knowledge Base article HT204455</a> has full details on how to go around this</p>
-
 <p>If you did not enable File Vault, then the attacker will have complete access to all of the files on the system.</p>
-
 <h2 id="setting-up-for-development">Setting Up for Development</h2>
-
 <p>The first step is to install a compiler. The easiest way to install one is with the Xcode Command Line Tools package.
 Xcode is an integrated development environment for macOS containing a suite of software development tools developed by Apple for developing software for macOS, iOS, watchOS and tvOS.
 Once you have the compiler that is provided by Xcode, you can use Homebrew to install everything else that you need.</p>
-
 <p>From the Terminal App run:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ xcode-select --install
-.......</code></pre></div>
-<p>It&rsquo;ll prompt you to install the command line tools. Follow the instructions and you&rsquo;ll have Xcode and Xcode command line tools both installed.</p>
-
+.......
+</code></pre></div><p>It&rsquo;ll prompt you to install the command line tools. Follow the instructions and you&rsquo;ll have Xcode and Xcode command line tools both installed.</p>
 <h2 id="setting-up-homebrew">Setting up Homebrew</h2>
-
 <p><a href="http://brew.sh/">Homebrew</a> is a free and open-source software package management system that simplifies the installation of software on Apple&rsquo;s macOS operating system and Linux. The name is intended to suggest the idea of building software on the Mac depending on the user&rsquo;s taste.
 Follow the instructions on the site.</p>
-
 <p>You should also amend your PATH, so that the versions of tools that are installed with Homebrew take precedence over others. To do this, edit the file .bashrc in your home directory to include this line:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/usr/local/bin:/usr/local/sbin:~/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span></code></pre></div>
-<p>To check that Homebrew is installed correctly, run this command in a terminal window:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/usr/local/bin:/usr/local/sbin:~/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
+</code></pre></div><p>To check that Homebrew is installed correctly, run this command in a terminal window:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew doctor
-Your system is ready to brew.</code></pre></div>
-<p>To update the index of available packages, run this command in a terminal window:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew update</code></pre></div>
-<p>You can now use the brew install command to add command-line software to your Mac, and brew cask install to add graphical software. For example, this command installs the Slack app:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew cask install slack</code></pre></div>
-<h2 id="installing-and-configuring-git">Installing and Configuring Git</h2>
-
+Your system is ready to brew.
+</code></pre></div><p>To update the index of available packages, run this command in a terminal window:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew update
+</code></pre></div><p>You can now use the brew install command to add command-line software to your Mac, and brew cask install to add graphical software. For example, this command installs the Slack app:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew cask install slack
+</code></pre></div><h2 id="installing-and-configuring-git">Installing and Configuring Git</h2>
 <p>Git is a software that is used for Version Control. It is free and open source. Version Control is the management of changes to documents, computer programs, large websites and other collection of information.</p>
-
 <p>Xcode Command Line Tools include a copy of Git but it&rsquo;s mostly an outdated version. To install a newer version. Run:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew install git</code></pre></div>
-<p>Set your details before creating or cloning repositories.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew install git
+</code></pre></div><p>Set your details before creating or cloning repositories.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global user.name <span class="s2">&#34;Your Name&#34;</span>
-git config --global user.email <span class="s2">&#34;you@your-domain.com&#34;</span></code></pre></div>
-<p>The <em>global</em> option means that the setting will apply to every repository that you work with in the current user account.</p>
-
+git config --global user.email <span class="s2">&#34;you@your-domain.com&#34;</span>
+</code></pre></div><p>The <em>global</em> option means that the setting will apply to every repository that you work with in the current user account.</p>
 <p>You can create a global gitignore in your home directory <code>~/.gitignore</code>  and use it like:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.excludesfile <span class="s1">&#39;~/.gitignore&#39;</span></code></pre></div>
-<p>The editor used to edit the commit log message will be chosen from the <code>GIT_EDITOR</code> environment variable, the <code>core.editor</code> configuration variable, the <code>VISUAL</code> environment variable, or the <code>EDITOR environment</code> variable <em>(in that order)</em>.</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.excludesfile <span class="s1">&#39;~/.gitignore&#39;</span>
+</code></pre></div><p>The editor used to edit the commit log message will be chosen from the <code>GIT_EDITOR</code> environment variable, the <code>core.editor</code> configuration variable, the <code>VISUAL</code> environment variable, or the <code>EDITOR environment</code> variable <em>(in that order)</em>.</p>
 <p>To use <code>vim</code> as your editor, run:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.editor <span class="s2">&#34;vim&#34;</span></code></pre></div>
-<p>There&rsquo;s a way to skip typing  username and/password everytime when using HTTPS on Git. To have this configuration, run:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config — global credential.helper osxkeychain</code></pre></div>
-<h3 id="signing-commits">Signing Commits</h3>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.editor <span class="s2">&#34;vim&#34;</span>
+</code></pre></div><p>There&rsquo;s a way to skip typing  username and/password everytime when using HTTPS on Git. To have this configuration, run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git config — global credential.helper osxkeychain
+</code></pre></div><h3 id="signing-commits">Signing Commits</h3>
 <p>When you sign a Git commit, you can prove that the code you submitted came from you and wasn&rsquo;t altered while you were transferring it. You also can prove that you submitted the code and not someone else.</p>
-
 <p>You can protect your code commits from malicious changes by GPG-signing them. GPG stand for <em>GNU Privacy Guard</em></p>
-
 <p>The simplest way of getting GPG is by downloading and installing the <a href="https://gpgtools.org/">GPG suite for Macos</a></p>
-
 <p>Confirm that you have GPG installed by running this on your terminal:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ which gpg
-usr/local/bin/gpg</code></pre></div>
-<p>Use the following <a href="https://help.github.com/en/articles/generating-a-new-gpg-key">steps to sign every commit with GPG</a>.</p>
-
+usr/local/bin/gpg
+</code></pre></div><p>Use the following <a href="https://help.github.com/en/articles/generating-a-new-gpg-key">steps to sign every commit with GPG</a>.</p>
 <p><a href="https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account">Add the GPG key to your GitHub account.</a></p>
-
 <h4 id="what-is-the-sign-off-feature-in-git-for">What is the Sign Off feature in Git for?</h4>
-
 <p>Sign-off is a requirement for getting patches into the Linux kernel and a few other projects, but most projects don&rsquo;t actually use it.</p>
-
 <p>You can do this by:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git commit --signoff</code></pre></div>
-<p>You can verify that this worked by running <code>git log</code></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git commit --signoff
+</code></pre></div><p>You can verify that this worked by running <code>git log</code></p>
 <p>The signed off logs will be in the format:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">commit 977925fa0a1a35afdd60ed40eec34ab6de0c789b <span class="o">(</span>HEAD -&gt; master<span class="o">)</span>
 Author: Dominic Motuka &lt;dominic.motuka@gmail.com&gt;
-Date:   Wed Jul <span class="m">31</span> <span class="m">00</span>:11:48 <span class="m">2019</span> +0300
+Date:   Wed Jul <span class="m">31</span> 00:11:48 <span class="m">2019</span> +0300
 
     I love reddit too
 
-    Signed-off-by: Dominic Motuka &lt;dominic.motuka@gmail.com&gt;</code></pre></div>
-<h2 id="text-editors">Text Editors</h2>
-
+    Signed-off-by: Dominic Motuka &lt;dominic.motuka@gmail.com&gt;
+</code></pre></div><h2 id="text-editors">Text Editors</h2>
 <p>If you do not have a preferred editor, consider using a version of <a href="https://code.visualstudio.com/">Visual Studio Code</a>
 To work with a modern Vim editor, install <a href="https://neovim.io/">Neovim</a></p>
-
 <p>Remember to setup the <code>EDITOR</code>  environment variable in your ~/.bashrc file, so that this editor is automatically invoked by command-line tools like your version control system like git as discussed before.</p>
-
 <h3 id="todo">TODO</h3>
-
-<ul class="task-list">
-<li><label><input type="checkbox" disabled class="task-list-item"> ssh setup instructions</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> <code>python</code> development setup ( Hello World using Docker too)</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> <code>go</code> development setup</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> <code>node</code> development setup</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> <code>kubernetes</code> setup ( includes <code>helm</code>, <code>minikube</code> and <code>docker</code>)</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> <code>VS Code</code> configuration ( custom themes, fonts and plugins)</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> <code>neovim</code> setup ( fonts, plugins e.t.c)</label></li>
+<ul>
+<li><input disabled="" type="checkbox"> ssh setup instructions</li>
+<li><input disabled="" type="checkbox"> <code>python</code> development setup ( Hello World using Docker too)</li>
+<li><input disabled="" type="checkbox"> <code>go</code> development setup</li>
+<li><input disabled="" type="checkbox"> <code>node</code> development setup</li>
+<li><input disabled="" type="checkbox"> <code>kubernetes</code> setup ( includes <code>helm</code>, <code>minikube</code> and <code>docker</code>)</li>
+<li><input disabled="" type="checkbox"> <code>VS Code</code> configuration ( custom themes, fonts and plugins)</li>
+<li><input disabled="" type="checkbox"> <code>neovim</code> setup ( fonts, plugins e.t.c)</li>
 </ul>
 ]]></content>
 		</item>
@@ -361,7 +945,6 @@ To work with a modern Vim editor, install <a href="https://neovim.io/">Neovim</a
 			<description>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.
 Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</description>
 			<content type="html"><![CDATA[<p>Long ago in a distant land, I, Aku, the shape-shifting Master of Darkness, unleashed an unspeakable evil! But a foolish Samurai warrior wielding a magic sword stepped forth to oppose me.</p>
-
 <p>Before the final blow was struck, I tore open a portal in time and flung him into the future, where my evil is law! Now the fool seeks to return to the past, and undo the future that is Aku!</p>
 ]]></content>
 		</item>
